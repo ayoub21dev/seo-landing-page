@@ -17,6 +17,7 @@ From the master's "Exigences SEO" intro (LP tab):
 * **Locales:** country-based multisite per [brand-guide §7](../../../brand/brand-guide.md) — 4 hreflang alternates + `x-default`.
 * **Named-client rule:** only Iman Dental, Mariner Underwear, Lily Billy, Maes Débouchage, Écran Moderne appear by name. Sotheby's/Shatao et al. stay anonymized ("marque internationale d'immobilier de luxe, opérations Maroc").
 * **Brand:** tokens from [tokens.md](../../../brand/tokens.md) only. Poppins, closed 8-color palette, no red for negatives, one gradient keyword per heading, no external JS libs.
+* **Fond décoratif :** every white-background section carries `.bg-curves` (the hero's gradient curves, embedded as a data-URI in CSS; `.bg-curves-flip` mirrors it on alternating sections). Tall sections (`#tarifs`, `#definition`) add `.bg-curves-tall` — a 1920×2200 set of 5 curves spread over the full height with two soft pink tips (redder at 10–12 % opacity). `bg-nuk` / `bg-ink` sections stay flat.
 
 > ⚠️ **Open decision — currency.** The CRO playbook says MAD HT (website-creation, Morocco market); the SEO master prices in **€ HT** across all markets. Recommendation: follow the SEO master (€ HT), localizing per country variant. Confirm before build.
 
@@ -89,6 +90,13 @@ Source: **Module 4** (10 case cards). DS: centered H2 + grid (image + brand H3 +
 * Grid: **6 of the 10 cards** to keep the DS 2×3 grid — priority: Iman Dental, Mariner, Maes, Lily Billy, Écran Moderne, promoteur immobilier BE. The remaining 4 (agence de voyage, RHILLANE, luxe anonymisé, affiliation UK) go to a « + voir plus » row or per-locale swaps.
 * **Anti-cherry-picking callout** under the grid (mandatory — verbatim from master): "these 10 are the publicly authorized ones; 60+ more documented cases behind them…".
 * SEO: card titles = H3 in format keyword + result verb; internal link per card to deep case-study page when it exists; `Review`/`Article` schema; alts = « [client] [mot-clé] étude de cas ».
+
+### 7b. Témoignages — named client quotes
+
+Own section `#temoignages` (extracted from block 7), placed between Résultats and Tarifs.
+* H2: « Ce que nos clients disent de nous. » (gradient on « clients »).
+* 3 quote cards (`hover-grad-border`, white bg): decorative gradient quote mark, quote in ink at `text-lg`, 5 orng stars, divider, photo avatar (`assets/avatar-*.jpg`, AI-generated faces — no real person) + name + role. Amal Saoudi · Nora Belkacem · Karim Ouali.
+* Below the cards: the SERP-capture marquee (« La preuve, capturée directement depuis Google » + « Vérifiable en direct »), moved here from block 7.
 
 ### 8. Pricing — offer, value math, bonuses
 

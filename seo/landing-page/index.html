@@ -54,6 +54,22 @@
     }
     .btn-cta { background-image: linear-gradient(90deg, #D7045A 50%, #FC8831 100%); }
 
+    /* Courbes décoratives de fond — mêmes tracés que le hero, pour les sections à fond blanc.
+       SVG embarqué en data-URI (aucune requête externe). La variante -flip inverse horizontalement. */
+    .bg-curves { position: relative; isolation: isolate; overflow: hidden; }
+    .bg-curves::before {
+      content: "";
+      position: absolute; inset: 0; z-index: -1;
+      pointer-events: none;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1920 820' fill='none' preserveAspectRatio='xMidYMid slice'%3E%3Cdefs%3E%3ClinearGradient id='a' x1='0' y1='0' x2='1' y2='0'%3E%3Cstop offset='0' stop-color='%23F3F4FF'/%3E%3Cstop offset='0.78' stop-color='%23F3F4FF'/%3E%3Cstop offset='1' stop-color='%23E4004D' stop-opacity='0.12'/%3E%3C/linearGradient%3E%3ClinearGradient id='b' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23F3F4FF'/%3E%3Cstop offset='1' stop-color='%23F3F4FF' stop-opacity='0.55'/%3E%3C/linearGradient%3E%3ClinearGradient id='c' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23F3F4FF'/%3E%3Cstop offset='0.65' stop-color='%23F3F4FF'/%3E%3Cstop offset='1' stop-color='%23E4004D' stop-opacity='0.10'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M-260 190 C 420 330, 880 120, 1310 330 S 1980 560, 2180 430' stroke='url(%23a)' stroke-width='120' stroke-linecap='round'/%3E%3Cpath d='M1430 -160 C 1560 120, 1760 240, 2120 210' stroke='url(%23b)' stroke-width='110' stroke-linecap='round'/%3E%3Cpath d='M-180 330 C 60 560, 380 700, 700 960' stroke='url(%23c)' stroke-width='120' stroke-linecap='round'/%3E%3C/svg%3E") center / cover no-repeat;
+    }
+    .bg-curves-flip::before { transform: scaleX(-1); }
+    /* Variante sections hautes : tracés répartis sur toute la hauteur (viewBox 1920×2200),
+       deux pointes rosées (haut droite + milieu gauche) au lieu d'une seule tache zoomée. */
+    .bg-curves-tall::before {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1920 2200' fill='none' preserveAspectRatio='xMidYMid slice'%3E%3Cdefs%3E%3ClinearGradient id='a' x1='0' y1='0' x2='1' y2='0'%3E%3Cstop offset='0' stop-color='%23F3F4FF'/%3E%3Cstop offset='0.78' stop-color='%23F3F4FF'/%3E%3Cstop offset='1' stop-color='%23E4004D' stop-opacity='0.12'/%3E%3C/linearGradient%3E%3ClinearGradient id='b' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23F3F4FF'/%3E%3Cstop offset='1' stop-color='%23F3F4FF' stop-opacity='0.55'/%3E%3C/linearGradient%3E%3ClinearGradient id='d' x1='1' y1='0' x2='0' y2='0'%3E%3Cstop offset='0' stop-color='%23F3F4FF'/%3E%3Cstop offset='0.75' stop-color='%23F3F4FF'/%3E%3Cstop offset='1' stop-color='%23E4004D' stop-opacity='0.12'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M-260 190 C 420 330, 880 120, 1310 330 S 1980 560, 2180 430' stroke='url(%23a)' stroke-width='120' stroke-linecap='round'/%3E%3Cpath d='M1430 -160 C 1560 120, 1760 240, 2120 210' stroke='url(%23b)' stroke-width='110' stroke-linecap='round'/%3E%3Cpath d='M2180 1040 C 1520 1200, 980 1000, 460 1180 S -120 1360, -320 1260' stroke='url(%23d)' stroke-width='120' stroke-linecap='round'/%3E%3Cpath d='M-180 1450 C 60 1680, 380 1820, 700 2080' stroke='url(%23b)' stroke-width='120' stroke-linecap='round'/%3E%3Cpath d='M1150 2320 C 1420 2060, 1720 1980, 2140 2040' stroke='url(%23b)' stroke-width='110' stroke-linecap='round'/%3E%3C/svg%3E");
+    }
+
     /* Bordure gradient au survol (purp → redder → orng) */
     .hover-grad-border { transition: border-color .2s ease; }
     .hover-grad-border:hover {
@@ -102,8 +118,10 @@
     .header-logo { height: 38px; transition: height .25s ease; }
 
     /* Marquee track */
-    .marquee-track { display: flex; width: max-content; }
+    .marquee-track { display: flex; width: max-content; will-change: transform; }
     .marquee-track > * { flex: 0 0 auto; }
+    .marquee-track.marquee-paused { animation-play-state: paused; }
+    @media (prefers-reduced-motion: reduce) { .marquee-track { animation: none; } }
 
     /* FAQ accordion */
     .faq-item .faq-answer { display: none; }
@@ -154,14 +172,22 @@
     @keyframes serpFade { from { opacity: 0; } to { opacity: 1; } }
     @keyframes serpZoom { from { opacity: 0; transform: scale(.96); } to { opacity: 1; transform: none; } }
 
-    /* Cartes-dossier (résultats) : silhouette de dossier, la capture sort du dossier au survol */
-    .folder-media img { transition: transform .45s cubic-bezier(.2,.7,.3,1); will-change: transform; }
-    .folder-card:hover .folder-media img { transform: translateY(-16px); }
-    /* congé concave : raccord arrondi entre l'encoche (photo visible) et le panneau blanc */
-    .folder-notch .folder-fillet { position: absolute; left: 0; bottom: 0; width: 14px; height: 14px; background: radial-gradient(circle at 100% 0, transparent 13px, #fff 13.5px); }
+    /* Cartes-dossier (résultats) : la capture sort à moitié du dossier au survol, par-dessus la carte du dessus */
+    .folder-media { transition: transform .5s cubic-bezier(.2,.7,.3,1); will-change: transform; }
+    .folder-media img { box-shadow: 0 14px 30px -14px rgba(4,17,53,.35); }
+    .folder-card:hover { z-index: 30; }
+    .folder-card:hover .folder-media { transform: translateY(-64px); }
+    /* contour dégradé signature (purp -> redder -> orng) : dos + corps du dossier (l'onglet est un SVG) */
+    .folder-back  { background: linear-gradient(#E9EAF2, #E9EAF2) padding-box, linear-gradient(155deg, #3943FF 0%, #E4004D 60%, #FA9329 100%) border-box; }
+    .folder-front { background: linear-gradient(#fff, #fff) padding-box, linear-gradient(155deg, #3943FF 0%, #E4004D 60%, #FA9329 100%) border-box; }
+    /* détails (chiffres + note) repliés au repos, révélés au survol */
+    .folder-more { max-height: 0; opacity: 0; overflow: hidden; transition: max-height .5s cubic-bezier(.2,.7,.3,1), opacity .35s ease .08s; }
+    .folder-card:hover .folder-more { max-height: 320px; opacity: 1; }
+    @media (hover: none) { .folder-more { max-height: none; opacity: 1; } }
     @media (prefers-reduced-motion: reduce) {
-      .folder-media img { transition: none; }
-      .folder-card:hover .folder-media img { transform: none; }
+      .folder-media { transition: none; }
+      .folder-card:hover .folder-media { transform: none; }
+      .folder-more { max-height: none; opacity: 1; transition: none; }
     }
   </style>
 </head>
@@ -325,7 +351,8 @@
   <!-- ========================================================= -->
   <!--  BLOCK 4 · PROBLEM STACK — Module 2 (rows, no cards)       -->
   <!-- ========================================================= -->
-  <section id="probleme" class="mx-auto max-w-content px-6 py-16 lg:px-8 lg:py-24">
+  <section id="probleme" class="bg-curves py-16 lg:py-24">
+    <div class="mx-auto max-w-content px-6 lg:px-8">
     <div class="mx-auto max-w-[760px] text-center">
       <h2 class="text-3xl font-medium leading-tight tracking-tighter2 lg:text-4xl">
         Vos concurrents captent les clients que Google vous envoie.
@@ -370,6 +397,7 @@
           <svg class="h-3 w-3" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M1 6h10M7 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
       </div>
+    </div>
   </section>
 
   <!-- ========================================================= -->
@@ -459,7 +487,7 @@
   <!-- ========================================================= -->
   <!--  BLOCK 6 · ENGAGEMENTS — Modules 5b + 5c (gradient cards)  -->
   <!-- ========================================================= -->
-  <section id="engagements" class="py-16 lg:py-24">
+  <section id="engagements" class="bg-curves bg-curves-flip py-16 lg:py-24">
     <div class="mx-auto max-w-content px-6 lg:px-8">
       <div class="max-w-[680px]">
         <h2 class="text-3xl font-medium leading-tight tracking-tighter2 lg:text-4xl">
@@ -521,207 +549,246 @@
       <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
 
         <!-- 1 · Iman Dental -->
-        <article class="folder-card group relative flex flex-col overflow-hidden rounded-card border border-bord bg-white shadow-card transition-transform duration-300 hover:-translate-y-1.5">
-          <div class="folder-media absolute inset-x-0 top-0 h-64 overflow-hidden">
-            <img src="assets/hero-project-01.png" alt="Iman Dental Clinic — agence SEO Maroc, étude de cas" class="h-full w-full object-cover">
+        <article class="folder-card group relative flex flex-col rounded-3xl bg-white shadow-card transition-transform duration-300 hover:-translate-y-1.5">
+          <div class="folder-back absolute inset-x-0 top-0 h-28 rounded-t-3xl border border-transparent" aria-hidden="true"></div>
+          <div class="folder-media absolute left-3 right-3 top-3 z-[5] h-44">
+            <img src="assets/hero-project-01.jpg" loading="lazy" decoding="async" alt="Iman Dental Clinic — agence SEO Maroc, étude de cas" class="h-full w-full rounded-[10px] object-cover">
           </div>
-          <span class="absolute left-5 top-4 z-20 rounded-full bg-white/90 px-3 py-1 text-[11px] font-medium text-ink">Santé · Tanger</span>
-          <div class="h-44 shrink-0" aria-hidden="true"></div>
+          <div class="h-24 shrink-0" aria-hidden="true"></div>
           <div class="relative z-10 flex flex-1 flex-col">
-            <div class="flex" aria-hidden="true">
-              <div class="h-12 flex-1 rounded-tl-[20px] rounded-tr-[14px] bg-white"></div>
-              <div class="folder-notch relative w-[72px]">
-                <span class="folder-fillet"></span>
-                <span class="absolute bottom-1.5 right-4 flex h-10 w-10 items-center justify-center rounded-full bg-white shadow-card">
-                  <svg class="h-4 w-4 text-ink" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 12 12 4M6 4h6v6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </span>
-              </div>
-            </div>
-            <div class="flex flex-1 flex-col bg-white px-6 pb-6">
+            <svg class="block w-full" height="28" viewBox="0 0 400 28" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="rmdfold" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3943FF"/><stop offset=".6" stop-color="#E4004D"/><stop offset="1" stop-color="#FA9329"/></linearGradient></defs><path d="M0.5,30 L0.5,12 Q0.5,4 8.5,4 L86,4 Q94,4 98,9.5 Q102,15 112,15 L391,15 Q399.5,15 399.5,23 L399.5,30 Z" fill="#fff" stroke="url(#rmdfold)" stroke-width="1" vector-effect="non-scaling-stroke"/></svg>
+            <div class="folder-front -mt-px flex flex-1 flex-col rounded-b-3xl border border-t-0 border-transparent px-6 pb-6 pt-2">
             <div class="flex flex-wrap items-baseline gap-x-2.5 gap-y-1">
               <span class="text-3xl font-semibold tracking-tighter2 text-ink">N°1</span>
               <span class="text-xs text-slight">sur « dentiste tangier »</span>
             </div>
             <p class="mt-3 text-sm font-medium text-purp">Iman Dental Clinic</p>
             <h3 class="mt-1 text-lg font-semibold leading-snug">Cabinet dentaire n°1 sur Google à Tanger</h3>
+            <div class="folder-more">
             <div class="mt-4 flex divide-x divide-bord border-y border-bord py-3 text-center">
               <div class="flex-1 px-2"><div class="text-lg font-semibold">0 €</div><div class="text-xs text-slight">coût / patient acquis</div></div>
               <div class="flex-1 px-2"><div class="text-lg font-semibold">M+8</div><div class="text-xs text-slight">arrêt de Google Ads</div></div>
             </div>
             <p class="mt-4 text-sm text-slight">Cabinet complet un mois à l'avance grâce au seul trafic organique.</p>
             </div>
+            </div>
           </div>
         </article>
 
         <!-- 2 · Mariner -->
-        <article class="folder-card group relative flex flex-col overflow-hidden rounded-card border border-bord bg-white shadow-card transition-transform duration-300 hover:-translate-y-1.5">
-          <div class="folder-media absolute inset-x-0 top-0 h-64 overflow-hidden">
-            <img src="assets/hero-project-02.png" alt="Mariner Underwear — référencement e-commerce France, étude de cas" class="h-full w-full object-cover">
+        <article class="folder-card group relative flex flex-col rounded-3xl bg-white shadow-card transition-transform duration-300 hover:-translate-y-1.5">
+          <div class="folder-back absolute inset-x-0 top-0 h-28 rounded-t-3xl border border-transparent" aria-hidden="true"></div>
+          <div class="folder-media absolute left-3 right-3 top-3 z-[5] h-44">
+            <img src="assets/hero-project-02.jpg" loading="lazy" decoding="async" alt="Mariner Underwear — référencement e-commerce France, étude de cas" class="h-full w-full rounded-[10px] object-cover">
           </div>
-          <span class="absolute left-5 top-4 z-20 rounded-full bg-white/90 px-3 py-1 text-[11px] font-medium text-ink">E-commerce · France</span>
-          <div class="h-44 shrink-0" aria-hidden="true"></div>
+          <div class="h-24 shrink-0" aria-hidden="true"></div>
           <div class="relative z-10 flex flex-1 flex-col">
-            <div class="flex" aria-hidden="true">
-              <div class="h-12 flex-1 rounded-tl-[20px] rounded-tr-[14px] bg-white"></div>
-              <div class="folder-notch relative w-[72px]">
-                <span class="folder-fillet"></span>
-                <span class="absolute bottom-1.5 right-4 flex h-10 w-10 items-center justify-center rounded-full bg-white shadow-card">
-                  <svg class="h-4 w-4 text-ink" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 12 12 4M6 4h6v6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </span>
-              </div>
-            </div>
-            <div class="flex flex-1 flex-col bg-white px-6 pb-6">
+            <svg class="block w-full" height="28" viewBox="0 0 400 28" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="rmdfold" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3943FF"/><stop offset=".6" stop-color="#E4004D"/><stop offset="1" stop-color="#FA9329"/></linearGradient></defs><path d="M0.5,30 L0.5,12 Q0.5,4 8.5,4 L86,4 Q94,4 98,9.5 Q102,15 112,15 L391,15 Q399.5,15 399.5,23 L399.5,30 Z" fill="#fff" stroke="url(#rmdfold)" stroke-width="1" vector-effect="non-scaling-stroke"/></svg>
+            <div class="folder-front -mt-px flex flex-1 flex-col rounded-b-3xl border border-t-0 border-transparent px-6 pb-6 pt-2">
             <div class="flex flex-wrap items-baseline gap-x-2.5 gap-y-1">
               <span class="text-3xl font-semibold tracking-tighter2 text-ink">Top 3</span>
               <span class="text-xs text-slight">requêtes à forte intention d'achat</span>
             </div>
             <p class="mt-3 text-sm font-medium text-purp">Mariner Underwear</p>
             <h3 class="mt-1 text-lg font-semibold leading-snug">E-commerce en top 3 sur les requêtes d'achat en France</h3>
+            <div class="folder-more">
             <div class="mt-4 flex divide-x divide-bord border-y border-bord py-3 text-center">
               <div class="flex-1 px-2"><div class="text-lg font-semibold">40 %+</div><div class="text-xs text-slight">des ventes via l'organique</div></div>
               <div class="flex-1 px-2"><div class="text-lg font-semibold">M+9</div><div class="text-xs text-slight">réduction du budget Meta</div></div>
             </div>
             <p class="mt-4 text-sm text-slight">« Nous réduisons nos investissements sur Meta, nous n'en avons plus besoin. »</p>
             </div>
+            </div>
           </div>
         </article>
 
         <!-- 3 · Maes -->
-        <article class="folder-card group relative flex flex-col overflow-hidden rounded-card border border-bord bg-white shadow-card transition-transform duration-300 hover:-translate-y-1.5">
-          <div class="folder-media absolute inset-x-0 top-0 h-64 overflow-hidden">
-            <img src="assets/hero-project-03.png" alt="Maes Débouchage — référencement local Belgique, étude de cas" class="h-full w-full object-cover">
+        <article class="folder-card group relative flex flex-col rounded-3xl bg-white shadow-card transition-transform duration-300 hover:-translate-y-1.5">
+          <div class="folder-back absolute inset-x-0 top-0 h-28 rounded-t-3xl border border-transparent" aria-hidden="true"></div>
+          <div class="folder-media absolute left-3 right-3 top-3 z-[5] h-44">
+            <img src="assets/hero-project-03.jpg" loading="lazy" decoding="async" alt="Maes Débouchage — référencement local Belgique, étude de cas" class="h-full w-full rounded-[10px] object-cover">
           </div>
-          <span class="absolute left-5 top-4 z-20 rounded-full bg-white/90 px-3 py-1 text-[11px] font-medium text-ink">Dépannage · Belgique</span>
-          <div class="h-44 shrink-0" aria-hidden="true"></div>
+          <div class="h-24 shrink-0" aria-hidden="true"></div>
           <div class="relative z-10 flex flex-1 flex-col">
-            <div class="flex" aria-hidden="true">
-              <div class="h-12 flex-1 rounded-tl-[20px] rounded-tr-[14px] bg-white"></div>
-              <div class="folder-notch relative w-[72px]">
-                <span class="folder-fillet"></span>
-                <span class="absolute bottom-1.5 right-4 flex h-10 w-10 items-center justify-center rounded-full bg-white shadow-card">
-                  <svg class="h-4 w-4 text-ink" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 12 12 4M6 4h6v6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </span>
-              </div>
-            </div>
-            <div class="flex flex-1 flex-col bg-white px-6 pb-6">
+            <svg class="block w-full" height="28" viewBox="0 0 400 28" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="rmdfold" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3943FF"/><stop offset=".6" stop-color="#E4004D"/><stop offset="1" stop-color="#FA9329"/></linearGradient></defs><path d="M0.5,30 L0.5,12 Q0.5,4 8.5,4 L86,4 Q94,4 98,9.5 Q102,15 112,15 L391,15 Q399.5,15 399.5,23 L399.5,30 Z" fill="#fff" stroke="url(#rmdfold)" stroke-width="1" vector-effect="non-scaling-stroke"/></svg>
+            <div class="folder-front -mt-px flex flex-1 flex-col rounded-b-3xl border border-t-0 border-transparent px-6 pb-6 pt-2">
             <div class="flex flex-wrap items-baseline gap-x-2.5 gap-y-1">
               <span class="text-3xl font-semibold tracking-tighter2 text-ink">12 → 100+</span>
               <span class="text-xs text-slight">appels d'urgence par mois</span>
             </div>
             <p class="mt-3 text-sm font-medium text-purp">Maes Débouchage</p>
             <h3 class="mt-1 text-lg font-semibold leading-snug">SEO local : de 12 à 100+ appels d'urgence par mois</h3>
+            <div class="folder-more">
             <div class="mt-4 flex divide-x divide-bord border-y border-bord py-3 text-center">
               <div class="flex-1 px-2"><div class="text-lg font-semibold">95 %</div><div class="text-xs text-slight">couverture locale</div></div>
               <div class="flex-1 px-2"><div class="text-lg font-semibold">4 mois</div><div class="text-xs text-slight">pour y parvenir</div></div>
             </div>
             <p class="mt-4 text-sm text-slight">Même méthode de SEO local, secteur différent, pays différent. La méthodologie est transposable.</p>
             </div>
+            </div>
           </div>
         </article>
 
         <!-- 4 · Lily Billy -->
-        <article class="folder-card group relative flex flex-col overflow-hidden rounded-card border border-bord bg-white shadow-card transition-transform duration-300 hover:-translate-y-1.5">
-          <div class="folder-media absolute inset-x-0 top-0 h-64 overflow-hidden">
-            <img src="assets/hero-project-04.png" alt="Lily Billy Marrakech — SEO local Maroc, étude de cas" class="h-full w-full object-cover">
+        <article class="folder-card group relative flex flex-col rounded-3xl bg-white shadow-card transition-transform duration-300 hover:-translate-y-1.5">
+          <div class="folder-back absolute inset-x-0 top-0 h-28 rounded-t-3xl border border-transparent" aria-hidden="true"></div>
+          <div class="folder-media absolute left-3 right-3 top-3 z-[5] h-44">
+            <img src="assets/hero-project-04.jpg" loading="lazy" decoding="async" alt="Lily Billy Marrakech — SEO local Maroc, étude de cas" class="h-full w-full rounded-[10px] object-cover">
           </div>
-          <span class="absolute left-5 top-4 z-20 rounded-full bg-white/90 px-3 py-1 text-[11px] font-medium text-ink">Restauration · Marrakech</span>
-          <div class="h-44 shrink-0" aria-hidden="true"></div>
+          <div class="h-24 shrink-0" aria-hidden="true"></div>
           <div class="relative z-10 flex flex-1 flex-col">
-            <div class="flex" aria-hidden="true">
-              <div class="h-12 flex-1 rounded-tl-[20px] rounded-tr-[14px] bg-white"></div>
-              <div class="folder-notch relative w-[72px]">
-                <span class="folder-fillet"></span>
-                <span class="absolute bottom-1.5 right-4 flex h-10 w-10 items-center justify-center rounded-full bg-white shadow-card">
-                  <svg class="h-4 w-4 text-ink" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 12 12 4M6 4h6v6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </span>
-              </div>
-            </div>
-            <div class="flex flex-1 flex-col bg-white px-6 pb-6">
+            <svg class="block w-full" height="28" viewBox="0 0 400 28" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="rmdfold" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3943FF"/><stop offset=".6" stop-color="#E4004D"/><stop offset="1" stop-color="#FA9329"/></linearGradient></defs><path d="M0.5,30 L0.5,12 Q0.5,4 8.5,4 L86,4 Q94,4 98,9.5 Q102,15 112,15 L391,15 Q399.5,15 399.5,23 L399.5,30 Z" fill="#fff" stroke="url(#rmdfold)" stroke-width="1" vector-effect="non-scaling-stroke"/></svg>
+            <div class="folder-front -mt-px flex flex-1 flex-col rounded-b-3xl border border-t-0 border-transparent px-6 pb-6 pt-2">
             <div class="flex flex-wrap items-baseline gap-x-2.5 gap-y-1">
               <span class="text-3xl font-semibold tracking-tighter2 text-ink">+732 %</span>
               <span class="text-xs text-slight">de vues de la fiche Google</span>
             </div>
             <p class="mt-3 text-sm font-medium text-purp">Lily Billy</p>
             <h3 class="mt-1 text-lg font-semibold leading-snug">+732 % de vues de fiche Google en trois mois</h3>
+            <div class="folder-more">
             <div class="mt-4 flex divide-x divide-bord border-y border-bord py-3 text-center">
               <div class="flex-1 px-2"><div class="text-lg font-semibold">N°1</div><div class="text-xs text-slight">pack local Guéliz</div></div>
               <div class="flex-1 px-2"><div class="text-lg font-semibold">3 mois</div><div class="text-xs text-slight">de mission</div></div>
             </div>
             <p class="mt-4 text-sm text-slight">La méthodologie de SEO local que nous appliquerions à votre activité est la même, calibrée sur votre catégorie et votre marché.</p>
             </div>
+            </div>
           </div>
         </article>
 
         <!-- 5 · Écran Moderne -->
-        <article class="folder-card group relative flex flex-col overflow-hidden rounded-card border border-bord bg-white shadow-card transition-transform duration-300 hover:-translate-y-1.5">
-          <div class="folder-media absolute inset-x-0 top-0 h-64 overflow-hidden">
-            <img src="assets/hero-project-05.png" alt="Écran Moderne — visibilité moteurs IA et SEO France, étude de cas" class="h-full w-full object-cover">
+        <article class="folder-card group relative flex flex-col rounded-3xl bg-white shadow-card transition-transform duration-300 hover:-translate-y-1.5">
+          <div class="folder-back absolute inset-x-0 top-0 h-28 rounded-t-3xl border border-transparent" aria-hidden="true"></div>
+          <div class="folder-media absolute left-3 right-3 top-3 z-[5] h-44">
+            <img src="assets/hero-project-05.jpg" loading="lazy" decoding="async" alt="Écran Moderne — visibilité moteurs IA et SEO France, étude de cas" class="h-full w-full rounded-[10px] object-cover">
           </div>
-          <span class="absolute left-5 top-4 z-20 rounded-full bg-white/90 px-3 py-1 text-[11px] font-medium text-ink">Affiliation · France</span>
-          <div class="h-44 shrink-0" aria-hidden="true"></div>
+          <div class="h-24 shrink-0" aria-hidden="true"></div>
           <div class="relative z-10 flex flex-1 flex-col">
-            <div class="flex" aria-hidden="true">
-              <div class="h-12 flex-1 rounded-tl-[20px] rounded-tr-[14px] bg-white"></div>
-              <div class="folder-notch relative w-[72px]">
-                <span class="folder-fillet"></span>
-                <span class="absolute bottom-1.5 right-4 flex h-10 w-10 items-center justify-center rounded-full bg-white shadow-card">
-                  <svg class="h-4 w-4 text-ink" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 12 12 4M6 4h6v6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </span>
-              </div>
-            </div>
-            <div class="flex flex-1 flex-col bg-white px-6 pb-6">
+            <svg class="block w-full" height="28" viewBox="0 0 400 28" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="rmdfold" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3943FF"/><stop offset=".6" stop-color="#E4004D"/><stop offset="1" stop-color="#FA9329"/></linearGradient></defs><path d="M0.5,30 L0.5,12 Q0.5,4 8.5,4 L86,4 Q94,4 98,9.5 Q102,15 112,15 L391,15 Q399.5,15 399.5,23 L399.5,30 Z" fill="#fff" stroke="url(#rmdfold)" stroke-width="1" vector-effect="non-scaling-stroke"/></svg>
+            <div class="folder-front -mt-px flex flex-1 flex-col rounded-b-3xl border border-t-0 border-transparent px-6 pb-6 pt-2">
             <div class="flex flex-wrap items-baseline gap-x-2.5 gap-y-1">
               <span class="text-3xl font-semibold tracking-tighter2 text-ink">N°1</span>
               <span class="text-xs text-slight">sur « meilleur IPTV France »</span>
             </div>
             <p class="mt-3 text-sm font-medium text-purp">Écran Moderne</p>
             <h3 class="mt-1 text-lg font-semibold leading-snug">Extrait optimisé conservé après la mise à jour Google</h3>
+            <div class="folder-more">
             <div class="mt-4 flex divide-x divide-bord border-y border-bord py-3 text-center">
               <div class="flex-1 px-2"><div class="text-lg font-semibold">✓</div><div class="text-xs text-slight">extrait optimisé conservé</div></div>
               <div class="flex-1 px-2"><div class="text-lg font-semibold">5 moteurs</div><div class="text-xs text-slight">visibilité IA suivie</div></div>
             </div>
             <p class="mt-4 text-sm text-slight">Preuve vérifiable de notre méthodologie de visibilité IA, y compris sur les niches les plus compétitives.</p>
             </div>
+            </div>
           </div>
         </article>
 
         <!-- 6 · Promoteur BE -->
-        <article class="folder-card group relative flex flex-col overflow-hidden rounded-card border border-bord bg-white shadow-card transition-transform duration-300 hover:-translate-y-1.5">
-          <div class="folder-media absolute inset-x-0 top-0 h-64 overflow-hidden">
-            <img src="assets/hero-project-06.png" alt="Promoteur immobilier Belgique — référencement naturel, étude de cas" class="h-full w-full object-cover">
+        <article class="folder-card group relative flex flex-col rounded-3xl bg-white shadow-card transition-transform duration-300 hover:-translate-y-1.5">
+          <div class="folder-back absolute inset-x-0 top-0 h-28 rounded-t-3xl border border-transparent" aria-hidden="true"></div>
+          <div class="folder-media absolute left-3 right-3 top-3 z-[5] h-44">
+            <img src="assets/hero-project-06.png" loading="lazy" decoding="async" alt="Promoteur immobilier Belgique — référencement naturel, étude de cas" class="h-full w-full rounded-[10px] object-cover">
           </div>
-          <span class="absolute left-5 top-4 z-20 rounded-full bg-white/90 px-3 py-1 text-[11px] font-medium text-ink">Immobilier · Belgique</span>
-          <div class="h-44 shrink-0" aria-hidden="true"></div>
+          <div class="h-24 shrink-0" aria-hidden="true"></div>
           <div class="relative z-10 flex flex-1 flex-col">
-            <div class="flex" aria-hidden="true">
-              <div class="h-12 flex-1 rounded-tl-[20px] rounded-tr-[14px] bg-white"></div>
-              <div class="folder-notch relative w-[72px]">
-                <span class="folder-fillet"></span>
-                <span class="absolute bottom-1.5 right-4 flex h-10 w-10 items-center justify-center rounded-full bg-white shadow-card">
-                  <svg class="h-4 w-4 text-ink" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 12 12 4M6 4h6v6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </span>
-              </div>
-            </div>
-            <div class="flex flex-1 flex-col bg-white px-6 pb-6">
+            <svg class="block w-full" height="28" viewBox="0 0 400 28" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="rmdfold" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3943FF"/><stop offset=".6" stop-color="#E4004D"/><stop offset="1" stop-color="#FA9329"/></linearGradient></defs><path d="M0.5,30 L0.5,12 Q0.5,4 8.5,4 L86,4 Q94,4 98,9.5 Q102,15 112,15 L391,15 Q399.5,15 399.5,23 L399.5,30 Z" fill="#fff" stroke="url(#rmdfold)" stroke-width="1" vector-effect="non-scaling-stroke"/></svg>
+            <div class="folder-front -mt-px flex flex-1 flex-col rounded-b-3xl border border-t-0 border-transparent px-6 pb-6 pt-2">
             <div class="flex flex-wrap items-baseline gap-x-2.5 gap-y-1">
               <span class="text-3xl font-semibold tracking-tighter2 text-ink">180 → 30 €</span>
               <span class="text-xs text-slight">coût par contact qualifié</span>
             </div>
             <p class="mt-3 text-sm font-medium text-purp">Promoteur immobilier</p>
             <h3 class="mt-1 text-lg font-semibold leading-snug">Coût par contact qualifié divisé par six en six mois</h3>
+            <div class="folder-more">
             <div class="mt-4 flex divide-x divide-bord border-y border-bord py-3 text-center">
               <div class="flex-1 px-2"><div class="text-lg font-semibold">Top 3</div><div class="text-xs text-slight">programme + quartier</div></div>
               <div class="flex-1 px-2"><div class="text-lg font-semibold">6 mois</div><div class="text-xs text-slight">de mission</div></div>
             </div>
             <p class="mt-4 text-sm text-slight">Les trois premières positions Google sur des dizaines de requêtes connexes.</p>
             </div>
+            </div>
           </div>
         </article>
       </div>
 
+      <!-- Cadre anti-sélection avantageuse -->
+      <div class="mt-10 rounded-card border border-bord bg-purpsoft p-7">
+        <p class="text-sm leading-relaxed text-ink">
+          Ces cas nommés sont les exemples publiquement autorisés que nous pouvons exposer sur cette page.
+          Derrière eux figurent <strong>plus de 60 études de cas documentées supplémentaires et plus de 300 projets SEO archivés</strong>,
+          non publiés — confidentialité demandée, mission antérieure à notre processus d'études de cas, ou client en cours
+          d'acquisition privée. Lors de la remise du Plan de revenus, nous vous présenterons les deux ou trois cas internes
+          les plus proches de votre secteur, de votre pays et de votre tranche de chiffre d'affaires.
+        </p>
+      </div>
+    </div>
+      <div class="mt-12 flex justify-center">
+        <a href="#plan-de-revenus" class="btn-cta inline-flex items-center gap-3 rounded-lg px-7 py-3.5 text-sm font-medium text-white shadow-card hover:opacity-90">
+          Demander mon plan de revenus SEO
+          <svg class="h-3 w-3" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M1 6h10M7 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+  </section>
+
+  <!-- ========================================================= -->
+  <!--  BLOCK 7b · TÉMOIGNAGES — Ce que nos clients disent        -->
+  <!-- ========================================================= -->
+  <section id="temoignages" class="bg-curves py-16 lg:py-24">
+    <div class="mx-auto max-w-content px-6 lg:px-8">
+      <div class="mx-auto mb-12 max-w-[720px] text-center">
+        <h2 class="text-3xl font-medium leading-tight tracking-tighter2 lg:text-4xl">
+          Ce que nos <span class="grad-attention">clients</span> disent de nous.
+        </h2>
+        <p class="mt-4 text-slight">Des dirigeants qui parlent de résultats concrets.</p>
+      </div>
+
+      <div class="grid gap-6 md:grid-cols-3">
+        <figure class="hover-grad-border flex h-full flex-col rounded-card border border-bord bg-white p-8 shadow-card">
+          <div class="grad-attention text-5xl font-semibold leading-none" aria-hidden="true">“</div>
+          <blockquote class="mt-4 text-lg font-medium leading-relaxed">« En collaborant avec Rhillane, notre visibilité en ligne a considérablement augmenté. »</blockquote>
+          <div class="mt-auto pt-6 text-orng" aria-hidden="true">★★★★★</div>
+          <figcaption class="mt-4 flex items-center gap-3 border-t border-bord pt-4">
+            <img src="assets/avatar-amal.jpg" alt="Amal Saoudi" width="192" height="192" loading="lazy" class="h-10 w-10 shrink-0 rounded-full object-cover">
+            <span>
+              <span class="block text-sm font-semibold">Amal Saoudi</span>
+              <span class="block text-xs text-slight">Directrice Marketing</span>
+            </span>
+          </figcaption>
+        </figure>
+        <figure class="hover-grad-border flex h-full flex-col rounded-card border border-bord bg-white p-8 shadow-card">
+          <div class="grad-attention text-5xl font-semibold leading-none" aria-hidden="true">“</div>
+          <blockquote class="mt-4 text-lg font-medium leading-relaxed">« Notre site est passé d'une vitrine à un véritable outil de génération de prospects. »</blockquote>
+          <div class="mt-auto pt-6 text-orng" aria-hidden="true">★★★★★</div>
+          <figcaption class="mt-4 flex items-center gap-3 border-t border-bord pt-4">
+            <img src="assets/avatar-nora.jpg" alt="Nora Belkacem" width="192" height="192" loading="lazy" class="h-10 w-10 shrink-0 rounded-full object-cover">
+            <span>
+              <span class="block text-sm font-semibold">Nora Belkacem</span>
+              <span class="block text-xs text-slight">Responsable E-commerce</span>
+            </span>
+          </figcaption>
+        </figure>
+        <figure class="hover-grad-border flex h-full flex-col rounded-card border border-bord bg-white p-8 shadow-card">
+          <div class="grad-attention text-5xl font-semibold leading-none" aria-hidden="true">“</div>
+          <blockquote class="mt-4 text-lg font-medium leading-relaxed">« Plus qu'un prestataire : un partenaire stratégique dans notre croissance. »</blockquote>
+          <div class="mt-auto pt-6 text-orng" aria-hidden="true">★★★★★</div>
+          <figcaption class="mt-4 flex items-center gap-3 border-t border-bord pt-4">
+            <img src="assets/avatar-karim.jpg" alt="Karim Ouali" width="192" height="192" loading="lazy" class="h-10 w-10 shrink-0 rounded-full object-cover">
+            <span>
+              <span class="block text-sm font-semibold">Karim Ouali</span>
+              <span class="block text-xs text-slight">Directeur Général, PME</span>
+            </span>
+          </figcaption>
+        </figure>
+      </div>
+
       <!-- Preuves SERP : carrousel en boucle continue -->
-      <div class="mt-14">
-        <p class="text-center text-xs font-semibold uppercase tracking-[0.18em] text-slight">La preuve, capturée directement depuis Google</p>
+      <div class="mt-16 lg:mt-20">
+        <div class="mx-auto max-w-[680px] text-center">
+          <h3 class="text-2xl font-medium leading-tight tracking-tighter2 lg:text-3xl">
+            La preuve, capturée <span class="grad-attention">directement depuis Google.</span>
+          </h3>
+          <p class="mt-3 text-slight">Leurs mots ci-dessus. Ci-dessous, les positions réellement occupées par nos clients dans les résultats de recherche. Cliquez sur une capture pour l'agrandir.</p>
+        </div>
         <div class="relative mt-7 overflow-hidden
                     [mask-image:linear-gradient(to_right,transparent,#000_6%,#000_94%,transparent)]
                     [-webkit-mask-image:linear-gradient(to_right,transparent,#000_6%,#000_94%,transparent)]">
@@ -788,49 +855,14 @@
         </div>
         <p class="mt-3 text-center text-xs text-slight">Vérifiable en direct : tapez la requête sur Google.</p>
       </div>
-
-      <!-- Témoignages nommés -->
-      <div class="mt-10 grid gap-6 md:grid-cols-3">
-        <figure class="rounded-card bg-white p-7 shadow-card">
-          <div class="text-orng">★★★★★</div>
-          <blockquote class="mt-3 text-sm leading-relaxed text-slight">« En collaborant avec Rhillane, notre visibilité en ligne a considérablement augmenté. »</blockquote>
-          <figcaption class="mt-4"><div class="text-sm font-semibold">Amal Saoudi</div><div class="text-xs text-slight">Directrice Marketing</div></figcaption>
-        </figure>
-        <figure class="rounded-card bg-white p-7 shadow-card">
-          <div class="text-orng">★★★★★</div>
-          <blockquote class="mt-3 text-sm leading-relaxed text-slight">« Notre site est passé d'une vitrine à un véritable outil de génération de prospects. »</blockquote>
-          <figcaption class="mt-4"><div class="text-sm font-semibold">Nora Belkacem</div><div class="text-xs text-slight">Responsable E-commerce</div></figcaption>
-        </figure>
-        <figure class="rounded-card bg-white p-7 shadow-card">
-          <div class="text-orng">★★★★★</div>
-          <blockquote class="mt-3 text-sm leading-relaxed text-slight">« Plus qu'un prestataire : un partenaire stratégique dans notre croissance. »</blockquote>
-          <figcaption class="mt-4"><div class="text-sm font-semibold">Karim Ouali</div><div class="text-xs text-slight">Directeur Général, PME</div></figcaption>
-        </figure>
-      </div>
-
-      <!-- Cadre anti-sélection avantageuse -->
-      <div class="mt-10 rounded-card border border-bord bg-purpsoft p-7">
-        <p class="text-sm leading-relaxed text-ink">
-          Ces cas nommés sont les exemples publiquement autorisés que nous pouvons exposer sur cette page.
-          Derrière eux figurent <strong>plus de 60 études de cas documentées supplémentaires et plus de 300 projets SEO archivés</strong>,
-          non publiés — confidentialité demandée, mission antérieure à notre processus d'études de cas, ou client en cours
-          d'acquisition privée. Lors de la remise du Plan de revenus, nous vous présenterons les deux ou trois cas internes
-          les plus proches de votre secteur, de votre pays et de votre tranche de chiffre d'affaires.
-        </p>
-      </div>
     </div>
-      <div class="mt-12 flex justify-center">
-        <a href="#plan-de-revenus" class="btn-cta inline-flex items-center gap-3 rounded-lg px-7 py-3.5 text-sm font-medium text-white shadow-card hover:opacity-90">
-          Demander mon plan de revenus SEO
-          <svg class="h-3 w-3" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M1 6h10M7 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
-      </div>
   </section>
 
   <!-- ========================================================= -->
   <!--  BLOCK 8 · TARIFS — Modules 5 + 6 + Bonus                  -->
   <!-- ========================================================= -->
-  <section id="tarifs" class="mx-auto max-w-[1440px] px-6 py-16 lg:px-10 lg:py-24">
+  <section id="tarifs" class="bg-curves bg-curves-tall py-16 lg:py-24">
+    <div class="mx-auto max-w-[1440px] px-6 lg:px-10">
     <div class="mx-auto mb-6 max-w-[760px] text-center">
       <h2 class="text-3xl font-medium leading-tight tracking-tighter2 lg:text-4xl">
         Quatre formats de mission SEO. La même architecture de garantie.
@@ -962,6 +994,7 @@
         <div class="hover-grad-border rounded-card border border-bord bg-white p-6 shadow-card"><div class="mb-2 flex items-center justify-between"><span class="flex h-7 w-7 items-center justify-center rounded-full bg-purpsoft text-xs font-semibold text-purp">9</span><span class="text-sm font-semibold text-redder">1 200 €</span></div><h4 class="font-semibold leading-snug">Les Ajustements UX Microsoft Clarity</h4><p class="mt-1 text-sm text-slight">Cartes de chaleur, enregistrements de session et ajustements UX mensuels — la conversion et le positionnement progressent ensemble.</p></div>
       </div>
     </div>
+    </div>
   </section>
 
   <!-- ========================================================= -->
@@ -1043,7 +1076,7 @@
       <div class="grid gap-6 md:grid-cols-3">
         <article class="overflow-hidden rounded-card bg-white shadow-card">
           <div class="relative border-b border-bord">
-            <img src="assets/image1.webp" alt="Google Analytics : 844 000 € de revenus d'achat générés via le SEO pour un client e-commerce" class="w-full">
+            <img src="assets/image1.webp" loading="lazy" decoding="async" alt="Google Analytics : 844 000 € de revenus d'achat générés via le SEO pour un client e-commerce" class="w-full">
             <span class="absolute right-3 top-3 inline-flex items-center gap-1.5 rounded-full bg-redder px-3 py-1.5 text-xs font-semibold text-white shadow-card">ROI +5 761 %</span>
           </div>
           <div class="p-6">
@@ -1054,7 +1087,7 @@
 
         <article class="overflow-hidden rounded-card bg-white shadow-card">
           <div class="relative border-b border-bord">
-            <img src="assets/image2.webp" alt="Google Analytics : 213 000 € de revenus générés sans publicité pour un client B2B via le référencement naturel" class="w-full">
+            <img src="assets/image2.webp" loading="lazy" decoding="async" alt="Google Analytics : 213 000 € de revenus générés sans publicité pour un client B2B via le référencement naturel" class="w-full">
             <span class="absolute right-3 top-3 inline-flex items-center gap-1.5 rounded-full bg-redder px-3 py-1.5 text-xs font-semibold text-white shadow-card">ROI +1 379 %</span>
           </div>
           <div class="p-6">
@@ -1065,7 +1098,7 @@
 
         <article class="overflow-hidden rounded-card bg-white shadow-card">
           <div class="relative border-b border-bord">
-            <img src="assets/image3.webp" alt="Google Analytics : 101 000 € générés en SEO naturel pour un commerce local" class="w-full">
+            <img src="assets/image3.webp" loading="lazy" decoding="async" alt="Google Analytics : 101 000 € générés en SEO naturel pour un commerce local" class="w-full">
             <span class="absolute right-3 top-3 inline-flex items-center gap-1.5 rounded-full bg-redder px-3 py-1.5 text-xs font-semibold text-white shadow-card">ROI +601 %</span>
           </div>
           <div class="p-6">
@@ -1083,7 +1116,7 @@
   <section id="fondateur" class="bg-ink pb-16 pt-8 lg:pb-24 lg:pt-12">
     <div class="mx-auto max-w-content px-6 lg:px-8">
       <div class="grid items-stretch gap-12 lg:grid-cols-[480px_1fr] lg:gap-20">
-        <img src="assets/seo-Ayoub-Rihllane.png" alt="Ayoub Rhillane, fondateur de RHILLANE Marketing Digital — Google Premier Partner, certifié Google Ads et Analytics"
+        <img src="assets/seo-ayoub-rhillane.jpg" loading="lazy" decoding="async" alt="Ayoub Rhillane, fondateur de RHILLANE Marketing Digital — Google Premier Partner, certifié Google Ads et Analytics"
              class="mx-auto w-full max-w-[500px] rounded-card object-cover shadow-card">
         <div class="flex flex-col justify-center lg:py-1">
           <p class="text-sm font-medium text-white/70">Vous méritez l'excellence du digital.</p>
@@ -1122,7 +1155,8 @@
   <!-- ========================================================= -->
   <!--  BLOCK 10 · FAQ — Module 8 (9 questions, accordéon)        -->
   <!-- ========================================================= -->
-  <section id="faq" class="mx-auto max-w-[860px] px-6 py-16 lg:px-8 lg:py-24">
+  <section id="faq" class="bg-curves py-16 lg:py-24">
+    <div class="mx-auto max-w-[860px] px-6 lg:px-8">
     <h2 class="text-center text-3xl font-medium leading-tight tracking-tighter2 lg:text-4xl">
       Vos questions sur le SEO, <span class="grad-attention">sans langue de bois.</span>
     </h2>
@@ -1208,6 +1242,7 @@
           <svg class="h-3 w-3" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M1 6h10M7 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
       </div>
+    </div>
   </section>
 
   <!-- ========================================================= -->
@@ -1297,7 +1332,8 @@
   <!-- ========================================================= -->
 
   <!-- S1 · Qu'est-ce que le référencement naturel -->
-  <section id="definition" class="mx-auto max-w-content px-6 py-16 lg:px-8 lg:py-24">
+  <section id="definition" class="bg-curves bg-curves-tall bg-curves-flip py-16 lg:py-24">
+    <div class="mx-auto max-w-content px-6 lg:px-8">
     <div class="mx-auto max-w-[760px] text-center">
       <p class="text-xs font-semibold uppercase tracking-[0.16em] text-purp">Le référencement naturel, en clair</p>
       <h2 class="mt-3 text-3xl font-medium leading-tight tracking-tighter2 lg:text-4xl">
@@ -1374,6 +1410,7 @@
         <svg class="h-3 w-3" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M1 6h10M7 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
     </div>
+    </div>
   </section>
 
 
@@ -1447,7 +1484,8 @@
   </section>
 
   <!-- S3 · Nos expertises SEO (6 piliers) -->
-  <section id="expertises" class="mx-auto max-w-content px-6 py-16 lg:px-8 lg:py-24">
+  <section id="expertises" class="bg-curves py-16 lg:py-24">
+    <div class="mx-auto max-w-content px-6 lg:px-8">
     <div class="mx-auto mb-14 max-w-[760px] text-center">
       <h2 class="text-3xl font-medium leading-tight tracking-tighter2 lg:text-4xl">
         Nos <span class="grad-attention">expertises SEO</span>, réunies sous un seul accompagnement
@@ -1493,6 +1531,7 @@
         Demander mon plan de revenus SEO
         <svg class="h-3 w-3" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M1 6h10M7 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
+    </div>
     </div>
   </section>
 
@@ -1740,7 +1779,7 @@
         if (lastFocus && lastFocus.focus) lastFocus.focus();
       }
 
-      document.querySelectorAll('#resultats .serp-shot').forEach(function (fig) {
+      document.querySelectorAll('#temoignages .serp-shot').forEach(function (fig) {
         var img = fig.querySelector('img');
         var capEl = fig.querySelector('figcaption');
         var cap = '';
@@ -1764,6 +1803,18 @@
       document.addEventListener('keydown', function (e) {
         if (e.key === 'Escape' && modal.classList.contains('is-open')) closeModal();
       });
+    })();
+
+    // Marquees : mis en pause hors écran (évite l'animation en continu sur toute la page)
+    (function () {
+      var tracks = document.querySelectorAll('.marquee-track');
+      if (!tracks.length || !('IntersectionObserver' in window)) return;
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          e.target.classList.toggle('marquee-paused', !e.isIntersecting);
+        });
+      });
+      tracks.forEach(function (t) { io.observe(t); });
     })();
   </script>
 </body>
