@@ -1,0 +1,1770 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Agence SEO Maroc — Davantage de clients depuis Google, garanti | RHILLANE</title>
+  <meta name="description" content="Agence SEO Maroc : positionnement top 5 sous 6 mois, inscrit au contrat. Demandez votre Plan de revenus SEO gratuit, livré sous 48 h.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Poppins', 'system-ui', 'sans-serif'] },
+          colors: {
+            ink:      '#041135',
+            purp:     '#3943FF',
+            redder:   '#E4004D',
+            orng:     '#FA9329',
+            slight:   '#596980',
+            bord:     '#E9EAF2',
+            nuk:      '#F9FAFB',
+            purpsoft: '#F3F4FF',
+          },
+          maxWidth: { content: '1200px' },
+          borderRadius: { card: '14px' },
+          letterSpacing: { tighter2: '-0.03em' },
+          boxShadow: {
+            card:   '-4px 0 10px 0 rgba(0,0,0,.02), 4px 0 10px 0 rgba(0,0,0,.02), 0 4px 10px 0 rgba(0,0,0,.02)',
+            growth: '0 14px 40px -18px rgba(228,0,77,.45)',
+            header: '0 2px 8px -4px rgba(4,17,53,.08)',
+          },
+          animation: { marquee: 'marquee 60s linear infinite' },
+          keyframes: {
+            marquee: { '0%': { transform: 'translateX(0)' }, '100%': { transform: 'translateX(-50%)' } },
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Poppins', system-ui, sans-serif; color: #041135; -webkit-font-smoothing: antialiased; }
+
+    /* Signature gradients (brand tokens) */
+    .grad-attention {
+      background-image: linear-gradient(155deg, #3943FF 58%, #E4004D 85%, #FA9329 100%);
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+    .btn-cta { background-image: linear-gradient(90deg, #D7045A 50%, #FC8831 100%); }
+
+    /* Bordure gradient au survol (purp → redder → orng) */
+    .hover-grad-border { transition: border-color .2s ease; }
+    .hover-grad-border:hover {
+      border-color: transparent !important;
+      background: linear-gradient(#fff, #fff) padding-box,
+                  linear-gradient(155deg, #3943FF 0%, #E4004D 60%, #FA9329 100%) border-box !important;
+    }
+
+
+    /* Balayage purp de gauche à droite au survol (CTA secondaire).
+       Pseudo-élément plein translaté (aucun calcul sous-pixel = pas de liseré blanc). */
+    .btn-sweep {
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;            /* contient le z-index négatif du fond */
+      background-color: #fff;
+      transition: color .35s ease, border-color .35s ease;
+    }
+    .btn-sweep::after {
+      content: "";
+      position: absolute;
+      inset: -1px;                   /* déborde légèrement pour éviter tout liseré aux bords */
+      z-index: -1;                   /* peint par-dessus le fond blanc, sous le texte */
+      background: #3943FF;
+      transform: translateX(-101%);
+      transition: transform .35s ease;
+    }
+    .btn-sweep:hover {
+      color: #fff;
+      border-color: #3943FF;
+    }
+    .btn-sweep:hover::after {
+      transform: translateX(0);
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .btn-sweep, .btn-sweep::after { transition: none; }
+    }
+
+
+    /* Header shrink on scroll */
+    #site-header { transition: box-shadow .25s ease; }
+    #site-header .header-row { transition: padding .25s ease; }
+    #site-header.is-scrolled .header-row { padding-top: .75rem; padding-bottom: .75rem; }
+    #site-header.is-scrolled { box-shadow: 0 2px 8px -4px rgba(4,17,53,.08); }
+    #site-header.is-scrolled .header-logo { height: 32px; }
+    .header-logo { height: 38px; transition: height .25s ease; }
+
+    /* Marquee track */
+    .marquee-track { display: flex; width: max-content; }
+    .marquee-track > * { flex: 0 0 auto; }
+
+    /* FAQ accordion */
+    .faq-item .faq-answer { display: none; }
+    .faq-item.open .faq-answer { display: block; }
+    .faq-item.open .faq-chevron { transform: rotate(180deg); }
+    .faq-chevron { transition: transform .2s ease; }
+    .faq-item { transition: border-color .2s ease; }
+    .faq-item.open {
+      border-color: transparent;
+      background: linear-gradient(#fff, #fff) padding-box,
+                  linear-gradient(155deg, #3943FF 0%, #E4004D 60%, #FA9329 100%) border-box;
+    }
+    /* S5 : accordéon natif <details> — masque le marqueur, pivote le chevron, bordure gradient à l'ouverture */
+    details.faq-item > summary { list-style: none; }
+    details.faq-item > summary::-webkit-details-marker { display: none; }
+    details.faq-item[open] > summary .faq-chevron { transform: rotate(180deg); }
+    details.faq-item[open] {
+      border-color: transparent;
+      background: linear-gradient(#fff, #fff) padding-box,
+                  linear-gradient(155deg, #3943FF 0%, #E4004D 60%, #FA9329 100%) border-box;
+    }
+    /* Timeline méthode : le numéro se remplit en cercle au défilement */
+    .step-num { transition: background .4s ease, color .4s ease, border-color .4s ease, transform .4s ease, box-shadow .4s ease; }
+    .step-num.is-active {
+      border-color: transparent;
+      color: #fff;
+      background-image: linear-gradient(135deg, #3943FF 0%, #E4004D 60%, #FA9329 100%);
+      transform: scale(1.1);
+      box-shadow: 0 8px 20px -8px rgba(228,0,77,.55);
+    }
+    @media (prefers-reduced-motion: reduce) { .step-num { transition: none; } .step-num.is-active { transform: none; } }
+
+    /* Lightbox : aperçu des captures SERP */
+    .serp-shot { cursor: zoom-in; }
+    .serp-shot:focus-visible { outline: 2px solid #3943FF; outline-offset: 3px; }
+    .serp-modal { position: fixed; inset: 0; z-index: 120; display: none; align-items: center; justify-content: center; padding: 1.5rem; background: rgba(4,17,53,.82); }
+    .serp-modal.is-open { display: flex; }
+    .serp-modal-fig { display: flex; flex-direction: column; align-items: center; gap: .85rem; max-width: 100%; margin: 0; }
+    .serp-modal img { max-width: min(1040px, 92vw); max-height: 80vh; width: auto; height: auto; border-radius: 16px; box-shadow: 0 30px 70px -25px rgba(4,17,53,.6); }
+    .serp-modal-cap { color: #fff; font-size: .8rem; letter-spacing: .01em; opacity: .85; text-align: center; }
+    .serp-modal-close { position: absolute; top: 1.1rem; right: 1.1rem; display: inline-flex; align-items: center; justify-content: center; height: 42px; width: 42px; border-radius: 9999px; background: rgba(255,255,255,.14); color: #fff; border: 1px solid rgba(255,255,255,.25); cursor: pointer; transition: background .2s ease; }
+    .serp-modal-close:hover { background: rgba(255,255,255,.26); }
+    .serp-modal-close:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+    @media (prefers-reduced-motion: no-preference) {
+      .serp-modal.is-open { animation: serpFade .2s ease; }
+      .serp-modal.is-open .serp-modal-fig { animation: serpZoom .24s ease; }
+    }
+    @keyframes serpFade { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes serpZoom { from { opacity: 0; transform: scale(.96); } to { opacity: 1; transform: none; } }
+
+    /* Cartes-dossier (résultats) : silhouette de dossier, la capture sort du dossier au survol */
+    .folder-media img { transition: transform .45s cubic-bezier(.2,.7,.3,1); will-change: transform; }
+    .folder-card:hover .folder-media img { transform: translateY(-16px); }
+    /* congé concave : raccord arrondi entre l'encoche (photo visible) et le panneau blanc */
+    .folder-notch .folder-fillet { position: absolute; left: 0; bottom: 0; width: 14px; height: 14px; background: radial-gradient(circle at 100% 0, transparent 13px, #fff 13.5px); }
+    @media (prefers-reduced-motion: reduce) {
+      .folder-media img { transition: none; }
+      .folder-card:hover .folder-media img { transform: none; }
+    }
+  </style>
+</head>
+<body class="relative bg-white text-ink">
+
+  <!-- =========================================================
+       Fond décoratif pleine page : petits rubans diagonaux (purpsoft)
+       + halos dilués. z-index négatif → les sections avec fond
+       (bg-nuk, bg-white) les masquent naturellement.
+       ========================================================= -->
+  <div class="pointer-events-none absolute inset-0 -z-10 overflow-hidden" aria-hidden="true">
+    <!-- Problème -->
+    <div class="absolute rounded-full" style="width:700px;height:110px;background:#F3F4FF;transform:rotate(-35deg);top:16%;right:-160px;"></div>
+    <div class="absolute rounded-full" style="width:560px;height:95px;background:#F3F4FF;transform:rotate(-35deg);top:21%;left:-140px;"></div>
+    <!-- Engagements -->
+    <div class="absolute rounded-full" style="width:780px;height:120px;background:linear-gradient(90deg,rgba(250,147,41,.05) 0%,#F3F4FF 45%);transform:rotate(-35deg);top:38%;left:-200px;"></div>
+    <div class="absolute rounded-full" style="width:620px;height:100px;background:#F3F4FF;transform:rotate(-35deg);top:44%;right:-150px;"></div>
+    <!-- Tarifs -->
+    <div class="absolute rounded-full" style="width:860px;height:135px;background:#F3F4FF;transform:rotate(-35deg);top:60%;right:-240px;"></div>
+    <div class="absolute rounded-full" style="width:640px;height:105px;background:linear-gradient(90deg,#F3F4FF 55%,rgba(228,0,77,.04) 100%);transform:rotate(-35deg);top:67%;left:-160px;"></div>
+    <div class="absolute" style="width:560px;height:560px;left:-200px;top:63%;background:radial-gradient(closest-side,rgba(250,147,41,.05),transparent);"></div>
+    <!-- FAQ -->
+    <div class="absolute rounded-full" style="width:720px;height:115px;background:#F3F4FF;transform:rotate(-35deg);top:84%;left:-180px;"></div>
+    <div class="absolute rounded-full" style="width:560px;height:90px;background:#F3F4FF;transform:rotate(-35deg);top:89%;right:-140px;"></div>
+  </div>
+
+  <!-- H1 SEO discret (mot-clé prioritaire) — la formulation commerciale est stylisée plus bas -->
+  <h1 class="sr-only">Agence SEO Maroc — référencement naturel avec garantie de positionnement inscrite au contrat</h1>
+
+  <!-- ========================================================= -->
+  <!--  BLOCK 1 · HEADER                                          -->
+  <!-- ========================================================= -->
+  <header id="site-header" class="sticky top-0 z-50 border-b border-bord bg-white">
+    <div class="header-row mx-auto flex max-w-content items-center justify-between gap-6 px-6 py-5 lg:px-8">
+      <a href="#" class="flex shrink-0 items-center" aria-label="RHILLANE — accueil">
+        <img src="assets/logo-light-rmd.svg" alt="RHILLANE Marketing Digital, agence SEO Maroc" class="header-logo w-auto">
+      </a>
+      <a href="#plan-de-revenus"
+         class="btn-cta inline-flex items-center gap-3 rounded-lg px-5 py-3 text-sm font-medium text-white shadow-card hover:opacity-90 sm:px-6">
+        <span class="hidden sm:inline">Demander mon plan de revenus SEO</span>
+        <span class="sm:hidden">Mon plan de revenus SEO</span>
+        <svg class="h-3 w-3" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M1 6h10M7 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </header>
+
+  <!-- ========================================================= -->
+  <!--  BLOCK 2 · HERO — Module 1                                 -->
+  <!-- ========================================================= -->
+  <section id="hero" class="relative overflow-hidden">
+    <!-- Courbes décoratives (purpsoft, pointe rosée à droite) -->
+    <svg class="pointer-events-none absolute inset-0 h-full w-full" viewBox="0 0 1920 820" preserveAspectRatio="xMidYMid slice" fill="none" aria-hidden="true">
+      <defs>
+        <linearGradient id="curve-a" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0" stop-color="#F3F4FF"/>
+          <stop offset="0.78" stop-color="#F3F4FF"/>
+          <stop offset="1" stop-color="#E4004D" stop-opacity="0.10"/>
+        </linearGradient>
+        <linearGradient id="curve-b" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#F3F4FF"/>
+          <stop offset="1" stop-color="#F3F4FF" stop-opacity="0.55"/>
+        </linearGradient>
+      </defs>
+      <path d="M-260 190 C 420 330, 880 120, 1310 330 S 1980 560, 2180 430" stroke="url(#curve-a)" stroke-width="120" stroke-linecap="round"/>
+      <path d="M1430 -160 C 1560 120, 1760 240, 2120 210" stroke="url(#curve-b)" stroke-width="110" stroke-linecap="round"/>
+      <path d="M-180 330 C 60 560, 380 700, 700 960" stroke="url(#curve-b)" stroke-width="120" stroke-linecap="round"/>
+    </svg>
+    <div class="relative mx-auto flex max-w-content flex-col items-center px-6 pb-16 pt-14 lg:px-8 lg:pt-20">
+
+      <!-- Overline pill -->
+      <span class="inline-flex items-center gap-4 rounded-full border border-bord bg-white py-2.5 pl-6 pr-2.5 shadow-card">
+        <span class="text-sm font-medium tracking-tight text-purp">Agence SEO · Maroc, France, Belgique &amp; Golfe</span>
+        <img src="assets/hero-overline-arrow.svg" alt="" class="h-5 w-8">
+      </span>
+
+      <!-- Titre commercial (H1 visuel — le H1 SEO est en haut du DOM) -->
+      <p class="mt-6 max-w-[900px] text-center text-4xl font-medium leading-[1.12] tracking-tighter2 text-ink lg:text-[54px]">
+        Davantage de clients depuis Google.<br class="hidden lg:block">
+        Chaque mois. <span class="grad-attention">Garanti par contrat.</span>
+      </p>
+
+      <!-- Sous-titre : une seule phrase -->
+      <p class="mt-5 max-w-[640px] text-center text-base leading-relaxed tracking-tight text-slight lg:text-lg">
+        Top 5 sur vos requêtes les plus rentables sous six mois, <strong class="font-semibold text-ink">inscrit au contrat</strong> —
+        sinon nous continuons gratuitement.
+      </p>
+
+      <!-- Dual CTA -->
+      <div class="mt-8 flex flex-wrap items-center justify-center gap-5">
+        <a href="#plan-de-revenus" class="btn-cta inline-flex h-[54px] items-center gap-3.5 rounded-lg px-8 text-white shadow-card hover:opacity-90">
+          <span class="text-base font-medium tracking-tight">Demander mon plan de revenus SEO</span>
+          <img src="assets/hero-cta-arrow.svg" alt="" class="h-3 w-3">
+        </a>
+        <a href="#tarifs" class="btn-sweep inline-flex h-[54px] items-center justify-center rounded-lg border border-bord bg-white px-8 text-base font-medium tracking-tight text-slight shadow-card">
+          Voir nos forfaits
+        </a>
+      </div>
+
+      <!-- Ligne de confiance unique -->
+      <p class="mt-5 text-center text-sm text-slight">
+        <span class="text-orng">★</span> <strong class="font-semibold text-ink">4,9 sur Google</strong> · 400+ avis
+        <span class="mx-1 text-bord">|</span> Clutch · Sortlist · ProvenExpert
+      </p>
+
+      <!-- Encadré valeur : ce que contient le Plan de revenus -->
+      <div class="mt-12 w-full max-w-[880px] rounded-[28px] border-2 border-transparent p-7 shadow-card lg:p-8" style="background:linear-gradient(#fff,#fff) padding-box,linear-gradient(135deg,#3943FF 0%,#E4004D 55%,#FA9329 100%) border-box;">
+        <div class="flex flex-wrap items-center justify-between gap-3">
+          <h2 class="text-base font-semibold">Pendant ce Plan de revenus SEO gratuit, vous recevez :</h2>
+          <span class="rounded-full bg-purpsoft px-4 py-1.5 text-xs font-semibold text-purp">2 800 € HT · Offert</span>
+        </div>
+        <ul class="mt-5 divide-y divide-bord">
+          <li class="flex items-start justify-between gap-6 py-3.5">
+            <p class="text-sm leading-relaxed text-slight">Audit technique complet et <strong class="text-ink">10 gains rapides</strong> identifiés pour la première semaine</p>
+            <span class="whitespace-nowrap text-sm font-medium text-slight">~1 000 €</span>
+          </li>
+          <li class="flex items-start justify-between gap-6 py-3.5">
+            <p class="text-sm leading-relaxed text-slight">Comparatif côte à côte avec vos concurrents + <strong class="text-ink">analyse de visibilité sur 5 moteurs de recherche IA</strong></p>
+            <span class="whitespace-nowrap text-sm font-medium text-slight">~1 000 €</span>
+          </li>
+          <li class="flex items-start justify-between gap-6 py-3.5">
+            <p class="text-sm leading-relaxed text-slight">Entretien stratégique de 45 min avec un <strong class="text-ink">stratège senior</strong> — pas un commercial</p>
+            <span class="whitespace-nowrap text-sm font-medium text-slight">~800 €</span>
+          </li>
+        </ul>
+        <p class="mt-4 text-xs text-slight">Le document vous reste acquis, même si nous ne travaillons jamais ensemble.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================= -->
+  <!--  BLOCK 3 · TRUST BAR — marquee                             -->
+  <!-- ========================================================= -->
+  <section class="border-y border-bord bg-nuk py-12">
+    <div class="mx-auto max-w-content px-6 lg:px-8">
+      <p class="mb-7 text-center text-xs font-semibold uppercase tracking-[0.18em] text-slight">Ils nous font confiance</p>
+      <div class="relative overflow-hidden
+                  [mask-image:linear-gradient(to_right,transparent,#000_8%,#000_92%,transparent)]
+                  [-webkit-mask-image:linear-gradient(to_right,transparent,#000_8%,#000_92%,transparent)]">
+        <div class="marquee-track animate-marquee items-center gap-x-4">
+          <!-- set A -->
+          <span class="inline-flex items-center gap-2.5 whitespace-nowrap rounded-full border border-bord bg-white px-6 py-3 shadow-card"><span class="text-base font-semibold text-ink">Google</span><span class="text-sm text-slight">Premier Partner</span></span>
+          <span class="inline-flex items-center gap-2.5 whitespace-nowrap rounded-full border border-bord bg-white px-6 py-3 shadow-card"><span class="text-base font-semibold text-orng">★ 4,9</span><span class="text-sm text-slight">sur 400+ avis</span></span>
+          <span class="inline-flex items-center gap-2.5 whitespace-nowrap rounded-full border border-bord bg-white px-6 py-3 shadow-card"><span class="text-base font-semibold text-ink">6 ans</span><span class="text-sm text-slight">d'activité</span></span>
+          <span class="inline-flex items-center gap-2.5 whitespace-nowrap rounded-full border border-bord bg-white px-6 py-3 shadow-card"><span class="text-base font-semibold text-ink">1 200+</span><span class="text-sm text-slight">clients accompagnés</span></span>
+          <span class="inline-flex items-center gap-2.5 whitespace-nowrap rounded-full border border-bord bg-white px-6 py-3 shadow-card"><span class="text-base font-semibold text-ink">240 M$</span><span class="text-sm text-slight">de revenus générés</span></span>
+          <span class="inline-flex items-center gap-2.5 whitespace-nowrap rounded-full border border-bord bg-white px-6 py-3 shadow-card"><span class="text-base font-semibold text-ink">70</span><span class="text-sm text-slight">études de cas SEO · 300 projets</span></span>
+          <span class="inline-flex items-center gap-2.5 whitespace-nowrap rounded-full border border-bord bg-white px-6 py-3 shadow-card"><span class="text-base font-semibold text-ink">3 bureaux</span><span class="text-sm text-slight">Tanger · Dubaï · Californie</span></span>
+          <!-- set B (copie pour boucle) -->
+          <span class="inline-flex items-center gap-2.5 whitespace-nowrap rounded-full border border-bord bg-white px-6 py-3 shadow-card"><span class="text-base font-semibold text-ink">Google</span><span class="text-sm text-slight">Premier Partner</span></span>
+          <span class="inline-flex items-center gap-2.5 whitespace-nowrap rounded-full border border-bord bg-white px-6 py-3 shadow-card"><span class="text-base font-semibold text-orng">★ 4,9</span><span class="text-sm text-slight">sur 400+ avis</span></span>
+          <span class="inline-flex items-center gap-2.5 whitespace-nowrap rounded-full border border-bord bg-white px-6 py-3 shadow-card"><span class="text-base font-semibold text-ink">6 ans</span><span class="text-sm text-slight">d'activité</span></span>
+          <span class="inline-flex items-center gap-2.5 whitespace-nowrap rounded-full border border-bord bg-white px-6 py-3 shadow-card"><span class="text-base font-semibold text-ink">1 200+</span><span class="text-sm text-slight">clients accompagnés</span></span>
+          <span class="inline-flex items-center gap-2.5 whitespace-nowrap rounded-full border border-bord bg-white px-6 py-3 shadow-card"><span class="text-base font-semibold text-ink">240 M$</span><span class="text-sm text-slight">de revenus générés</span></span>
+          <span class="inline-flex items-center gap-2.5 whitespace-nowrap rounded-full border border-bord bg-white px-6 py-3 shadow-card"><span class="text-base font-semibold text-ink">70</span><span class="text-sm text-slight">études de cas SEO · 300 projets</span></span>
+          <span class="inline-flex items-center gap-2.5 whitespace-nowrap rounded-full border border-bord bg-white px-6 py-3 shadow-card"><span class="text-base font-semibold text-ink">3 bureaux</span><span class="text-sm text-slight">Tanger · Dubaï · Californie</span></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================= -->
+  <!--  BLOCK 4 · PROBLEM STACK — Module 2 (rows, no cards)       -->
+  <!-- ========================================================= -->
+  <section id="probleme" class="mx-auto max-w-content px-6 py-16 lg:px-8 lg:py-24">
+    <div class="mx-auto max-w-[760px] text-center">
+      <h2 class="text-3xl font-medium leading-tight tracking-tighter2 lg:text-4xl">
+        Vos concurrents captent les clients que Google vous envoie.
+        <span class="grad-attention">Voici ce que cela vous coûte.</span>
+      </h2>
+      <p class="mt-4 text-slight">Le référencement naturel n'a rien livré chez vous ? Le problème n'est pas le SEO. C'est la manière dont il a été conduit.</p>
+    </div>
+
+    <div class="mx-auto mt-14 grid max-w-[1000px] gap-x-16 gap-y-12 md:grid-cols-2">
+      <div>
+        <div class="flex items-baseline gap-4">
+          <span class="text-5xl font-semibold leading-none tracking-tighter2 text-bord tabular-nums">01</span>
+          <h3 class="text-lg font-semibold leading-snug">Des rapports jamais reliés à des clients réels</h3>
+        </div>
+        <p class="mt-4 text-[15px] leading-relaxed text-slight">Vous savez que le SEO compte. Vous avez vu défiler les rapports d'agences, les tableaux de bord et les articles de blog épars. Aucun de ces éléments n'a été relié à des clients réels.</p>
+      </div>
+      <div>
+        <div class="flex items-baseline gap-4">
+          <span class="text-5xl font-semibold leading-none tracking-tighter2 text-bord tabular-nums">02</span>
+          <h3 class="text-lg font-semibold leading-snug">Vous payez 5 € le clic qu'il obtient sans frais</h3>
+        </div>
+        <p class="mt-4 text-[15px] leading-relaxed text-slight">Pendant ce temps, un concurrent que vous respectez apparaît en première position sur Google, sur les requêtes mêmes pour lesquelles vous dépensez 5 € le clic en publicité payante.</p>
+      </div>
+      <div>
+        <div class="flex items-baseline gap-4">
+          <span class="text-5xl font-semibold leading-none tracking-tighter2 text-bord tabular-nums">03</span>
+          <h3 class="text-lg font-semibold leading-snug">Recrutement, agence, outils : rien n'a livré</h3>
+        </div>
+        <p class="mt-4 text-[15px] leading-relaxed text-slight">Le profil recruté en interne est parti. L'agence a facturé pendant un an sans résultat livré. Les articles de votre dernier rédacteur ne se positionnent sur aucune requête susceptible de générer du chiffre d'affaires.</p>
+      </div>
+      <div>
+        <div class="flex items-baseline gap-4">
+          <span class="text-5xl font-semibold leading-none tracking-tighter2 text-bord tabular-nums">04</span>
+          <h3 class="text-lg font-semibold leading-snug">Chaque mois qui passe, l'écart se creuse</h3>
+        </div>
+        <p class="mt-4 text-[15px] leading-relaxed text-slight">Votre concurrent capitalise sur ses positions, ses liens entrants et ses contenus. Vous restez sur place. Le coût de l'inaction n'est pas nul ; il se mesure en clients que vous auriez dû conquérir.</p>
+      </div>
+    </div>
+      <div class="mt-12 flex justify-center">
+        <a href="#plan-de-revenus" class="btn-cta inline-flex items-center gap-3 rounded-lg px-7 py-3.5 text-sm font-medium text-white shadow-card hover:opacity-90">
+          Demander mon plan de revenus SEO
+          <svg class="h-3 w-3" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M1 6h10M7 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+  </section>
+
+  <!-- ========================================================= -->
+  <!--  BLOCK 5 · MÉTHODE — Module 3 (timeline, 6 étapes)         -->
+  <!-- ========================================================= -->
+  <section id="methode" class="bg-nuk py-16 lg:py-24">
+    <div class="mx-auto max-w-content px-6 lg:px-8">
+      <div class="mx-auto max-w-[760px] text-center">
+        <h2 class="text-3xl font-medium leading-tight tracking-tighter2 lg:text-4xl">
+          La méthode SEO <span class="grad-attention">RankNinja</span>, le système qui sous-tend la garantie.
+        </h2>
+        <p class="mt-4 text-slight">Notre système opérationnel SEO en six étapes. Construit sur six années d'activité, à travers 1 200 missions à l'échelle de l'agence et plus de 300 projets SEO. Déployé pour s'imposer sur des requêtes allant de la médecine dentaire à l'immobilier de luxe.</p>
+      </div>
+
+      <!-- Timeline -->
+      <ol class="mx-auto mt-14 max-w-[820px] divide-y divide-bord">
+          <li class="flex gap-8 py-7 first:pt-0">
+            <span class="step-num flex h-11 w-11 shrink-0 items-center justify-center rounded-full border-2 border-bord bg-white text-base font-semibold text-slight tabular-nums">1</span>
+            <div>
+              <div class="flex flex-wrap items-center gap-3">
+                <h3 class="text-lg font-semibold">Diagnostic</h3>
+                <span class="rounded-full bg-white px-3 py-1 text-xs font-medium text-slight shadow-card">Sous 48 h · sans frais</span>
+              </div>
+              <p class="mt-2 max-w-[620px] text-[15px] leading-relaxed text-slight">Plan de revenus livré sous 48 heures. Anomalies techniques, comparatif côte à côte avec les concurrents, requêtes ciblées, analyse de visibilité sur cinq moteurs de recherche IA, gains rapides identifiés pour la première semaine. Le document vous reste acquis.</p>
+            </div>
+          </li>
+          <li class="flex gap-8 py-7">
+            <span class="step-num flex h-11 w-11 shrink-0 items-center justify-center rounded-full border-2 border-bord bg-white text-base font-semibold text-slight tabular-nums">2</span>
+            <div>
+              <div class="flex flex-wrap items-center gap-3">
+                <h3 class="text-lg font-semibold">Cadrage de la stratégie</h3>
+                <span class="rounded-full bg-white px-3 py-1 text-xs font-medium text-slight shadow-card">Semaine 1</span>
+              </div>
+              <p class="mt-2 max-w-[620px] text-[15px] leading-relaxed text-slight">Atelier avec le décideur. Requêtes ciblées formalisées par écrit. Jalons des deuxième, quatrième et sixième mois inscrits au contrat.</p>
+            </div>
+          </li>
+          <li class="flex gap-8 py-7">
+            <span class="step-num flex h-11 w-11 shrink-0 items-center justify-center rounded-full border-2 border-bord bg-white text-base font-semibold text-slight tabular-nums">3</span>
+            <div>
+              <div class="flex flex-wrap items-center gap-3">
+                <h3 class="text-lg font-semibold">Mise en place des fondations</h3>
+                <span class="rounded-full bg-white px-3 py-1 text-xs font-medium text-slight shadow-card">Semaines 1 à 4</span>
+              </div>
+              <p class="mt-2 max-w-[620px] text-[15px] leading-relaxed text-slight">Corrections techniques, optimisation des pages prioritaires, vérification du dispositif de mesure. Phase conduite en quatre semaines pour que le contenu repose ensuite sur un terrain assaini.</p>
+            </div>
+          </li>
+          <li class="flex gap-8 py-7">
+            <span class="step-num flex h-11 w-11 shrink-0 items-center justify-center rounded-full border-2 border-bord bg-white text-base font-semibold text-slight tabular-nums">4</span>
+            <div>
+              <div class="flex flex-wrap items-center gap-3">
+                <h3 class="text-lg font-semibold">Production de contenu</h3>
+                <span class="rounded-full bg-white px-3 py-1 text-xs font-medium text-slight shadow-card">Chaque mois</span>
+              </div>
+              <p class="mt-2 max-w-[620px] text-[15px] leading-relaxed text-slight">Articles de blog et pages d'atterrissage produits chaque mois. Chaque pièce est conçue pour se positionner sur Google et pour apparaître lorsqu'un internaute interroge un moteur de recherche IA.</p>
+            </div>
+          </li>
+          <li class="flex gap-8 py-7">
+            <span class="step-num flex h-11 w-11 shrink-0 items-center justify-center rounded-full border-2 border-bord bg-white text-base font-semibold text-slight tabular-nums">5</span>
+            <div>
+              <div class="flex flex-wrap items-center gap-3">
+                <h3 class="text-lg font-semibold">Construction de l'autorité</h3>
+                <span class="rounded-full bg-white px-3 py-1 text-xs font-medium text-slight shadow-card">Chaque mois</span>
+              </div>
+              <p class="mt-2 max-w-[620px] text-[15px] leading-relaxed text-slight">Obtention de liens entrants depuis des sites de référence, perçus par Google comme des signaux de confiance. Mentions presse. Publications invitées. Volume calibré sur votre secteur.</p>
+            </div>
+          </li>
+          <li class="flex gap-8 py-7 last:pb-0">
+            <span class="step-num flex h-11 w-11 shrink-0 items-center justify-center rounded-full border-2 border-bord bg-white text-base font-semibold text-slight tabular-nums">6</span>
+            <div>
+              <div class="flex flex-wrap items-center gap-3">
+                <h3 class="text-lg font-semibold">Effet de capitalisation</h3>
+                <span class="rounded-full bg-white px-3 py-1 text-xs font-medium text-slight shadow-card">Mois 4 et suivants</span>
+              </div>
+              <p class="mt-2 max-w-[620px] text-[15px] leading-relaxed text-slight">À mesure que les positions progressent, nous renforçons les contenus qui performent. Nouvelle vague de production. Restructuration du maillage interne. Le dispositif entre alors dans une dynamique cumulative.</p>
+            </div>
+          </li>
+        </ol>
+      <div class="mt-14 flex justify-center">
+        <a href="#plan-de-revenus" class="btn-cta inline-flex items-center gap-3 rounded-lg px-7 py-3.5 text-sm font-medium text-white shadow-card hover:opacity-90">
+          Demander mon plan de revenus SEO
+          <svg class="h-3 w-3" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M1 6h10M7 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================= -->
+  <!--  BLOCK 6 · ENGAGEMENTS — Modules 5b + 5c (gradient cards)  -->
+  <!-- ========================================================= -->
+  <section id="engagements" class="py-16 lg:py-24">
+    <div class="mx-auto max-w-content px-6 lg:px-8">
+      <div class="max-w-[680px]">
+        <h2 class="text-3xl font-medium leading-tight tracking-tighter2 lg:text-4xl">
+          Ce que les autres agences de référencement <span class="grad-attention">ne couvrent pas.</span>
+        </h2>
+        <p class="mt-4 text-slight">SEO local, visibilité dans les moteurs de recherche IA et une garantie inscrite au contrat. Suivis comme des résultats, pas comme des options.</p>
+      </div>
+
+      <div class="mt-14 grid gap-12 md:grid-cols-3 md:gap-0 md:divide-x md:divide-bord">
+
+        <!-- SEO local -->
+        <div class="md:pr-10">
+          <p class="text-xs font-semibold uppercase tracking-[0.16em] text-slight">SEO local</p>
+          <div class="grad-attention mt-5 text-5xl font-semibold leading-none tracking-tighter2 tabular-nums">+732 %</div>
+          <p class="mt-2 text-sm text-slight">de vues de fiche Google en 3 mois — Lily Billy, Marrakech</p>
+          <h3 class="mt-6 text-lg font-semibold">Un SEO local qui remplit votre agenda</h3>
+          <p class="mt-2 text-sm leading-relaxed text-slight">Appels et visites en boutique, suivis à chaque format de mission. Maes Débouchage : de 12 à 100+ appels d'urgence par mois. Iman Dental : n°1 sur « dentiste tangier ».</p>
+        </div>
+
+        <!-- Recherche IA -->
+        <div class="md:px-10">
+          <p class="text-xs font-semibold uppercase tracking-[0.16em] text-slight">Recherche IA</p>
+          <div class="grad-attention mt-5 text-5xl font-semibold leading-none tracking-tighter2 tabular-nums">5 moteurs</div>
+          <p class="mt-2 text-sm text-slight">ChatGPT, Perplexity, Claude, Gemini, AI Overviews — audités à chaque mission</p>
+          <h3 class="mt-6 text-lg font-semibold">La marque que les moteurs IA citent</h3>
+          <p class="mt-2 text-sm leading-relaxed text-slight">La nouvelle page de résultats. Méthodologie documentée, preuve vérifiable : Écran Moderne, n°1 organique sur « meilleur IPTV France », extrait conservé après la mise à jour Google.</p>
+        </div>
+
+        <!-- Garantie -->
+        <div class="md:pl-10">
+          <p class="text-xs font-semibold uppercase tracking-[0.16em] text-slight">Garantie contractuelle</p>
+          <div class="grad-attention mt-5 text-5xl font-semibold leading-none tracking-tighter2">Top 5</div>
+          <p class="mt-2 text-sm text-slight">sous six mois sur les requêtes convenues — inscrit au contrat</p>
+          <h3 class="mt-6 text-lg font-semibold">Sinon, nous continuons gratuitement</h3>
+          <p class="mt-2 text-sm leading-relaxed text-slight">Remboursement intégral du mois 1 sans condition. Jalons de contrôle aux mois 2, 4 et 6. <a href="#garanties" class="font-medium text-purp underline-offset-2 hover:underline">Les trois niveaux →</a></p>
+        </div>
+      </div>
+    </div>
+      <div class="mt-12 flex justify-center">
+        <a href="#plan-de-revenus" class="btn-cta inline-flex items-center gap-3 rounded-lg px-7 py-3.5 text-sm font-medium text-white shadow-card hover:opacity-90">
+          Demander mon plan de revenus SEO
+          <svg class="h-3 w-3" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M1 6h10M7 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+  </section>
+
+  <!-- ========================================================= -->
+  <!--  BLOCK 7 · RÉSULTATS — Module 4 (grille 2×3 + callout)     -->
+  <!-- ========================================================= -->
+  <section id="resultats" class="bg-nuk py-16 lg:py-24">
+    <div class="mx-auto max-w-content px-6 lg:px-8">
+      <div class="mx-auto mb-12 max-w-[720px] text-center">
+        <h2 class="text-3xl font-medium leading-tight tracking-tighter2 lg:text-4xl">
+          Des marques qui occupent désormais <span class="grad-attention">leurs requêtes.</span>
+        </h2>
+        <p class="mt-4 text-slight">Résultats SEO documentés, clients publiquement autorisés.</p>
+      </div>
+
+      <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+
+        <!-- 1 · Iman Dental -->
+        <article class="folder-card group relative flex flex-col overflow-hidden rounded-card border border-bord bg-white shadow-card transition-transform duration-300 hover:-translate-y-1.5">
+          <div class="folder-media absolute inset-x-0 top-0 h-64 overflow-hidden">
+            <img src="assets/hero-project-01.png" alt="Iman Dental Clinic — agence SEO Maroc, étude de cas" class="h-full w-full object-cover">
+          </div>
+          <span class="absolute left-5 top-4 z-20 rounded-full bg-white/90 px-3 py-1 text-[11px] font-medium text-ink">Santé · Tanger</span>
+          <div class="h-44 shrink-0" aria-hidden="true"></div>
+          <div class="relative z-10 flex flex-1 flex-col">
+            <div class="flex" aria-hidden="true">
+              <div class="h-12 flex-1 rounded-tl-[20px] rounded-tr-[14px] bg-white"></div>
+              <div class="folder-notch relative w-[72px]">
+                <span class="folder-fillet"></span>
+                <span class="absolute bottom-1.5 right-4 flex h-10 w-10 items-center justify-center rounded-full bg-white shadow-card">
+                  <svg class="h-4 w-4 text-ink" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 12 12 4M6 4h6v6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+              </div>
+            </div>
+            <div class="flex flex-1 flex-col bg-white px-6 pb-6">
+            <div class="flex flex-wrap items-baseline gap-x-2.5 gap-y-1">
+              <span class="text-3xl font-semibold tracking-tighter2 text-ink">N°1</span>
+              <span class="text-xs text-slight">sur « dentiste tangier »</span>
+            </div>
+            <p class="mt-3 text-sm font-medium text-purp">Iman Dental Clinic</p>
+            <h3 class="mt-1 text-lg font-semibold leading-snug">Cabinet dentaire n°1 sur Google à Tanger</h3>
+            <div class="mt-4 flex divide-x divide-bord border-y border-bord py-3 text-center">
+              <div class="flex-1 px-2"><div class="text-lg font-semibold">0 €</div><div class="text-xs text-slight">coût / patient acquis</div></div>
+              <div class="flex-1 px-2"><div class="text-lg font-semibold">M+8</div><div class="text-xs text-slight">arrêt de Google Ads</div></div>
+            </div>
+            <p class="mt-4 text-sm text-slight">Cabinet complet un mois à l'avance grâce au seul trafic organique.</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- 2 · Mariner -->
+        <article class="folder-card group relative flex flex-col overflow-hidden rounded-card border border-bord bg-white shadow-card transition-transform duration-300 hover:-translate-y-1.5">
+          <div class="folder-media absolute inset-x-0 top-0 h-64 overflow-hidden">
+            <img src="assets/hero-project-02.png" alt="Mariner Underwear — référencement e-commerce France, étude de cas" class="h-full w-full object-cover">
+          </div>
+          <span class="absolute left-5 top-4 z-20 rounded-full bg-white/90 px-3 py-1 text-[11px] font-medium text-ink">E-commerce · France</span>
+          <div class="h-44 shrink-0" aria-hidden="true"></div>
+          <div class="relative z-10 flex flex-1 flex-col">
+            <div class="flex" aria-hidden="true">
+              <div class="h-12 flex-1 rounded-tl-[20px] rounded-tr-[14px] bg-white"></div>
+              <div class="folder-notch relative w-[72px]">
+                <span class="folder-fillet"></span>
+                <span class="absolute bottom-1.5 right-4 flex h-10 w-10 items-center justify-center rounded-full bg-white shadow-card">
+                  <svg class="h-4 w-4 text-ink" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 12 12 4M6 4h6v6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+              </div>
+            </div>
+            <div class="flex flex-1 flex-col bg-white px-6 pb-6">
+            <div class="flex flex-wrap items-baseline gap-x-2.5 gap-y-1">
+              <span class="text-3xl font-semibold tracking-tighter2 text-ink">Top 3</span>
+              <span class="text-xs text-slight">requêtes à forte intention d'achat</span>
+            </div>
+            <p class="mt-3 text-sm font-medium text-purp">Mariner Underwear</p>
+            <h3 class="mt-1 text-lg font-semibold leading-snug">E-commerce en top 3 sur les requêtes d'achat en France</h3>
+            <div class="mt-4 flex divide-x divide-bord border-y border-bord py-3 text-center">
+              <div class="flex-1 px-2"><div class="text-lg font-semibold">40 %+</div><div class="text-xs text-slight">des ventes via l'organique</div></div>
+              <div class="flex-1 px-2"><div class="text-lg font-semibold">M+9</div><div class="text-xs text-slight">réduction du budget Meta</div></div>
+            </div>
+            <p class="mt-4 text-sm text-slight">« Nous réduisons nos investissements sur Meta, nous n'en avons plus besoin. »</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- 3 · Maes -->
+        <article class="folder-card group relative flex flex-col overflow-hidden rounded-card border border-bord bg-white shadow-card transition-transform duration-300 hover:-translate-y-1.5">
+          <div class="folder-media absolute inset-x-0 top-0 h-64 overflow-hidden">
+            <img src="assets/hero-project-03.png" alt="Maes Débouchage — référencement local Belgique, étude de cas" class="h-full w-full object-cover">
+          </div>
+          <span class="absolute left-5 top-4 z-20 rounded-full bg-white/90 px-3 py-1 text-[11px] font-medium text-ink">Dépannage · Belgique</span>
+          <div class="h-44 shrink-0" aria-hidden="true"></div>
+          <div class="relative z-10 flex flex-1 flex-col">
+            <div class="flex" aria-hidden="true">
+              <div class="h-12 flex-1 rounded-tl-[20px] rounded-tr-[14px] bg-white"></div>
+              <div class="folder-notch relative w-[72px]">
+                <span class="folder-fillet"></span>
+                <span class="absolute bottom-1.5 right-4 flex h-10 w-10 items-center justify-center rounded-full bg-white shadow-card">
+                  <svg class="h-4 w-4 text-ink" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 12 12 4M6 4h6v6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+              </div>
+            </div>
+            <div class="flex flex-1 flex-col bg-white px-6 pb-6">
+            <div class="flex flex-wrap items-baseline gap-x-2.5 gap-y-1">
+              <span class="text-3xl font-semibold tracking-tighter2 text-ink">12 → 100+</span>
+              <span class="text-xs text-slight">appels d'urgence par mois</span>
+            </div>
+            <p class="mt-3 text-sm font-medium text-purp">Maes Débouchage</p>
+            <h3 class="mt-1 text-lg font-semibold leading-snug">SEO local : de 12 à 100+ appels d'urgence par mois</h3>
+            <div class="mt-4 flex divide-x divide-bord border-y border-bord py-3 text-center">
+              <div class="flex-1 px-2"><div class="text-lg font-semibold">95 %</div><div class="text-xs text-slight">couverture locale</div></div>
+              <div class="flex-1 px-2"><div class="text-lg font-semibold">4 mois</div><div class="text-xs text-slight">pour y parvenir</div></div>
+            </div>
+            <p class="mt-4 text-sm text-slight">Même méthode de SEO local, secteur différent, pays différent. La méthodologie est transposable.</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- 4 · Lily Billy -->
+        <article class="folder-card group relative flex flex-col overflow-hidden rounded-card border border-bord bg-white shadow-card transition-transform duration-300 hover:-translate-y-1.5">
+          <div class="folder-media absolute inset-x-0 top-0 h-64 overflow-hidden">
+            <img src="assets/hero-project-04.png" alt="Lily Billy Marrakech — SEO local Maroc, étude de cas" class="h-full w-full object-cover">
+          </div>
+          <span class="absolute left-5 top-4 z-20 rounded-full bg-white/90 px-3 py-1 text-[11px] font-medium text-ink">Restauration · Marrakech</span>
+          <div class="h-44 shrink-0" aria-hidden="true"></div>
+          <div class="relative z-10 flex flex-1 flex-col">
+            <div class="flex" aria-hidden="true">
+              <div class="h-12 flex-1 rounded-tl-[20px] rounded-tr-[14px] bg-white"></div>
+              <div class="folder-notch relative w-[72px]">
+                <span class="folder-fillet"></span>
+                <span class="absolute bottom-1.5 right-4 flex h-10 w-10 items-center justify-center rounded-full bg-white shadow-card">
+                  <svg class="h-4 w-4 text-ink" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 12 12 4M6 4h6v6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+              </div>
+            </div>
+            <div class="flex flex-1 flex-col bg-white px-6 pb-6">
+            <div class="flex flex-wrap items-baseline gap-x-2.5 gap-y-1">
+              <span class="text-3xl font-semibold tracking-tighter2 text-ink">+732 %</span>
+              <span class="text-xs text-slight">de vues de la fiche Google</span>
+            </div>
+            <p class="mt-3 text-sm font-medium text-purp">Lily Billy</p>
+            <h3 class="mt-1 text-lg font-semibold leading-snug">+732 % de vues de fiche Google en trois mois</h3>
+            <div class="mt-4 flex divide-x divide-bord border-y border-bord py-3 text-center">
+              <div class="flex-1 px-2"><div class="text-lg font-semibold">N°1</div><div class="text-xs text-slight">pack local Guéliz</div></div>
+              <div class="flex-1 px-2"><div class="text-lg font-semibold">3 mois</div><div class="text-xs text-slight">de mission</div></div>
+            </div>
+            <p class="mt-4 text-sm text-slight">La méthodologie de SEO local que nous appliquerions à votre activité est la même, calibrée sur votre catégorie et votre marché.</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- 5 · Écran Moderne -->
+        <article class="folder-card group relative flex flex-col overflow-hidden rounded-card border border-bord bg-white shadow-card transition-transform duration-300 hover:-translate-y-1.5">
+          <div class="folder-media absolute inset-x-0 top-0 h-64 overflow-hidden">
+            <img src="assets/hero-project-05.png" alt="Écran Moderne — visibilité moteurs IA et SEO France, étude de cas" class="h-full w-full object-cover">
+          </div>
+          <span class="absolute left-5 top-4 z-20 rounded-full bg-white/90 px-3 py-1 text-[11px] font-medium text-ink">Affiliation · France</span>
+          <div class="h-44 shrink-0" aria-hidden="true"></div>
+          <div class="relative z-10 flex flex-1 flex-col">
+            <div class="flex" aria-hidden="true">
+              <div class="h-12 flex-1 rounded-tl-[20px] rounded-tr-[14px] bg-white"></div>
+              <div class="folder-notch relative w-[72px]">
+                <span class="folder-fillet"></span>
+                <span class="absolute bottom-1.5 right-4 flex h-10 w-10 items-center justify-center rounded-full bg-white shadow-card">
+                  <svg class="h-4 w-4 text-ink" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 12 12 4M6 4h6v6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+              </div>
+            </div>
+            <div class="flex flex-1 flex-col bg-white px-6 pb-6">
+            <div class="flex flex-wrap items-baseline gap-x-2.5 gap-y-1">
+              <span class="text-3xl font-semibold tracking-tighter2 text-ink">N°1</span>
+              <span class="text-xs text-slight">sur « meilleur IPTV France »</span>
+            </div>
+            <p class="mt-3 text-sm font-medium text-purp">Écran Moderne</p>
+            <h3 class="mt-1 text-lg font-semibold leading-snug">Extrait optimisé conservé après la mise à jour Google</h3>
+            <div class="mt-4 flex divide-x divide-bord border-y border-bord py-3 text-center">
+              <div class="flex-1 px-2"><div class="text-lg font-semibold">✓</div><div class="text-xs text-slight">extrait optimisé conservé</div></div>
+              <div class="flex-1 px-2"><div class="text-lg font-semibold">5 moteurs</div><div class="text-xs text-slight">visibilité IA suivie</div></div>
+            </div>
+            <p class="mt-4 text-sm text-slight">Preuve vérifiable de notre méthodologie de visibilité IA, y compris sur les niches les plus compétitives.</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- 6 · Promoteur BE -->
+        <article class="folder-card group relative flex flex-col overflow-hidden rounded-card border border-bord bg-white shadow-card transition-transform duration-300 hover:-translate-y-1.5">
+          <div class="folder-media absolute inset-x-0 top-0 h-64 overflow-hidden">
+            <img src="assets/hero-project-06.png" alt="Promoteur immobilier Belgique — référencement naturel, étude de cas" class="h-full w-full object-cover">
+          </div>
+          <span class="absolute left-5 top-4 z-20 rounded-full bg-white/90 px-3 py-1 text-[11px] font-medium text-ink">Immobilier · Belgique</span>
+          <div class="h-44 shrink-0" aria-hidden="true"></div>
+          <div class="relative z-10 flex flex-1 flex-col">
+            <div class="flex" aria-hidden="true">
+              <div class="h-12 flex-1 rounded-tl-[20px] rounded-tr-[14px] bg-white"></div>
+              <div class="folder-notch relative w-[72px]">
+                <span class="folder-fillet"></span>
+                <span class="absolute bottom-1.5 right-4 flex h-10 w-10 items-center justify-center rounded-full bg-white shadow-card">
+                  <svg class="h-4 w-4 text-ink" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 12 12 4M6 4h6v6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+              </div>
+            </div>
+            <div class="flex flex-1 flex-col bg-white px-6 pb-6">
+            <div class="flex flex-wrap items-baseline gap-x-2.5 gap-y-1">
+              <span class="text-3xl font-semibold tracking-tighter2 text-ink">180 → 30 €</span>
+              <span class="text-xs text-slight">coût par contact qualifié</span>
+            </div>
+            <p class="mt-3 text-sm font-medium text-purp">Promoteur immobilier</p>
+            <h3 class="mt-1 text-lg font-semibold leading-snug">Coût par contact qualifié divisé par six en six mois</h3>
+            <div class="mt-4 flex divide-x divide-bord border-y border-bord py-3 text-center">
+              <div class="flex-1 px-2"><div class="text-lg font-semibold">Top 3</div><div class="text-xs text-slight">programme + quartier</div></div>
+              <div class="flex-1 px-2"><div class="text-lg font-semibold">6 mois</div><div class="text-xs text-slight">de mission</div></div>
+            </div>
+            <p class="mt-4 text-sm text-slight">Les trois premières positions Google sur des dizaines de requêtes connexes.</p>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- Preuves SERP : carrousel en boucle continue -->
+      <div class="mt-14">
+        <p class="text-center text-xs font-semibold uppercase tracking-[0.18em] text-slight">La preuve, capturée directement depuis Google</p>
+        <div class="relative mt-7 overflow-hidden
+                    [mask-image:linear-gradient(to_right,transparent,#000_6%,#000_94%,transparent)]
+                    [-webkit-mask-image:linear-gradient(to_right,transparent,#000_6%,#000_94%,transparent)]">
+          <div class="marquee-track animate-marquee items-stretch gap-x-6 py-2 hover:[animation-play-state:paused]">
+            <!-- set A -->
+            <figure class="serp-shot cursor-zoom-in w-[85vw] max-w-[720px] shrink-0 overflow-hidden rounded-card border border-bord bg-white shadow-card" tabindex="0" role="button" aria-label="Agrandir la capture Google">
+              <img src="assets/serp-puff-9k.webp" alt="Capture Google : « puff 9k pas cher », client Vapeol en première position" class="w-full">
+              <figcaption class="flex flex-wrap items-center justify-between gap-2 border-t border-bord px-5 py-3">
+                <span class="text-xs text-slight">Vapeol · e-commerce, France</span>
+                <span class="grad-attention text-sm font-semibold">Position 1</span>
+              </figcaption>
+            </figure>
+            <figure class="serp-shot cursor-zoom-in w-[85vw] max-w-[720px] shrink-0 overflow-hidden rounded-card border border-bord bg-white shadow-card" tabindex="0" role="button" aria-label="Agrandir la capture Google">
+              <img src="assets/serp-pyjama-velours.webp" alt="Capture Google : « pyjama en velour homme », Mariner Underwear en deuxième position" class="w-full">
+              <figcaption class="flex flex-wrap items-center justify-between gap-2 border-t border-bord px-5 py-3">
+                <span class="text-xs text-slight">Mariner Underwear · France</span>
+                <span class="grad-attention text-sm font-semibold">Top 2</span>
+              </figcaption>
+            </figure>
+            <figure class="serp-shot cursor-zoom-in w-[85vw] max-w-[720px] shrink-0 overflow-hidden rounded-card border border-bord bg-white shadow-card" tabindex="0" role="button" aria-label="Agrandir la capture Google">
+              <img src="assets/serp-table-verre.webp" alt="Capture Google : « table en verre extensible », Souffle d'Intérieur en première position" class="w-full">
+              <figcaption class="flex flex-wrap items-center justify-between gap-2 border-t border-bord px-5 py-3">
+                <span class="text-xs text-slight">Souffle d'Intérieur · Ameublement</span>
+                <span class="grad-attention text-sm font-semibold">Position 1</span>
+              </figcaption>
+            </figure>
+            <figure class="serp-shot cursor-zoom-in w-[85vw] max-w-[720px] shrink-0 overflow-hidden rounded-card border border-bord bg-white shadow-card" tabindex="0" role="button" aria-label="Agrandir la capture Google">
+              <img src="assets/serp-compacteur.webp" alt="Capture Google : « compacteur », client EST BTP en première position" class="w-full">
+              <figcaption class="flex flex-wrap items-center justify-between gap-2 border-t border-bord px-5 py-3">
+                <span class="text-xs text-slight">EST BTP · Sénégal</span>
+                <span class="grad-attention text-sm font-semibold">Position 1</span>
+              </figcaption>
+            </figure>
+            <!-- set B (copie pour boucle) -->
+            <figure class="serp-shot cursor-zoom-in w-[85vw] max-w-[720px] shrink-0 overflow-hidden rounded-card border border-bord bg-white shadow-card" aria-hidden="true">
+              <img src="assets/serp-puff-9k.webp" alt="" class="w-full">
+              <figcaption class="flex flex-wrap items-center justify-between gap-2 border-t border-bord px-5 py-3">
+                <span class="text-xs text-slight">Vapeol · e-commerce, France</span>
+                <span class="grad-attention text-sm font-semibold">Position 1</span>
+              </figcaption>
+            </figure>
+            <figure class="serp-shot cursor-zoom-in w-[85vw] max-w-[720px] shrink-0 overflow-hidden rounded-card border border-bord bg-white shadow-card" aria-hidden="true">
+              <img src="assets/serp-pyjama-velours.webp" alt="" class="w-full">
+              <figcaption class="flex flex-wrap items-center justify-between gap-2 border-t border-bord px-5 py-3">
+                <span class="text-xs text-slight">Mariner Underwear · France</span>
+                <span class="grad-attention text-sm font-semibold">Top 2</span>
+              </figcaption>
+            </figure>
+            <figure class="serp-shot cursor-zoom-in w-[85vw] max-w-[720px] shrink-0 overflow-hidden rounded-card border border-bord bg-white shadow-card" aria-hidden="true">
+              <img src="assets/serp-table-verre.webp" alt="" class="w-full">
+              <figcaption class="flex flex-wrap items-center justify-between gap-2 border-t border-bord px-5 py-3">
+                <span class="text-xs text-slight">Souffle d'Intérieur · Ameublement</span>
+                <span class="grad-attention text-sm font-semibold">Position 1</span>
+              </figcaption>
+            </figure>
+            <figure class="serp-shot cursor-zoom-in w-[85vw] max-w-[720px] shrink-0 overflow-hidden rounded-card border border-bord bg-white shadow-card" aria-hidden="true">
+              <img src="assets/serp-compacteur.webp" alt="" class="w-full">
+              <figcaption class="flex flex-wrap items-center justify-between gap-2 border-t border-bord px-5 py-3">
+                <span class="text-xs text-slight">EST BTP · Sénégal</span>
+                <span class="grad-attention text-sm font-semibold">Position 1</span>
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+        <p class="mt-3 text-center text-xs text-slight">Vérifiable en direct : tapez la requête sur Google.</p>
+      </div>
+
+      <!-- Témoignages nommés -->
+      <div class="mt-10 grid gap-6 md:grid-cols-3">
+        <figure class="rounded-card bg-white p-7 shadow-card">
+          <div class="text-orng">★★★★★</div>
+          <blockquote class="mt-3 text-sm leading-relaxed text-slight">« En collaborant avec Rhillane, notre visibilité en ligne a considérablement augmenté. »</blockquote>
+          <figcaption class="mt-4"><div class="text-sm font-semibold">Amal Saoudi</div><div class="text-xs text-slight">Directrice Marketing</div></figcaption>
+        </figure>
+        <figure class="rounded-card bg-white p-7 shadow-card">
+          <div class="text-orng">★★★★★</div>
+          <blockquote class="mt-3 text-sm leading-relaxed text-slight">« Notre site est passé d'une vitrine à un véritable outil de génération de prospects. »</blockquote>
+          <figcaption class="mt-4"><div class="text-sm font-semibold">Nora Belkacem</div><div class="text-xs text-slight">Responsable E-commerce</div></figcaption>
+        </figure>
+        <figure class="rounded-card bg-white p-7 shadow-card">
+          <div class="text-orng">★★★★★</div>
+          <blockquote class="mt-3 text-sm leading-relaxed text-slight">« Plus qu'un prestataire : un partenaire stratégique dans notre croissance. »</blockquote>
+          <figcaption class="mt-4"><div class="text-sm font-semibold">Karim Ouali</div><div class="text-xs text-slight">Directeur Général, PME</div></figcaption>
+        </figure>
+      </div>
+
+      <!-- Cadre anti-sélection avantageuse -->
+      <div class="mt-10 rounded-card border border-bord bg-purpsoft p-7">
+        <p class="text-sm leading-relaxed text-ink">
+          Ces cas nommés sont les exemples publiquement autorisés que nous pouvons exposer sur cette page.
+          Derrière eux figurent <strong>plus de 60 études de cas documentées supplémentaires et plus de 300 projets SEO archivés</strong>,
+          non publiés — confidentialité demandée, mission antérieure à notre processus d'études de cas, ou client en cours
+          d'acquisition privée. Lors de la remise du Plan de revenus, nous vous présenterons les deux ou trois cas internes
+          les plus proches de votre secteur, de votre pays et de votre tranche de chiffre d'affaires.
+        </p>
+      </div>
+    </div>
+      <div class="mt-12 flex justify-center">
+        <a href="#plan-de-revenus" class="btn-cta inline-flex items-center gap-3 rounded-lg px-7 py-3.5 text-sm font-medium text-white shadow-card hover:opacity-90">
+          Demander mon plan de revenus SEO
+          <svg class="h-3 w-3" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M1 6h10M7 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+  </section>
+
+  <!-- ========================================================= -->
+  <!--  BLOCK 8 · TARIFS — Modules 5 + 6 + Bonus                  -->
+  <!-- ========================================================= -->
+  <section id="tarifs" class="mx-auto max-w-[1440px] px-6 py-16 lg:px-10 lg:py-24">
+    <div class="mx-auto mb-6 max-w-[760px] text-center">
+      <h2 class="text-3xl font-medium leading-tight tracking-tighter2 lg:text-4xl">
+        Quatre formats de mission SEO. La même architecture de garantie.
+        <span class="grad-attention">À choisir selon votre situation.</span>
+      </h2>
+    </div>
+
+    <!-- Value math strip (la valeur avant le prix) -->
+    <div class="mx-auto mb-14 flex w-fit max-w-full flex-wrap items-center justify-center gap-x-8 gap-y-2 rounded-card border border-bord bg-white px-8 py-4 shadow-card">
+      <span class="text-sm text-slight">Valeur des livrables mensuels (Croissance)&nbsp;: <strong class="text-ink">24 100 € HT</strong></span>
+      <span class="hidden h-5 w-px bg-bord sm:block" aria-hidden="true"></span>
+      <span class="text-sm text-slight">Accompagnement&nbsp;: <strong class="text-ink">3 500 € HT / mois</strong></span>
+      <span class="hidden h-5 w-px bg-bord sm:block" aria-hidden="true"></span>
+      <span class="text-sm font-semibold text-redder">Ratio valeur / coût&nbsp;: 6,9×</span>
+    </div>
+
+    <div class="relative">
+      <!-- Halo gradient diffus derrière les cartes (redder / orng / purp) -->
+      <div class="pointer-events-none absolute -inset-x-10 -inset-y-12" style="background:radial-gradient(620px 420px at 12% 55%, rgba(228,0,77,.16), transparent 70%),radial-gradient(560px 400px at 50% 80%, rgba(250,147,41,.11), transparent 70%),radial-gradient(680px 440px at 88% 45%, rgba(57,67,255,.16), transparent 70%);filter:blur(56px);" aria-hidden="true"></div>
+      <div class="relative grid items-stretch gap-6 pt-3 md:grid-cols-2 xl:grid-cols-4">
+
+      <!-- Essentiel -->
+      <article class="hover-grad-border flex h-full flex-col rounded-card border border-bord bg-white p-8 shadow-card">
+        <div class="flex items-center justify-between gap-2">
+          <h3 class="text-lg font-semibold">Essentiel</h3>
+        </div>
+        <div class="mt-4 flex items-baseline gap-1.5">
+          <span class="text-3xl font-semibold tracking-tighter2">2 000 €</span>
+          <span class="text-sm text-slight">HT / mois</span>
+        </div>
+        <p class="mt-3 min-h-[48px] text-[15px] leading-relaxed xl:min-h-[92px] text-slight">Soyez trouvé par les acheteurs qui cherchent ce que vous vendez. Petites entreprises établies, langue unique.</p>
+        <div class="my-5 h-px bg-bord" aria-hidden="true"></div>
+        <ul class="space-y-3.5 text-[15px] leading-snug">
+          <li class="flex items-start gap-2.5"><svg class="mt-0.5 h-4 w-4 shrink-0 text-purp" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span><strong class="font-semibold">50</strong> mots-clés suivis</span></li>
+          <li class="flex items-start gap-2.5"><svg class="mt-0.5 h-4 w-4 shrink-0 text-purp" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span><strong class="font-semibold">2</strong> pages de conversion / mois</span></li>
+          <li class="flex items-start gap-2.5"><svg class="mt-0.5 h-4 w-4 shrink-0 text-purp" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span><strong class="font-semibold">4</strong> articles de soutien / mois</span></li>
+          <li class="flex items-start gap-2.5"><svg class="mt-0.5 h-4 w-4 shrink-0 text-purp" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span><strong class="font-semibold">5</strong> liens entrants / mois</span></li>
+          <li class="flex items-start gap-2.5"><svg class="mt-0.5 h-4 w-4 shrink-0 text-purp" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Point stratégique mensuel <span class="text-slight">(30 min)</span></span></li>
+        </ul>
+        <div class="mt-auto pt-5"><div class="rounded-lg bg-purpsoft px-3.5 py-2.5 text-sm font-medium text-purp">Garantie Top 5 — au contrat</div></div>
+        <a href="#plan-de-revenus" class="pt-6"><span class="inline-flex w-full items-center justify-center rounded-lg border border-bord px-6 py-3 text-sm font-medium text-ink hover:bg-nuk">Commencer par l'audit</span></a>
+      </article>
+
+      <!-- Croissance ★ -->
+      <article class="relative flex h-full flex-col rounded-card border-2 border-redder bg-white p-8 shadow-growth">
+        <span class="absolute -top-3.5 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-redder px-4 py-1.5 text-xs font-semibold text-white">★ Recommandé</span>
+        <div class="flex items-center justify-between gap-2">
+          <h3 class="text-lg font-semibold">Croissance</h3>
+        </div>
+        <div class="mt-4 flex items-baseline gap-1.5">
+          <span class="text-3xl font-semibold tracking-tighter2">3 500 €</span>
+          <span class="text-sm text-slight">HT / mois</span>
+        </div>
+        <p class="mt-3 min-h-[48px] text-[15px] leading-relaxed xl:min-h-[92px] text-slight">Devenez la référence de votre catégorie. Entreprises en croissance, multi-produits ou multi-sites.</p>
+        <div class="my-5 h-px bg-bord" aria-hidden="true"></div>
+        <ul class="space-y-3.5 text-[15px] leading-snug">
+          <li class="flex items-start gap-2.5"><svg class="mt-0.5 h-4 w-4 shrink-0 text-redder" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span><strong class="font-semibold">150</strong> mots-clés suivis</span></li>
+          <li class="flex items-start gap-2.5"><svg class="mt-0.5 h-4 w-4 shrink-0 text-redder" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span><strong class="font-semibold">4</strong> pages de conversion / mois</span></li>
+          <li class="flex items-start gap-2.5"><svg class="mt-0.5 h-4 w-4 shrink-0 text-redder" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span><strong class="font-semibold">6</strong> articles de soutien / mois</span></li>
+          <li class="flex items-start gap-2.5"><svg class="mt-0.5 h-4 w-4 shrink-0 text-redder" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span><strong class="font-semibold">10</strong> liens entrants / mois</span></li>
+          <li class="flex items-start gap-2.5"><svg class="mt-0.5 h-4 w-4 shrink-0 text-redder" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Point stratégique mensuel <span class="text-slight">(45 min)</span></span></li>
+        </ul>
+        <div class="mt-auto pt-5"><div class="rounded-lg bg-purpsoft px-3.5 py-2.5 text-sm font-medium text-purp">Garantie Top 5 — au contrat</div></div>
+        <a href="#plan-de-revenus" class="pt-6"><span class="btn-cta inline-flex w-full items-center justify-center whitespace-nowrap rounded-lg px-4 py-3 text-sm font-medium text-white hover:opacity-90">Demander mon plan de revenus</span></a>
+      </article>
+
+      <!-- Performance -->
+      <article class="hover-grad-border flex h-full flex-col rounded-card border border-bord bg-white p-8 shadow-card">
+        <div class="flex items-center justify-between gap-2">
+          <h3 class="text-lg font-semibold">Performance</h3>
+        </div>
+        <div class="mt-4 flex items-baseline gap-1.5">
+          <span class="text-3xl font-semibold tracking-tighter2">5 000 €</span>
+          <span class="text-sm text-slight">HT / mois</span>
+        </div>
+        <p class="mt-3 min-h-[48px] text-[15px] leading-relaxed xl:min-h-[92px] text-slight">Prenez la page de résultats à votre principal concurrent. Leaders de marché ou challengers offensifs.</p>
+        <div class="my-5 h-px bg-bord" aria-hidden="true"></div>
+        <ul class="space-y-3.5 text-[15px] leading-snug">
+          <li class="flex items-start gap-2.5"><svg class="mt-0.5 h-4 w-4 shrink-0 text-purp" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span><strong class="font-semibold">300</strong> mots-clés suivis</span></li>
+          <li class="flex items-start gap-2.5"><svg class="mt-0.5 h-4 w-4 shrink-0 text-purp" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span><strong class="font-semibold">6</strong> pages de conversion / mois</span></li>
+          <li class="flex items-start gap-2.5"><svg class="mt-0.5 h-4 w-4 shrink-0 text-purp" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span><strong class="font-semibold">8</strong> articles de soutien / mois</span></li>
+          <li class="flex items-start gap-2.5"><svg class="mt-0.5 h-4 w-4 shrink-0 text-purp" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span><strong class="font-semibold">20</strong> liens entrants / mois</span></li>
+          <li class="flex items-start gap-2.5"><svg class="mt-0.5 h-4 w-4 shrink-0 text-purp" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Point mensuel 60 min <span class="text-slight">(réponse 48 h)</span></span></li>
+        </ul>
+        <div class="mt-auto pt-5"><div class="rounded-lg bg-purpsoft px-3.5 py-2.5 text-sm font-medium text-purp">Garantie Top 3 — au contrat</div></div>
+        <a href="#plan-de-revenus" class="pt-6"><span class="inline-flex w-full items-center justify-center rounded-lg border border-bord px-6 py-3 text-sm font-medium text-ink hover:bg-nuk">Commencer par l'audit</span></a>
+      </article>
+
+      <!-- Privé -->
+      <article class="hover-grad-border flex h-full flex-col rounded-card border border-bord bg-white p-8 shadow-card">
+        <div class="flex items-center justify-between gap-2">
+          <h3 class="text-lg font-semibold">Privé</h3>
+          <span class="whitespace-nowrap rounded-full bg-purpsoft px-3 py-1 text-[11px] font-medium text-purp">Sur candidature</span>
+        </div>
+        <div class="mt-4 flex items-baseline gap-1.5">
+          <span class="text-sm text-slight">dès</span>
+          <span class="text-3xl font-semibold tracking-tighter2">12 000 €</span>
+          <span class="text-sm text-slight">HT / mois</span>
+        </div>
+        <p class="mt-3 min-h-[48px] text-[15px] leading-relaxed xl:min-h-[92px] text-slight">Devenez la référence de votre catégorie sur chaque marché que vous servez. L'enjeu des 24 mois à venir.</p>
+        <div class="my-5 h-px bg-bord" aria-hidden="true"></div>
+        <ul class="space-y-3.5 text-[15px] leading-snug">
+          <li class="flex items-start gap-2.5"><svg class="mt-0.5 h-4 w-4 shrink-0 text-purp" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span><strong class="font-semibold">500+</strong> mots-clés suivis</span></li>
+          <li class="flex items-start gap-2.5"><svg class="mt-0.5 h-4 w-4 shrink-0 text-purp" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Pages &amp; articles <strong class="font-semibold">sans limite</strong>*</span></li>
+          <li class="flex items-start gap-2.5"><svg class="mt-0.5 h-4 w-4 shrink-0 text-purp" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span><strong class="font-semibold">30+</strong> liens / mois, autorité élevée</span></li>
+          <li class="flex items-start gap-2.5"><svg class="mt-0.5 h-4 w-4 shrink-0 text-purp" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Multi-marchés &amp; plurilingue inclus</span></li>
+          <li class="flex items-start gap-2.5"><svg class="mt-0.5 h-4 w-4 shrink-0 text-purp" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Comité de pilotage hebdo <span class="text-slight">(60 min)</span></span></li>
+        </ul>
+        <div class="mt-auto pt-5"><div class="rounded-lg bg-purpsoft px-3.5 py-2.5 text-sm font-medium text-purp">Garantie Top 1 à 3 — au contrat</div></div>
+        <a href="#plan-de-revenus" class="pt-6"><span class="inline-flex w-full items-center justify-center rounded-lg border border-bord px-6 py-3 text-sm font-medium text-ink hover:bg-nuk">Candidater</span></a>
+      </article>
+    </div>
+    </div>
+    <p class="mt-4 text-center text-xs text-slight">* dans le périmètre convenu · Engagement minimal de 6 mois sur toutes les formules — le temps nécessaire à Google pour évaluer pleinement les nouveaux contenus.</p>
+
+    <!-- Bonus M.A.G.I.C. -->
+    <div class="mt-16">
+      <h3 class="text-2xl font-medium tracking-tighter2">9 bonus inclus selon la formule — valeur totale <span class="text-redder">13 000 €</span></h3>
+      <p class="mt-2 max-w-[720px] text-sm text-slight">Sur la mission Croissance, le sous-ensemble inclus vaut à lui seul 6 000 € : la valeur des bonus dépasse le coût annuel de l'accompagnement.</p>
+      <div class="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <div class="hover-grad-border rounded-card border border-bord bg-white p-6 shadow-card"><div class="mb-2 flex items-center justify-between"><span class="flex h-7 w-7 items-center justify-center rounded-full bg-purpsoft text-xs font-semibold text-purp">1</span><span class="text-sm font-semibold text-redder">2 000 €</span></div><h4 class="font-semibold leading-snug">Le Plan de prise de position concurrentielle sur 90 jours</h4><p class="mt-1 text-sm text-slight">Les recherches, liens et écarts de contenus que vous pouvez reprendre à vos 3 principaux concurrents — plan d'action de 12 pages.</p></div>
+        <div class="hover-grad-border rounded-card border border-bord bg-white p-6 shadow-card"><div class="mb-2 flex items-center justify-between"><span class="flex h-7 w-7 items-center justify-center rounded-full bg-purpsoft text-xs font-semibold text-purp">2</span><span class="text-sm font-semibold text-redder">500 €</span></div><h4 class="font-semibold leading-snug">Le Chantier de domination du pack local</h4><p class="mt-1 text-sm text-slight">Reconstruction du Google Business Profile, 50 inscriptions annuaires, collecte d'avis, stratégie Google Maps.</p></div>
+        <div class="hover-grad-border rounded-card border border-bord bg-white p-6 shadow-card"><div class="mb-2 flex items-center justify-between"><span class="flex h-7 w-7 items-center justify-center rounded-full bg-purpsoft text-xs font-semibold text-purp">3</span><span class="text-sm font-semibold text-redder">1 000 €</span></div><h4 class="font-semibold leading-snug">L'Académie SEO pour vos équipes internes</h4><p class="mt-1 text-sm text-slight">Masterclass de 60 minutes avec cahier d'exercices. Votre équipe cesse de défaire involontairement le travail SEO.</p></div>
+        <div class="hover-grad-border rounded-card border border-bord bg-white p-6 shadow-card"><div class="mb-2 flex items-center justify-between"><span class="flex h-7 w-7 items-center justify-center rounded-full bg-purpsoft text-xs font-semibold text-purp">4</span><span class="text-sm font-semibold text-redder">800 €</span></div><h4 class="font-semibold leading-snug">Le Plan de bataille éditorial sur 12 mois</h4><p class="mt-1 text-sm text-slight">Calendrier éditorial pré-rempli, cartographié sur les recherches : chaque article rattaché à une requête génératrice de chiffre.</p></div>
+        <div class="hover-grad-border rounded-card border border-bord bg-white p-6 shadow-card"><div class="mb-2 flex items-center justify-between"><span class="flex h-7 w-7 items-center justify-center rounded-full bg-purpsoft text-xs font-semibold text-purp">5</span><span class="text-sm font-semibold text-redder">1 200 €</span></div><h4 class="font-semibold leading-snug">Le Verrouillage tarifaire sur 6 mois</h4><p class="mt-1 text-sm text-slight">Tarification actuelle verrouillée pour la durée et tout renouvellement sous 12 mois. Aucune hausse pendant 18 mois.</p></div>
+        <div class="hover-grad-border rounded-card border border-bord bg-white p-6 shadow-card"><div class="mb-2 flex items-center justify-between"><span class="flex h-7 w-7 items-center justify-center rounded-full bg-purpsoft text-xs font-semibold text-purp">6</span><span class="text-sm font-semibold text-redder">2 800 €</span></div><h4 class="font-semibold leading-snug">La Feuille de route de croissance SEO offerte</h4><p class="mt-1 text-sm text-slight">Analyse des écarts, audit technique, comparatif concurrentiel, 10 gains rapides, 45 min avec un stratège. À conserver, signature ou non.</p></div>
+        <div class="hover-grad-border rounded-card border border-bord bg-white p-6 shadow-card"><div class="mb-2 flex items-center justify-between"><span class="flex h-7 w-7 items-center justify-center rounded-full bg-purpsoft text-xs font-semibold text-purp">7</span><span class="text-sm font-semibold text-redder">1 500 €</span></div><h4 class="font-semibold leading-snug">L'Audit de visibilité dans les moteurs d'IA</h4><p class="mt-1 text-sm text-slight">ChatGPT, Perplexity, Claude, Gemini : vous recommandent-ils, ou votre concurrent ? Photographie trimestrielle + plan 30 jours.</p></div>
+        <div class="hover-grad-border rounded-card border border-bord bg-white p-6 shadow-card"><div class="mb-2 flex items-center justify-between"><span class="flex h-7 w-7 items-center justify-center rounded-full bg-purpsoft text-xs font-semibold text-purp">8</span><span class="text-sm font-semibold text-redder">2 000 €</span></div><h4 class="font-semibold leading-snug">L'Assurance de récupération de positions</h4><p class="mt-1 text-sm text-slight">Site touché par une mise à jour Google ? Plan de récupération déclenché dans le même accompagnement, sans facturation.</p></div>
+        <div class="hover-grad-border rounded-card border border-bord bg-white p-6 shadow-card"><div class="mb-2 flex items-center justify-between"><span class="flex h-7 w-7 items-center justify-center rounded-full bg-purpsoft text-xs font-semibold text-purp">9</span><span class="text-sm font-semibold text-redder">1 200 €</span></div><h4 class="font-semibold leading-snug">Les Ajustements UX Microsoft Clarity</h4><p class="mt-1 text-sm text-slight">Cartes de chaleur, enregistrements de session et ajustements UX mensuels — la conversion et le positionnement progressent ensemble.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================= -->
+  <!--  BLOCK 9 · GARANTIES — Module 7 (1×3 + pill)               -->
+  <!-- ========================================================= -->
+  <section id="garanties" class="bg-nuk py-16 lg:py-24">
+    <div class="mx-auto max-w-content px-6 lg:px-8">
+      <div class="mx-auto mb-12 max-w-[720px] text-center">
+        <h2 class="text-3xl font-medium leading-tight tracking-tighter2 lg:text-4xl">
+          La garantie de résultats SEO, <span class="grad-attention">en trois niveaux.</span>
+        </h2>
+        <p class="mt-4 text-slight">Le risque bascule sur RHILLANE, pas sur vous. Chaque niveau est inscrit au contrat.</p>
+      </div>
+      <div class="grid items-stretch gap-6 md:grid-cols-3">
+
+        <!-- Niveau 1 -->
+        <div class="flex flex-col rounded-card bg-white p-8 shadow-card">
+          <div class="flex items-start justify-between gap-3">
+            <span class="grad-attention text-6xl font-semibold leading-none tracking-tighter2">01</span>
+            <span class="mt-1 inline-flex rounded-full bg-purpsoft px-3 py-1 text-xs font-semibold text-purp">Sans condition</span>
+          </div>
+          <h3 class="mt-6 text-lg font-semibold leading-snug">Remboursement stratégique — 30 premiers jours</h3>
+          <p class="mt-3 text-sm leading-relaxed text-slight">Si vous lisez notre rapport stratégique du mois 1 et concluez que nous ne sommes pas le bon partenaire, remboursement intégral du mois 1.</p>
+          <p class="mt-auto pt-5 text-sm font-medium text-ink">Sans justification. Sans négociation. Sans avocat.</p>
+        </div>
+
+        <!-- Niveau 2 — la garantie phare (mise en avant) -->
+        <div class="flex flex-col rounded-card bg-ink p-8 shadow-growth">
+          <div class="flex items-start justify-between gap-3">
+            <span class="grad-attention text-6xl font-semibold leading-none tracking-tighter2">02</span>
+            <span class="mt-1 inline-flex rounded-full bg-white/10 px-3 py-1 text-xs font-semibold text-white">★ La garantie phare</span>
+          </div>
+          <h3 class="mt-6 text-lg font-semibold leading-snug text-white">Top 5 au sixième mois, ou nous continuons gratuitement</h3>
+          <p class="mt-3 text-sm leading-relaxed text-white/70">Les 5 premiers résultats Google sur les recherches stratégiques convenues — Top 3 en Performance, Top 1 à 3 en Privé. Si nous n'y sommes pas au mois 6, nous poursuivons sans facturation supplémentaire jusqu'à l'atteinte.</p>
+          <p class="mt-auto pt-5 text-sm font-medium text-white">Le recours est en travail livré, jamais en abandon.</p>
+        </div>
+
+        <!-- Niveau 3 -->
+        <div class="flex flex-col rounded-card bg-white p-8 shadow-card">
+          <div class="flex items-start justify-between gap-3">
+            <span class="grad-attention text-6xl font-semibold leading-none tracking-tighter2">03</span>
+            <span class="mt-1 inline-flex rounded-full bg-purpsoft px-3 py-1 text-xs font-semibold text-purp">Jalons au contrat</span>
+          </div>
+          <h3 class="mt-6 text-lg font-semibold leading-snug">Trois points de contrôle : mois 2, 4 et 6</h3>
+          <ul class="mt-3 space-y-2 text-sm leading-relaxed text-slight">
+            <li><strong class="font-semibold text-ink">Mois 2</strong> — mouvement sur les gains rapides</li>
+            <li><strong class="font-semibold text-ink">Mois 4</strong> — première page sur la moitié des requêtes</li>
+            <li><strong class="font-semibold text-ink">Mois 6</strong> — Top 5 sur l'intégralité de la liste</li>
+          </ul>
+          <p class="mt-auto pt-5 text-sm font-medium text-ink">Deux jalons manqués ? Sortie sans pénalité.</p>
+        </div>
+      </div>
+
+      <div class="mx-auto mt-10 flex w-fit max-w-full items-center gap-4 rounded-card border border-bord bg-white px-7 py-4 shadow-card">
+        <span class="grad-attention shrink-0 text-2xl font-semibold">+</span>
+        <p class="text-sm text-slight"><strong class="font-semibold text-ink">Clause de fair-play</strong> — applicable aux bouleversements fondamentaux de la recherche Google échappant au contrôle des deux parties. Le travail de récupération est inclus, sans coût additionnel.</p>
+      </div>
+    </div>
+      <div class="mt-12 flex justify-center">
+        <a href="#plan-de-revenus" class="btn-cta inline-flex items-center gap-3 rounded-lg px-7 py-3.5 text-sm font-medium text-white shadow-card hover:opacity-90">
+          Demander mon plan de revenus SEO
+          <svg class="h-3 w-3" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M1 6h10M7 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+  </section>
+
+  <!-- ========================================================= -->
+  <!--  RÉSULTATS ROI — captures analytics réelles                -->
+  <!-- ========================================================= -->
+  <section id="roi" class="bg-ink py-16 lg:py-24">
+    <div class="mx-auto max-w-[1440px] px-6 lg:px-10">
+      <div class="mx-auto mb-14 max-w-[820px] text-center">
+        <h2 class="text-3xl font-medium leading-tight tracking-tighter2 text-white lg:text-4xl">
+          Ils ont investi 1 500 €/mois dans nos services. <span class="grad-attention">Voici ce qu'ils ont gagné.</span>
+        </h2>
+        <p class="mt-4 text-white/60">Captures Google Analytics réelles : revenus générés via le trafic organique, hors publicité.</p>
+      </div>
+
+      <div class="grid gap-6 md:grid-cols-3">
+        <article class="overflow-hidden rounded-card bg-white shadow-card">
+          <div class="relative border-b border-bord">
+            <img src="assets/image1.webp" alt="Google Analytics : 844 000 € de revenus d'achat générés via le SEO pour un client e-commerce" class="w-full">
+            <span class="absolute right-3 top-3 inline-flex items-center gap-1.5 rounded-full bg-redder px-3 py-1.5 text-xs font-semibold text-white shadow-card">ROI +5 761 %</span>
+          </div>
+          <div class="p-6">
+            <p class="text-sm font-semibold text-ink">Client e-commerce</p>
+            <p class="mt-1 text-sm text-slight">1 500 € investis → <strong class="text-ink">844 000 € générés</strong> via le SEO</p>
+          </div>
+        </article>
+
+        <article class="overflow-hidden rounded-card bg-white shadow-card">
+          <div class="relative border-b border-bord">
+            <img src="assets/image2.webp" alt="Google Analytics : 213 000 € de revenus générés sans publicité pour un client B2B via le référencement naturel" class="w-full">
+            <span class="absolute right-3 top-3 inline-flex items-center gap-1.5 rounded-full bg-redder px-3 py-1.5 text-xs font-semibold text-white shadow-card">ROI +1 379 %</span>
+          </div>
+          <div class="p-6">
+            <p class="text-sm font-semibold text-ink">Client B2B</p>
+            <p class="mt-1 text-sm text-slight">1 500 € investis → <strong class="text-ink">213 000 € générés</strong>, sans publicité</p>
+          </div>
+        </article>
+
+        <article class="overflow-hidden rounded-card bg-white shadow-card">
+          <div class="relative border-b border-bord">
+            <img src="assets/image3.webp" alt="Google Analytics : 101 000 € générés en SEO naturel pour un commerce local" class="w-full">
+            <span class="absolute right-3 top-3 inline-flex items-center gap-1.5 rounded-full bg-redder px-3 py-1.5 text-xs font-semibold text-white shadow-card">ROI +601 %</span>
+          </div>
+          <div class="p-6">
+            <p class="text-sm font-semibold text-ink">Commerce local</p>
+            <p class="mt-1 text-sm text-slight">1 500 € investis → <strong class="text-ink">101 000 € générés</strong> en SEO naturel</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================= -->
+  <!--  FONDATEUR — preuve humaine                                -->
+  <!-- ========================================================= -->
+  <section id="fondateur" class="bg-ink pb-16 pt-8 lg:pb-24 lg:pt-12">
+    <div class="mx-auto max-w-content px-6 lg:px-8">
+      <div class="grid items-stretch gap-12 lg:grid-cols-[480px_1fr] lg:gap-20">
+        <img src="assets/seo-Ayoub-Rihllane.png" alt="Ayoub Rhillane, fondateur de RHILLANE Marketing Digital — Google Premier Partner, certifié Google Ads et Analytics"
+             class="mx-auto w-full max-w-[500px] rounded-card object-cover shadow-card">
+        <div class="flex flex-col justify-center lg:py-1">
+          <p class="text-sm font-medium text-white/70">Vous méritez l'excellence du digital.</p>
+          <h2 class="mt-3 text-3xl font-medium leading-tight tracking-tighter2 text-white lg:text-4xl">
+            Bienvenue chez l'agence <span class="grad-attention">Rhillane Marketing</span>.
+          </h2>
+          <div class="mt-6 flex flex-wrap gap-3">
+            <span class="rounded-full border border-redder px-5 py-2 text-sm font-semibold text-white">Stratégie</span>
+            <span class="rounded-full border border-redder px-5 py-2 text-sm font-semibold text-white">Performance</span>
+            <span class="rounded-full border border-redder px-5 py-2 text-sm font-semibold text-white">Résultats</span>
+          </div>
+          <p class="mt-6 max-w-[560px] leading-relaxed text-white/70">
+            Chez Rhillane, vous collaborez avec <span class="font-semibold text-redder">une équipe d'élite</span>, dirigée par <span class="font-semibold text-white">Ayoub Rhillane</span>, reconnue et certifiée par les plus grands acteurs mondiaux du digital. <span class="font-semibold text-redder">Une force collective</span>, dédiée à bâtir votre succès numérique avec précision et performance.
+          </p>
+          <ul class="mt-6 space-y-3 text-[15px] text-white/90">
+            <li class="flex items-start gap-3"><svg class="mt-0.5 h-5 w-5 shrink-0 text-redder" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10.5l4 4 8-9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Google Partner Premier (Top 3 % mondial)</li>
+            <li class="flex items-start gap-3"><svg class="mt-0.5 h-5 w-5 shrink-0 text-redder" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10.5l4 4 8-9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Certifications officielles Google Ads &amp; Analytics</li>
+            <li class="flex items-start gap-3"><svg class="mt-0.5 h-5 w-5 shrink-0 text-redder" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10.5l4 4 8-9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Recommandée par Clutch, Sortlist &amp; Semrush</li>
+          </ul>
+          <p class="mt-6 max-w-[560px] text-[15px] font-medium italic text-white">Des distinctions officielles. Une maîtrise éprouvée.</p>
+          <p class="mt-2 max-w-[560px] leading-relaxed text-white/70">
+            Avec l'agence Rhillane Marketing, vous bénéficiez d'une expertise exclusive, taillée pour les ambitions les plus élevées.
+          </p>
+        </div>
+      </div>
+    </div>
+      <div class="mt-12 flex justify-center">
+        <a href="#plan-de-revenus" class="btn-cta inline-flex items-center gap-3 rounded-lg px-7 py-3.5 text-sm font-medium text-white shadow-card hover:opacity-90">
+          Demander mon plan de revenus SEO
+          <svg class="h-3 w-3" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M1 6h10M7 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+  </section>
+
+
+  <!-- ========================================================= -->
+  <!--  BLOCK 10 · FAQ — Module 8 (9 questions, accordéon)        -->
+  <!-- ========================================================= -->
+  <section id="faq" class="mx-auto max-w-[860px] px-6 py-16 lg:px-8 lg:py-24">
+    <h2 class="text-center text-3xl font-medium leading-tight tracking-tighter2 lg:text-4xl">
+      Vos questions sur le SEO, <span class="grad-attention">sans langue de bois.</span>
+    </h2>
+    <p class="mt-4 text-center text-slight">Les mêmes réponses que nous donnons en entretien — sans détour.</p>
+    <div class="mt-12 space-y-4">
+
+      <div class="faq-item open rounded-card border border-bord bg-white shadow-card">
+        <button type="button" class="faq-toggle flex w-full items-center justify-between gap-4 px-6 py-5 text-left lg:px-7">
+          <h3 class="text-base font-semibold">La garantie est-elle réellement inscrite au contrat ?</h3>
+          <svg class="faq-chevron h-4 w-4 shrink-0 text-slight" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 6l5 5 5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="faq-answer px-6 pb-6 text-sm leading-relaxed text-slight lg:px-7">Oui, mot pour mot. Trois niveaux figurent dans chaque contrat : remboursement intégral du mois 1 sans condition, positionnement Top 5 au sixième mois (sinon nous poursuivons sans facturation), et jalons de contrôle aux mois 2, 4 et 6. Les requêtes cibles sont convenues par écrit durant la phase stratégique.</div>
+      </div>
+
+      <div class="faq-item rounded-card border border-bord bg-white shadow-card">
+        <button type="button" class="faq-toggle flex w-full items-center justify-between gap-4 px-6 py-5 text-left lg:px-7">
+          <h3 class="text-base font-semibold">Le référencement naturel ne demande-t-il pas trop de temps ?</h3>
+          <svg class="faq-chevron h-4 w-4 shrink-0 text-slight" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 6l5 5 5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="faq-answer px-6 pb-6 text-sm leading-relaxed text-slight lg:px-7">Les quatre-vingt-dix premiers jours sont plus lents : c'est la phase de découverte. Mais les jalons sont garantis : au mois 2 vous observez un mouvement, au mois 4 du trafic, au mois 6 le Top 5 sur les requêtes ciblées. Vous ne vous engagez pas sur six mois à l'aveugle — vous vous engagez sur quatre-vingt-dix jours, avec un point de contrôle.</div>
+      </div>
+
+      <div class="faq-item rounded-card border border-bord bg-white shadow-card">
+        <button type="button" class="faq-toggle flex w-full items-center justify-between gap-4 px-6 py-5 text-left lg:px-7">
+          <h3 class="text-base font-semibold">Nous avons déjà été déçus par une agence SEO. En quoi est-ce différent ?</h3>
+          <svg class="faq-chevron h-4 w-4 shrink-0 text-slight" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 6l5 5 5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="faq-answer px-6 pb-6 text-sm leading-relaxed text-slight lg:px-7">C'est précisément la raison pour laquelle la garantie est inscrite au contrat. Trois protections alignées sur ce qui vous a coûté ailleurs : requêtes cibles convenues par écrit, accès complet à votre Search Console dès le premier jour, et poursuite du travail à titre gracieux jusqu'à atteinte du Top 5.</div>
+      </div>
+
+      <div class="faq-item rounded-card border border-bord bg-white shadow-card">
+        <button type="button" class="faq-toggle flex w-full items-center justify-between gap-4 px-6 py-5 text-left lg:px-7">
+          <h3 class="text-base font-semibold">Pourrions-nous gérer le SEO en interne ?</h3>
+          <svg class="faq-chevron h-4 w-4 shrink-0 text-slight" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 6l5 5 5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="faq-answer px-6 pb-6 text-sm leading-relaxed text-slight lg:px-7">Vous le pouvez. Le calcul : un consultant SEO senior représente 5 000 à 7 000 € par mois, plus un rédacteur à 3 000 € et 500 € d'outils — soit 8 500 à 10 500 € par mois pour une personne effectuant le travail d'une équipe. Nous mettons à disposition une équipe de six profils pour 3 500 €, avec une garantie écrite.</div>
+      </div>
+
+      <div class="faq-item rounded-card border border-bord bg-white shadow-card">
+        <button type="button" class="faq-toggle flex w-full items-center justify-between gap-4 px-6 py-5 text-left lg:px-7">
+          <h3 class="text-base font-semibold">L'IA ne va-t-elle pas tuer le SEO ?</h3>
+          <svg class="faq-chevron h-4 w-4 shrink-0 text-slight" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 6l5 5 5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="faq-answer px-6 pb-6 text-sm leading-relaxed text-slight lg:px-7">L'IA ne tue pas le SEO ; elle modifie qui en bénéficie. ChatGPT, Perplexity, Claude, Gemini et les Aperçus IA de Google puisent leurs réponses dans les sites qui se positionnent sur Google. Les marques que l'IA citera demain sont celles qui se positionnent aujourd'hui. Nous optimisons pour les cinq moteurs IA dans chacune de nos formules.</div>
+      </div>
+
+      <div class="faq-item rounded-card border border-bord bg-white shadow-card">
+        <button type="button" class="faq-toggle flex w-full items-center justify-between gap-4 px-6 py-5 text-left lg:px-7">
+          <h3 class="text-base font-semibold">Garantissez-vous le trafic ou le chiffre d'affaires ?</h3>
+          <svg class="faq-chevron h-4 w-4 shrink-0 text-slight" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 6l5 5 5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="faq-answer px-6 pb-6 text-sm leading-relaxed text-slight lg:px-7">Non, et toute agence qui le fait vous trompe. Le trafic dépend du volume de recherche ; le chiffre d'affaires dépend de votre offre, de votre tarification et de votre taux de conversion. Nous garantissons les positions sur Google — le seul élément réellement sous notre contrôle. Cette honnêteté distingue une agence sérieuse d'une agence qui sur-promet pour disparaître ensuite.</div>
+      </div>
+
+      <div class="faq-item rounded-card border border-bord bg-white shadow-card">
+        <button type="button" class="faq-toggle flex w-full items-center justify-between gap-4 px-6 py-5 text-left lg:px-7">
+          <h3 class="text-base font-semibold">Pourquoi une mission initiale de six mois ?</h3>
+          <svg class="faq-chevron h-4 w-4 shrink-0 text-slight" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 6l5 5 5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="faq-answer px-6 pb-6 text-sm leading-relaxed text-slight lg:px-7">Parce que c'est le temps nécessaire à Google pour évaluer pleinement les nouveaux contenus et les nouveaux liens entrants. Le plancher de six mois ne sert pas à vous verrouiller — il nous sert à engager notre garantie contractuelle. Au-delà de quatre-vingt-dix jours, en cas de non-atteinte des jalons, vous basculez sur des conditions mensualisées, sans pénalité.</div>
+      </div>
+
+      <div class="faq-item rounded-card border border-bord bg-white shadow-card">
+        <button type="button" class="faq-toggle flex w-full items-center justify-between gap-4 px-6 py-5 text-left lg:px-7">
+          <h3 class="text-base font-semibold">Que se passe-t-il en cas de mise à jour de l'algorithme Google ?</h3>
+          <svg class="faq-chevron h-4 w-4 shrink-0 text-slight" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 6l5 5 5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="faq-answer px-6 pb-6 text-sm leading-relaxed text-slight lg:px-7">Les mises à jour récompensent les sites construits selon notre méthodologie : expertise réelle, SEO technique propre, contenus uniques, liens crédibles. Dans le cas rare où un client est touché, nous activons l'Assurance de récupération de positions, incluse dans le même accompagnement, sans coût additionnel. La clause de fair-play couvre les bouleversements fondamentaux qu'aucun acteur n'aurait pu anticiper.</div>
+      </div>
+
+      <div class="faq-item rounded-card border border-bord bg-white shadow-card">
+        <button type="button" class="faq-toggle flex w-full items-center justify-between gap-4 px-6 py-5 text-left lg:px-7">
+          <h3 class="text-base font-semibold">Combien coûte le SEO, en pratique ?</h3>
+          <svg class="faq-chevron h-4 w-4 shrink-0 text-slight" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 6l5 5 5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="faq-answer px-6 pb-6 text-sm leading-relaxed text-slight lg:px-7">De 2 000 à 12 000 € HT par mois selon le format. La vraie question : un client gagné via la recherche, quel chiffre d'affaires génère-t-il sur douze mois ? Le plus souvent entre 5 000 et 25 000 €. À un ou deux clients de ce profil par mois, l'accompagnement est rentabilisé sous soixante jours. Le SEO n'est pas un coût — c'est le prix d'acquisition des clients que vous n'acquérez pas aujourd'hui.</div>
+      </div>
+
+    </div>
+      <div class="mt-12 flex justify-center">
+        <a href="#plan-de-revenus" class="btn-cta inline-flex items-center gap-3 rounded-lg px-7 py-3.5 text-sm font-medium text-white shadow-card hover:opacity-90">
+          Demander mon plan de revenus SEO
+          <svg class="h-3 w-3" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M1 6h10M7 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+  </section>
+
+  <!-- ========================================================= -->
+  <!--  BLOCK 11 · FINAL CTA — Module 9 (split 60/40 + form)      -->
+  <!-- ========================================================= -->
+  <section id="plan-de-revenus" class="bg-nuk py-16 lg:py-24">
+    <div class="mx-auto grid max-w-content gap-12 px-6 lg:grid-cols-[3fr_2fr] lg:gap-16 lg:px-8">
+      <div>
+        <span class="inline-flex items-center gap-4 rounded-full border border-bord bg-white py-2.5 pl-6 pr-2.5 shadow-card">
+          <span class="text-sm font-medium tracking-tight text-purp">Prêt à démarrer ?</span>
+          <img src="assets/hero-overline-arrow.svg" alt="" class="h-5 w-8">
+        </span>
+        <h2 class="mt-6 text-3xl font-medium leading-tight tracking-tighter2 lg:text-4xl">
+          Demandez votre audit SEO gratuit : le
+          <span class="grad-attention">Plan de revenus</span>, livré sous 48 heures.
+        </h2>
+        <p class="mt-5 max-w-[540px] leading-relaxed text-slight">
+          Chaque résultat présenté sur cette page a débuté par ce même Plan de revenus.
+          Aucune pression commerciale, aucun argumentaire de 90 minutes — un
+          <strong class="font-semibold text-ink">diagnostic réel</strong> et un entretien de
+          <strong class="font-semibold text-ink">45 minutes avec un stratège senior</strong>.
+        </p>
+        <ul class="mt-8 space-y-3.5 text-[15px]">
+          <li class="flex items-start gap-3"><svg class="mt-0.5 h-5 w-5 shrink-0 text-purp" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="8" fill="currentColor" opacity=".12"/><path d="M6.5 10.2l2.3 2.3 4.7-4.8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>Anomalies techniques classées par impact sur le chiffre d'affaires</li>
+          <li class="flex items-start gap-3"><svg class="mt-0.5 h-5 w-5 shrink-0 text-purp" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="8" fill="currentColor" opacity=".12"/><path d="M6.5 10.2l2.3 2.3 4.7-4.8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>Comparatif côte à côte avec vos concurrents</li>
+          <li class="flex items-start gap-3"><svg class="mt-0.5 h-5 w-5 shrink-0 text-purp" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="8" fill="currentColor" opacity=".12"/><path d="M6.5 10.2l2.3 2.3 4.7-4.8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>Analyse de visibilité sur cinq moteurs de recherche IA</li>
+          <li class="flex items-start gap-3"><svg class="mt-0.5 h-5 w-5 shrink-0 text-purp" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="8" fill="currentColor" opacity=".12"/><path d="M6.5 10.2l2.3 2.3 4.7-4.8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>Gains rapides identifiés pour la première semaine</li>
+        </ul>
+      </div>
+
+      <!-- Formulaire (TODO : connecter au backend / CRM) -->
+      <form class="h-fit rounded-card border-2 border-purp bg-white p-7 shadow-card lg:sticky lg:top-28" action="#" method="post">
+        <div class="flex flex-wrap items-center justify-between gap-2">
+          <h3 class="text-lg font-semibold">Plan de revenus SEO</h3>
+          <span class="rounded-full bg-purpsoft px-3.5 py-1.5 text-xs font-semibold text-purp">2 800 € HT · Offert</span>
+        </div>
+        <ul class="mt-3 space-y-1 border-b border-bord pb-5 text-sm text-slight">
+          <li>· 45 min avec un stratège senior</li>
+          <li>· Livré sous 48 heures</li>
+          <li>· Le document vous reste acquis</li>
+        </ul>
+        <div class="mt-5 space-y-4">
+          <div>
+            <label for="f-prenom" class="mb-1 block text-sm font-medium">Prénom <span class="text-purp">*</span></label>
+            <input id="f-prenom" name="prenom" type="text" required class="w-full rounded-lg border border-bord bg-nuk px-4 py-3 text-sm outline-none focus:border-purp" placeholder="Votre prénom">
+          </div>
+          <div>
+            <label for="f-email" class="mb-1 block text-sm font-medium">E-mail <span class="text-purp">*</span></label>
+            <input id="f-email" name="email" type="email" required class="w-full rounded-lg border border-bord bg-nuk px-4 py-3 text-sm outline-none focus:border-purp" placeholder="vous@entreprise.com">
+          </div>
+          <div>
+            <label for="f-tel" class="mb-1 block text-sm font-medium">Téléphone / WhatsApp <span class="text-purp">*</span></label>
+            <input id="f-tel" name="telephone" type="tel" required class="w-full rounded-lg border border-bord bg-nuk px-4 py-3 text-sm outline-none focus:border-purp" placeholder="+212 · +33 · +32 …">
+          </div>
+          <div>
+            <label for="f-site" class="mb-1 block text-sm font-medium">Le site à auditer <span class="text-purp">*</span></label>
+            <input id="f-site" name="site" type="url" required class="w-full rounded-lg border border-bord bg-nuk px-4 py-3 text-sm outline-none focus:border-purp" placeholder="https://votre-site.com">
+          </div>
+          <div>
+            <label for="f-ca" class="mb-1 block text-sm font-medium">Chiffre d'affaires annuel <span class="text-purp">*</span></label>
+            <select id="f-ca" name="ca" required class="w-full rounded-lg border border-bord bg-nuk px-4 py-3 text-sm outline-none focus:border-purp">
+              <option value="" selected disabled>Sélectionner…</option>
+              <option>Moins de 200 K€</option>
+              <option>200 K€ – 500 K€</option>
+              <option>500 K€ – 1 M€</option>
+              <option>1 M€ – 5 M€</option>
+              <option>Plus de 5 M€</option>
+            </select>
+          </div>
+          <button type="submit" class="btn-cta inline-flex w-full items-center justify-center gap-3 rounded-lg px-6 py-4 text-sm font-semibold text-white hover:opacity-90">
+            Demander mon plan de revenus SEO
+            <svg class="h-3 w-3" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M1 6h10M7 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <ul class="space-y-1 text-xs text-slight">
+            <li class="flex items-center gap-2"><span class="text-purp">✓</span> Sans engagement</li>
+            <li class="flex items-center gap-2"><span class="text-purp">✓</span> Demande en deux minutes</li>
+            <li class="flex items-center gap-2"><span class="text-purp">✓</span> Le Plan vous reste acquis, même sans collaboration</li>
+          </ul>
+        </div>
+      </form>
+    </div>
+  </section>
+
+
+  <!-- ========================================================= -->
+  <!--  ZONE SEO / CONTENU ÉDUCATIF (sous le formulaire)          -->
+  <!-- ========================================================= -->
+
+  <!-- S1 · Qu'est-ce que le référencement naturel -->
+  <section id="definition" class="mx-auto max-w-content px-6 py-16 lg:px-8 lg:py-24">
+    <div class="mx-auto max-w-[760px] text-center">
+      <p class="text-xs font-semibold uppercase tracking-[0.16em] text-purp">Le référencement naturel, en clair</p>
+      <h2 class="mt-3 text-3xl font-medium leading-tight tracking-tighter2 lg:text-4xl">
+        Qu'est-ce que le <span class="grad-attention">référencement naturel</span> (SEO) ?
+      </h2>
+      <p class="mt-5 text-[15px] leading-relaxed text-slight">
+        Le <strong class="font-semibold text-ink">référencement naturel</strong>, ou SEO (<em>Search Engine Optimization</em>), désigne l'ensemble des techniques qui positionnent votre site dans les résultats non payants de Google, sur les recherches que tapent vos clients. Contrairement à la publicité Google Ads, où chaque clic vous coûte de l'argent, une position naturelle en tête de Google vous envoie du trafic qualifié <strong class="font-semibold text-ink">sans coût par clic</strong>. Une agence SEO au Maroc comme RHILLANE conçoit, exécute et suit ce travail jusqu'à un positionnement dans le top 5, inscrit au contrat.
+      </p>
+    </div>
+
+    <p class="mx-auto mt-10 max-w-[720px] text-center text-[15px] leading-relaxed text-slight">
+      Le référencement naturel repose sur <strong class="font-semibold text-ink">trois piliers complémentaires</strong>. Un site qui néglige l'un des trois plafonne rapidement.
+    </p>
+
+    <div class="mt-8 grid gap-5 sm:grid-cols-3">
+      <div class="hover-grad-border rounded-card border border-bord bg-white p-6 shadow-card">
+        <div class="flex h-11 w-11 items-center justify-center rounded-xl text-sm font-semibold text-white shadow-card" style="background:linear-gradient(135deg,#3943FF 0%,#E4004D 60%,#FA9329 100%)">01</div>
+        <h3 class="mt-4 text-base font-semibold">La technique</h3>
+        <p class="mt-2 text-sm leading-relaxed text-slight">Un site que Google peut explorer, comprendre et charger vite : indexation, vitesse, Core Web Vitals, données structurées, version mobile, sécurité.</p>
+      </div>
+      <div class="hover-grad-border rounded-card border border-bord bg-white p-6 shadow-card">
+        <div class="flex h-11 w-11 items-center justify-center rounded-xl text-sm font-semibold text-white shadow-card" style="background:linear-gradient(135deg,#3943FF 0%,#E4004D 60%,#FA9329 100%)">02</div>
+        <h3 class="mt-4 text-base font-semibold">Le contenu</h3>
+        <p class="mt-2 text-sm leading-relaxed text-slight">Des pages qui répondent précisément à l'intention de recherche de l'acheteur, construites autour des mots-clés qui génèrent du chiffre d'affaires, pas du trafic de vanité.</p>
+      </div>
+      <div class="hover-grad-border rounded-card border border-bord bg-white p-6 shadow-card">
+        <div class="flex h-11 w-11 items-center justify-center rounded-xl text-sm font-semibold text-white shadow-card" style="background:linear-gradient(135deg,#3943FF 0%,#E4004D 60%,#FA9329 100%)">03</div>
+        <h3 class="mt-4 text-base font-semibold">L'autorité</h3>
+        <p class="mt-2 text-sm leading-relaxed text-slight">Des liens entrants depuis des sites de référence, perçus par Google comme des votes de confiance. C'est le netlinking : le signal qui départage deux sites également bien construits.</p>
+      </div>
+    </div>
+
+    <div class="mt-8 overflow-hidden rounded-card border border-bord shadow-card">
+      <div class="border-b border-bord bg-white px-7 py-5 text-center">
+        <h3 class="text-base font-semibold">SEO ou Google Ads : quelle différence ?</h3>
+      </div>
+      <div class="grid sm:grid-cols-2">
+        <div class="border-b border-bord bg-nuk p-7 sm:border-b-0 sm:border-r">
+          <p class="text-xs font-semibold uppercase tracking-[0.14em] text-slight">Publicité Google Ads</p>
+          <p class="mt-1.5 text-lg font-semibold text-ink">Une visibilité que vous louez</p>
+          <ul class="mt-5 space-y-3.5">
+            <li class="flex gap-3 text-sm leading-relaxed text-slight"><span class="mt-2 h-px w-3.5 shrink-0 bg-slight"></span>La visibilité s'arrête net dès que vous cessez de payer.</li>
+            <li class="flex gap-3 text-sm leading-relaxed text-slight"><span class="mt-2 h-px w-3.5 shrink-0 bg-slight"></span>Chaque visiteur vous coûte un clic, et ce coût grimpe d'année en année.</li>
+            <li class="flex gap-3 text-sm leading-relaxed text-slight"><span class="mt-2 h-px w-3.5 shrink-0 bg-slight"></span>Le jour où vous coupez le budget, il ne vous reste rien.</li>
+          </ul>
+        </div>
+        <div class="bg-white p-7">
+          <p class="text-xs font-semibold uppercase tracking-[0.14em] text-purp">Référencement naturel</p>
+          <p class="mt-1.5 text-lg font-semibold text-ink">Un actif qui vous appartient</p>
+          <ul class="mt-5 space-y-3.5">
+            <li class="flex gap-3 text-sm leading-relaxed text-slight"><svg class="mt-0.5 h-4 w-4 shrink-0 text-purp" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M13 4.5 6.5 11 3 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Les positions acquises continuent de travailler mois après mois, à coût marginal nul.</li>
+            <li class="flex gap-3 text-sm leading-relaxed text-slight"><svg class="mt-0.5 h-4 w-4 shrink-0 text-purp" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M13 4.5 6.5 11 3 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Un visiteur naturel convertit en moyenne trois fois mieux qu'un visiteur payant.</li>
+            <li class="flex gap-3 text-sm leading-relaxed text-slight"><svg class="mt-0.5 h-4 w-4 shrink-0 text-purp" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M13 4.5 6.5 11 3 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>La plupart de nos clients réduisent leur dépendance à la publicité de 20 à 40 %.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-8 rounded-card border border-bord bg-purpsoft p-7 lg:p-8">
+      <p class="text-sm font-semibold text-ink">L'avantage des 12 à 18 prochains mois : la recherche assistée par IA</p>
+      <p class="mt-2 text-[15px] leading-relaxed text-slight">La recherche ne se limite plus à Google. ChatGPT, Perplexity, Claude, Gemini et les AI Overviews de Google constituent une nouvelle page de résultats, et ils puisent leurs réponses dans les sites qui se positionnent déjà bien sur Google. Nous vendons le SEO et le GEO (référencement dans les moteurs assistés par IA) au sein d'un seul accompagnement, pour que votre marque soit citée pendant que vos concurrents se demandent encore si la recherche par IA est un vrai sujet.</p>
+      <div class="mt-5 flex flex-wrap gap-2.5">
+        <span class="rounded-full border border-bord bg-white px-4 py-2 text-xs font-medium text-ink shadow-card">ChatGPT · 200 M / semaine</span>
+        <span class="rounded-full border border-bord bg-white px-4 py-2 text-xs font-medium text-ink shadow-card">Perplexity · 15 M / mois</span>
+        <span class="rounded-full border border-bord bg-white px-4 py-2 text-xs font-medium text-ink shadow-card">Claude · référence entreprise</span>
+        <span class="rounded-full border border-bord bg-white px-4 py-2 text-xs font-medium text-ink shadow-card">Gemini · sur tout Android</span>
+        <span class="rounded-full border border-bord bg-white px-4 py-2 text-xs font-medium text-ink shadow-card">Google AI Overviews · 30 % des requêtes</span>
+      </div>
+    </div>
+
+    <div class="mt-12 flex justify-center">
+      <a href="#plan-de-revenus" class="btn-cta inline-flex items-center gap-3 rounded-lg px-7 py-3.5 text-sm font-medium text-white shadow-card hover:opacity-90">
+        Demander mon plan de revenus SEO
+        <svg class="h-3 w-3" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M1 6h10M7 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </section>
+
+
+  <!-- S2 · À qui s'adresse notre SEO -->
+  <section id="pour-qui" class="bg-nuk py-16 lg:py-24">
+    <div class="mx-auto max-w-content px-6 lg:px-8">
+      <div class="mx-auto max-w-[760px] text-center">
+        <h2 class="text-3xl font-medium leading-tight tracking-tighter2 lg:text-4xl">
+          À qui s'adresse notre <span class="grad-attention">accompagnement SEO</span> ?
+        </h2>
+        <p class="mt-4 text-slight">Notre référencement naturel est conçu pour des entreprises établies qui perdent des clients au profit de concurrents mieux positionnés sur Google. Voici les quatre profils que nous accompagnons le plus.</p>
+      </div>
+
+      <div class="mt-14 grid gap-6 md:grid-cols-2">
+        <article class="hover-grad-border rounded-card border border-bord bg-white p-7 shadow-card">
+          <div class="flex items-center justify-between gap-2">
+            <h3 class="text-lg font-semibold">Promoteur immobilier</h3>
+            <span class="rounded-full bg-purpsoft px-3 py-1 text-xs font-medium text-purp">Belgique · France</span>
+          </div>
+          <p class="mt-3 text-[15px] leading-relaxed text-slight">Investit 8 000 à 25 000 € par mois en Google Ads pour capter des prospects sur des programmes haut de gamme. Son coût par prospect est passé de 60 € à 180 € en dix-huit mois. Il constate qu'un concurrent qu'il respecte occupe la première position naturelle sur les mêmes requêtes qu'il paie 5 € le clic, sans rien débourser.</p>
+          <p class="mt-3 border-t border-bord pt-3 text-sm italic text-slight">« Je ne veux pas découvrir dans six mois que nous avons encore dépensé pour rien. Si vous garantissez le Top 5, prouvez-le par contrat. »</p>
+        </article>
+
+        <article class="hover-grad-border rounded-card border border-bord bg-white p-7 shadow-card">
+          <div class="flex items-center justify-between gap-2">
+            <h3 class="text-lg font-semibold">E-commerce en croissance</h3>
+            <span class="rounded-full bg-purpsoft px-3 py-1 text-xs font-medium text-purp">France</span>
+          </div>
+          <p class="mt-3 text-[15px] leading-relaxed text-slight">Voit son coût publicitaire Meta grimper de 40 % sur douze mois, pénalisé par les restrictions de ciblage Apple. Le conseil d'administration revient chaque trimestre sur la même question : comment baisser le coût d'acquisition ? La direction financière a fait le calcul : un visiteur naturel convertit trois fois mieux qu'un visiteur payant.</p>
+          <p class="mt-3 border-t border-bord pt-3 text-sm italic text-slight">« Nous laissons un potentiel énorme inexploité. Cinq fois cette année nous nous sommes dit qu'il fallait lancer le SEO, et nous ne l'avons jamais fait. »</p>
+        </article>
+
+        <article class="hover-grad-border rounded-card border border-bord bg-white p-7 shadow-card">
+          <div class="flex items-center justify-between gap-2">
+            <h3 class="text-lg font-semibold">Agence de voyage</h3>
+            <span class="rounded-full bg-purpsoft px-3 py-1 text-xs font-medium text-purp">Maroc → États-Unis</span>
+          </div>
+          <p class="mt-3 text-[15px] leading-relaxed text-slight">Vend une clientèle touristique américaine et européenne depuis le Maroc. Le coût par clic sur ses requêtes stratégiques est passé de 1,80 $ à 5,20 $ en deux ans. Impossible de surenchérir face aux opérateurs installés aux États-Unis, dont la marge par client est plus élevée, alors qu'ils occupent les premières positions naturelles sans rien payer.</p>
+          <p class="mt-3 border-t border-bord pt-3 text-sm italic text-slight">« Nous avons choisi le SEO parce que Google Ads coûte trop cher quand on vend du Maroc vers les États-Unis. Le calcul économique ne tient plus. »</p>
+        </article>
+
+        <article class="hover-grad-border rounded-card border border-bord bg-white p-7 shadow-card">
+          <div class="flex items-center justify-between gap-2">
+            <h3 class="text-lg font-semibold">Promoteur &amp; hôtellerie du Golfe</h3>
+            <span class="rounded-full bg-purpsoft px-3 py-1 text-xs font-medium text-purp">Dubaï · Qatar</span>
+          </div>
+          <p class="mt-3 text-[15px] leading-relaxed text-slight">Voit les portails (Bayut, Property Finder) se positionner devant son propre site, y compris sur le nom de ses programmes. Le coût par clic sur ses requêtes de marque a atteint 8 à 15 € parce que les portails enchérissent dessus. Une agence multinationale lui a facturé 20 000 € par mois pour du « SEO » en réalité dominé par de la publicité.</p>
+          <p class="mt-3 border-t border-bord pt-3 text-sm italic text-slight">« Nous dépensons des millions et les portails continuent d'occuper les résultats de recherche sur nos propres immeubles. »</p>
+        </article>
+      </div>
+
+      <div class="mt-8 rounded-card border border-bord bg-white p-7 shadow-card">
+        <h3 class="text-base font-semibold">Et à qui il ne s'adresse pas : nous refusons environ 82 % des demandes</h3>
+        <p class="mt-2 text-sm leading-relaxed text-slight">Nos critères d'entrée sont stricts, parce que c'est ce qui rend la garantie tenable. Nous orientons vers d'autres formats (Pack Stratégie ou Kit d'auto-diagnostic) les profils suivants :</p>
+        <ul class="mt-4 grid gap-x-8 gap-y-2 text-sm text-slight sm:grid-cols-2">
+          <li class="flex items-start gap-2.5"><span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-slight"></span>Entreprises sous 1 M€ de chiffre d'affaires annuel</li>
+          <li class="flex items-start gap-2.5"><span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-slight"></span>Attentes que le SEO « crée la demande » : il capte la demande existante, il ne la fabrique pas</li>
+          <li class="flex items-start gap-2.5"><span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-slight"></span>Recherche d'un projet ponctuel de moins de six mois</li>
+          <li class="flex items-start gap-2.5"><span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-slight"></span>Impossibilité de partager les accès CMS, Search Console et Analytics sous sept jours</li>
+          <li class="flex items-start gap-2.5"><span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-slight"></span>Comparaison avec des agences à 500 € par mois : deux catégories différentes</li>
+          <li class="flex items-start gap-2.5"><span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-slight"></span>Secteurs que Google pénalise ou qui exigeraient de contourner ses règles</li>
+        </ul>
+      </div>
+    </div>
+      <div class="mt-12 flex justify-center">
+        <a href="#plan-de-revenus" class="btn-cta inline-flex items-center gap-3 rounded-lg px-7 py-3.5 text-sm font-medium text-white shadow-card hover:opacity-90">
+          Demander mon plan de revenus SEO
+          <svg class="h-3 w-3" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M1 6h10M7 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+  </section>
+
+  <!-- S3 · Nos expertises SEO (6 piliers) -->
+  <section id="expertises" class="mx-auto max-w-content px-6 py-16 lg:px-8 lg:py-24">
+    <div class="mx-auto mb-14 max-w-[760px] text-center">
+      <h2 class="text-3xl font-medium leading-tight tracking-tighter2 lg:text-4xl">
+        Nos <span class="grad-attention">expertises SEO</span>, réunies sous un seul accompagnement
+      </h2>
+      <p class="mt-4 text-slight">Six disciplines complémentaires, orchestrées par RankNinja, notre logiciel d'exécution SEO et GEO propriétaire. La plupart des agences en maîtrisent deux ou trois. Nous les traitons toutes comme des résultats suivis.</p>
+    </div>
+
+    <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+      <article class="hover-grad-border group rounded-card border border-bord bg-white p-7 shadow-card">
+        <div class="mb-5 flex h-12 w-12 items-center justify-center rounded-xl text-white shadow-card transition-transform duration-300 group-hover:scale-110" style="background:linear-gradient(135deg,#3943FF 0%,#E4004D 60%,#FA9329 100%)"><svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M8.5 8.5 5 12l3.5 3.5M15.5 8.5 19 12l-3.5 3.5" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h3 class="text-lg font-semibold">SEO technique</h3>
+        <p class="mt-3 text-[15px] leading-relaxed text-slight">La fondation. Audit de plus de 200 contrôles : indexabilité, vitesse et Core Web Vitals, budget de crawl, données structurées, hreflang, maillage interne, rendu JavaScript, parité mobile, lisibilité par les moteurs d'IA. Chaque anomalie est classée par impact projeté sur le chiffre d'affaires, pas par vanité. C'est le terrain que l'on assainit avant de produire le moindre contenu.</p>
+      </article>
+      <article class="hover-grad-border group rounded-card border border-bord bg-white p-7 shadow-card">
+        <div class="mb-5 flex h-12 w-12 items-center justify-center rounded-xl text-white shadow-card transition-transform duration-300 group-hover:scale-110" style="background:linear-gradient(135deg,#3943FF 0%,#E4004D 60%,#FA9329 100%)"><svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="5.5" y="3.5" width="13" height="17" rx="2.5" stroke="currentColor" stroke-width="1.75"/><path d="M9 9h6M9 12.5h6M9 16h3.5" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/></svg></div>
+        <h3 class="text-lg font-semibold">SEO on-page &amp; contenu</h3>
+        <p class="mt-3 text-[15px] leading-relaxed text-slight">Les pages qui convertissent. Nous produisons chaque mois des pages d'atterrissage adossées aux requêtes à valeur commerciale, et des articles d'autorité qui les alimentent. Chaque pièce répond à une recherche cible, est notée par RankNinja face au concurrent en tête de classement, et conçue pour être reprise en extrait optimisé comme par les moteurs d'IA.</p>
+      </article>
+      <article class="hover-grad-border group rounded-card border border-bord bg-white p-7 shadow-card">
+        <div class="mb-5 flex h-12 w-12 items-center justify-center rounded-xl text-white shadow-card transition-transform duration-300 group-hover:scale-110" style="background:linear-gradient(135deg,#3943FF 0%,#E4004D 60%,#FA9329 100%)"><svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M10.5 13.5a3.4 3.4 0 0 0 4.8 0l2.4-2.4a3.4 3.4 0 0 0-4.8-4.8l-1 1" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/><path d="M13.5 10.5a3.4 3.4 0 0 0-4.8 0l-2.4 2.4a3.4 3.4 0 0 0 4.8 4.8l1-1" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h3 class="text-lg font-semibold">Netlinking (SEO off-page)</h3>
+        <p class="mt-3 text-[15px] leading-relaxed text-slight">L'autorité qui départage. Liens entrants depuis des sites de référence (autorité de domaine 30 et plus, 50 et plus sur les formules hautes), mentions presse, articles invités et citations. Le volume est calibré sur votre secteur pour rester dans une progression naturelle, jamais dans le signal de pénalité.</p>
+      </article>
+      <article class="hover-grad-border group rounded-card border border-bord bg-white p-7 shadow-card">
+        <div class="mb-5 flex h-12 w-12 items-center justify-center rounded-xl text-white shadow-card transition-transform duration-300 group-hover:scale-110" style="background:linear-gradient(135deg,#3943FF 0%,#E4004D 60%,#FA9329 100%)"><svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21c4-4.5 6-7.9 6-10.5a6 6 0 1 0-12 0c0 2.6 2 6 6 10.5Z" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round"/><circle cx="12" cy="10.5" r="2.2" stroke="currentColor" stroke-width="1.75"/></svg></div>
+        <h3 class="text-lg font-semibold">SEO local</h3>
+        <p class="mt-3 text-[15px] leading-relaxed text-slight">Le référencement qui remplit un agenda d'appels et de visites en boutique. Reconstruction complète de la fiche d'établissement Google, inscriptions dans les annuaires, cohérence des citations (nom, adresse, téléphone), processus d'avis et stratégie de positionnement dans le pack Google Maps. Suivi comme un résultat à chaque format de mission, jamais comme un volet annexe.</p>
+      </article>
+      <article class="hover-grad-border group rounded-card border border-bord bg-white p-7 shadow-card">
+        <div class="mb-5 flex h-12 w-12 items-center justify-center rounded-xl text-white shadow-card transition-transform duration-300 group-hover:scale-110" style="background:linear-gradient(135deg,#3943FF 0%,#E4004D 60%,#FA9329 100%)"><svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.75"/><path d="M3.5 12h17" stroke="currentColor" stroke-width="1.75"/><path d="M12 3.5c2.4 2.3 3.6 5.4 3.6 8.5S14.4 18.2 12 20.5C9.6 18.2 8.4 15.1 8.4 12S9.6 5.8 12 3.5Z" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round"/></svg></div>
+        <h3 class="text-lg font-semibold">SEO international &amp; multilingue</h3>
+        <p class="mt-3 text-[15px] leading-relaxed text-slight">Un référencement pensé pour les marques qui vendent au-delà de leurs frontières. Balisage hreflang rigoureux, cartographie des intentions de recherche par pays, contenus qui se positionnent dans plusieurs langues (français, anglais, arabe, néerlandais). Nous captons les parcours d'acheteurs interlangues que la plupart des agences ne savent même pas diagnostiquer.</p>
+      </article>
+      <article class="hover-grad-border group rounded-card border border-bord bg-white p-7 shadow-card">
+        <div class="mb-5 flex h-12 w-12 items-center justify-center rounded-xl text-white shadow-card transition-transform duration-300 group-hover:scale-110" style="background:linear-gradient(135deg,#3943FF 0%,#E4004D 60%,#FA9329 100%)"><svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 4.5 13.7 10 19 12l-5.3 2L12 19.5 10.3 14 5 12l5.3-2L12 4.5Z" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round"/></svg></div>
+        <h3 class="text-lg font-semibold">GEO &amp; recherche IA</h3>
+        <p class="mt-3 text-[15px] leading-relaxed text-slight">Le référencement de la nouvelle page de résultats. Audit de votre visibilité sur cinq moteurs d'IA, ingénierie de contenu lisible par les machines, construction de signaux tiers (Reddit, Quora, Trustpilot, forums spécialisés) qui déclenchent les citations dans ChatGPT, Perplexity, Claude, Gemini et les AI Overviews de Google. La fenêtre pour prendre cette avance se referme.</p>
+      </article>
+    </div>
+
+    <div class="mt-10 flex justify-center">
+      <a href="#plan-de-revenus" class="btn-cta inline-flex items-center gap-3 rounded-lg px-7 py-3.5 text-sm font-medium text-white shadow-card hover:opacity-90">
+        Demander mon plan de revenus SEO
+        <svg class="h-3 w-3" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M1 6h10M7 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- S4 · Le SEO par secteur -->
+  <section id="secteurs" class="bg-nuk py-16 lg:py-24">
+    <div class="mx-auto max-w-content px-6 lg:px-8">
+      <div class="mx-auto mb-14 max-w-[760px] text-center">
+        <h2 class="text-3xl font-medium leading-tight tracking-tighter2 lg:text-4xl">
+          Le <span class="grad-attention">référencement naturel</span> par secteur d'activité
+        </h2>
+        <p class="mt-4 text-slight">La méthode est la même, calibrée sur votre catégorie et votre marché. Chaque secteur ci-dessous est adossé à un client réel que nous avons positionné.</p>
+      </div>
+
+      <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+        <article class="hover-grad-border flex flex-col rounded-card border border-bord bg-white p-7 shadow-card">
+          <h3 class="text-lg font-semibold">SEO pour cabinets dentaires &amp; santé</h3>
+          <p class="mt-3 flex-1 text-[15px] leading-relaxed text-slight">Les patients cherchent un praticien près de chez eux, sur Google et dans le pack local. Le référencement local remplit l'agenda sans coût par patient. Iman Dental Clinic occupe la première position sur « dentiste tangier » et des dizaines de requêtes connexes ; le cabinet est complet un mois à l'avance grâce au seul trafic organique.</p>
+          <p class="mt-4 border-t border-bord pt-4 text-sm font-medium text-purp">Iman Dental Clinic — Tanger</p>
+        </article>
+
+        <article class="hover-grad-border flex flex-col rounded-card border border-bord bg-white p-7 shadow-card">
+          <h3 class="text-lg font-semibold">SEO pour l'e-commerce</h3>
+          <p class="mt-3 flex-1 text-[15px] leading-relaxed text-slight">Sur une boutique en ligne, chaque requête d'achat mal positionnée est une vente cédée à un concurrent ou payée en publicité. Nous positionnons les pages produit et catégorie sur les requêtes à forte intention. Mariner Underwear se classe dans le top 3 en France ; l'organique représente désormais plus de 40 % des ventes mensuelles.</p>
+          <p class="mt-4 border-t border-bord pt-4 text-sm font-medium text-purp">Mariner Underwear — France</p>
+        </article>
+
+        <article class="hover-grad-border flex flex-col rounded-card border border-bord bg-white p-7 shadow-card">
+          <h3 class="text-lg font-semibold">SEO pour l'immobilier</h3>
+          <p class="mt-3 flex-1 text-[15px] leading-relaxed text-slight">Un contact qualifié en immobilier vaut cher, et le coût par prospect en publicité explose. Le référencement naturel capte l'acheteur au moment de sa recherche. Un promoteur belge occupe les trois premières positions sur les requêtes « programme + quartier » ; son coût par contact qualifié est passé de 180 € à moins de 30 € en six mois.</p>
+          <p class="mt-4 border-t border-bord pt-4 text-sm font-medium text-purp">Promoteur immobilier — Belgique</p>
+        </article>
+
+        <article class="hover-grad-border flex flex-col rounded-card border border-bord bg-white p-7 shadow-card">
+          <h3 class="text-lg font-semibold">SEO pour l'hôtellerie &amp; la restauration</h3>
+          <p class="mt-3 flex-1 text-[15px] leading-relaxed text-slight">Réservations directes plutôt que commissions de plateformes : le référencement local et la fiche d'établissement font la différence. Lily Billy, à Marrakech, a enregistré une progression de 732 % des vues de sa fiche Google en trois mois et occupe une position dominante dans le pack local du Guéliz.</p>
+          <p class="mt-4 border-t border-bord pt-4 text-sm font-medium text-purp">Lily Billy — Marrakech</p>
+        </article>
+
+        <article class="hover-grad-border flex flex-col rounded-card border border-bord bg-white p-7 shadow-card">
+          <h3 class="text-lg font-semibold">SEO pour le BTP &amp; le dépannage</h3>
+          <p class="mt-3 flex-1 text-[15px] leading-relaxed text-slight">Sur les métiers d'urgence, celui qui apparaît en premier reçoit l'appel. Le référencement local et les pages d'intervention convertissent l'intention immédiate. Maes Débouchage est passé de 12 à plus de 100 appels d'urgence par mois en quatre mois, avec une couverture locale de 95 % sur sa zone.</p>
+          <p class="mt-4 border-t border-bord pt-4 text-sm font-medium text-purp">Maes Débouchage — Belgique</p>
+        </article>
+
+        <article class="hover-grad-border flex flex-col rounded-card border border-bord bg-white p-7 shadow-card">
+          <h3 class="text-lg font-semibold">SEO pour le voyage &amp; le tourisme</h3>
+          <p class="mt-3 flex-1 text-[15px] leading-relaxed text-slight">Quand on vend vers des marchés où le clic payant coûte cher, le référencement naturel rétablit le calcul économique. Une agence de voyage adressant la clientèle américaine depuis le Maroc se classe dans le top 3 sur les requêtes en anglais à forte intention, avec un panier moyen supérieur à 4 500 € par réservation et un coût par clic organique nul.</p>
+          <p class="mt-4 border-t border-bord pt-4 text-sm font-medium text-purp">Agence de voyage — Maroc → États-Unis</p>
+        </article>
+      </div>
+
+      <div class="mt-8 rounded-card border border-bord bg-white p-7 text-center shadow-card">
+        <p class="text-[15px] leading-relaxed text-slight">Votre secteur n'est pas listé ? Nous avons livré <strong class="font-semibold text-ink">plus de 300 projets SEO</strong> et 70 études de cas documentées, du commerce local à l'immobilier de luxe multilingue. Le Plan de revenus vous montrera les cas internes les plus proches de votre activité.</p>
+      </div>
+    </div>
+      <div class="mt-12 flex justify-center">
+        <a href="#plan-de-revenus" class="btn-cta inline-flex items-center gap-3 rounded-lg px-7 py-3.5 text-sm font-medium text-white shadow-card hover:opacity-90">
+          Demander mon plan de revenus SEO
+          <svg class="h-3 w-3" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M1 6h10M7 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+  </section>
+
+  <!-- S7 · Combien rapporte le SEO (mathématique de valeur) -->
+  <section id="valeur" class="bg-nuk py-16 lg:py-24">
+    <div class="mx-auto max-w-content px-6 lg:px-8">
+      <div class="mx-auto mb-14 max-w-[760px] text-center">
+        <h2 class="text-3xl font-medium leading-tight tracking-tighter2 lg:text-4xl">
+          Combien <span class="grad-attention">rapporte</span> le référencement naturel ?
+        </h2>
+        <p class="mt-4 text-slight">La bonne question n'est pas « combien coûte le SEO » mais « combien vaut ce que vous recevez chaque mois ». Voici la valeur de marché des livrables face au montant réellement facturé, par formule.</p>
+      </div>
+
+      <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+        <div class="rounded-card border border-bord bg-white p-7 shadow-card">
+          <div class="text-sm font-semibold">Essentiel</div>
+          <div class="grad-attention mt-3 text-4xl font-semibold tracking-tighter2 tabular-nums">4,8×</div>
+          <p class="mt-3 text-sm text-slight">Valeur de marché <strong class="text-ink">9 600 €</strong><br>Investissement <strong class="text-ink">2 000 € HT</strong> / mois</p>
+          <p class="mt-3 border-t border-bord pt-3 text-xs text-slight">Chiffre d'affaires de 1 à 3 M€, marché et langue uniques.</p>
+        </div>
+        <div class="rounded-card border-2 border-redder bg-white p-7 shadow-growth">
+          <div class="flex items-center gap-2 text-sm font-semibold">Croissance <span class="rounded-full bg-redder px-2.5 py-0.5 text-[11px] font-semibold text-white">★</span></div>
+          <div class="grad-attention mt-3 text-4xl font-semibold tracking-tighter2 tabular-nums">6,9×</div>
+          <p class="mt-3 text-sm text-slight">Valeur de marché <strong class="text-ink">24 100 €</strong><br>Investissement <strong class="text-ink">3 500 € HT</strong> / mois</p>
+          <p class="mt-3 border-t border-bord pt-3 text-xs text-slight">Chiffre d'affaires de 3 à 15 M€, là où se situe la majorité de nos clients.</p>
+        </div>
+        <div class="rounded-card border border-bord bg-white p-7 shadow-card">
+          <div class="text-sm font-semibold">Performance</div>
+          <div class="grad-attention mt-3 text-4xl font-semibold tracking-tighter2 tabular-nums">9,1×</div>
+          <p class="mt-3 text-sm text-slight">Valeur de marché <strong class="text-ink">45 300 €</strong><br>Investissement <strong class="text-ink">5 000 € HT</strong> / mois</p>
+          <p class="mt-3 border-t border-bord pt-3 text-xs text-slight">Chiffre d'affaires de 15 à 50 M€, plurilingue, ambition de leader.</p>
+        </div>
+        <div class="rounded-card border border-bord bg-white p-7 shadow-card">
+          <div class="text-sm font-semibold">Privé</div>
+          <div class="grad-attention mt-3 text-4xl font-semibold tracking-tighter2 tabular-nums">6,2×</div>
+          <p class="mt-3 text-sm text-slight">Valeur de marché <strong class="text-ink">74 200 €</strong><br>Investissement <strong class="text-ink">12 K€ HT+</strong> / mois</p>
+          <p class="mt-3 border-t border-bord pt-3 text-xs text-slight">Chiffre d'affaires de 50 M€ et plus, ou marque structurante.</p>
+        </div>
+      </div>
+
+      <div class="mt-10 grid gap-6 lg:grid-cols-[1fr_1fr]">
+        <div class="rounded-card border border-bord bg-white p-7 shadow-card">
+          <h3 class="text-base font-semibold">Pourquoi ce multiplicateur existe</h3>
+          <p class="mt-2 text-sm leading-relaxed text-slight">Nous mobilisons une seule équipe sur plus de 30 clients actifs. Le coût mutualisé d'un stratège senior, d'une équipe éditoriale, d'une équipe de netlinking, d'une équipe technique et d'une équipe de reporting est nettement plus bas, par client, que l'achat de chaque fonction séparément. Au-delà de trois fois la valeur, l'accompagnement est un achat rationnel sur la seule base mathématique, sans avoir à y croire. Le ratio n'est pas un artifice marketing, c'est de la mathématique opérationnelle.</p>
+        </div>
+        <div class="rounded-card border border-bord bg-white p-7 shadow-card">
+          <h3 class="text-base font-semibold">La valeur de marché des livrables (référence)</h3>
+          <ul class="mt-3 space-y-2 text-sm text-slight">
+            <li class="flex items-center justify-between gap-4 border-b border-bord pb-2"><span>Article de blog (1 200 à 2 500 mots)</span><span class="font-medium text-ink">300 €</span></li>
+            <li class="flex items-center justify-between gap-4 border-b border-bord pb-2"><span>Page de conversion (1 500 à 2 500 mots)</span><span class="font-medium text-ink">700 €</span></li>
+            <li class="flex items-center justify-between gap-4 border-b border-bord pb-2"><span>Lien entrant (autorité de domaine 30+)</span><span class="font-medium text-ink">100 à 150 €</span></li>
+            <li class="flex items-center justify-between gap-4 border-b border-bord pb-2"><span>Article invité (autorité 40+)</span><span class="font-medium text-ink">400 €</span></li>
+            <li class="flex items-center justify-between gap-4"><span>Mention presse numérique</span><span class="font-medium text-ink">350 €</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+      <div class="mt-12 flex justify-center">
+        <a href="#plan-de-revenus" class="btn-cta inline-flex items-center gap-3 rounded-lg px-7 py-3.5 text-sm font-medium text-white shadow-card hover:opacity-90">
+          Demander mon plan de revenus SEO
+          <svg class="h-3 w-3" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M1 6h10M7 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+  </section>
+
+  <!-- ========================================================= -->
+  <!--  BLOCK 12 · FOOTER — Module 10                             -->
+  <!-- ========================================================= -->
+  <footer class="border-t border-bord bg-white">
+    <div class="mx-auto flex max-w-content flex-col items-center gap-4 px-6 py-12 lg:px-8">
+      <img src="assets/logo-light-rmd.svg" alt="RHILLANE Marketing Digital" class="h-8 w-auto">
+      <p class="text-center text-xs text-slight">© 2026 RHILLANE Marketing Digital. Tous droits réservés.</p>
+    </div>
+  </footer>
+
+  <!-- Schema.org — FAQPage + Organization -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "name": "RHILLANE Marketing Digital",
+        "url": "https://rhillane.com",
+        "logo": "https://rhillane.com/logo.svg",
+        "sameAs": ["https://www.linkedin.com/company/rhillane", "https://www.trustpilot.com/review/rhillane.com"],
+        "contactPoint": { "@type": "ContactPoint", "contactType": "sales", "availableLanguage": ["fr", "en", "ar", "nl", "es"] }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "La garantie SEO est-elle réellement inscrite au contrat ?", "acceptedAnswer": { "@type": "Answer", "text": "Oui. Trois niveaux figurent dans chaque contrat : remboursement intégral du mois 1 sans condition, positionnement Top 5 au sixième mois sinon poursuite sans facturation, et jalons de contrôle aux mois 2, 4 et 6." } },
+          { "@type": "Question", "name": "Le référencement naturel ne demande-t-il pas trop de temps ?", "acceptedAnswer": { "@type": "Answer", "text": "Les jalons sont garantis : mouvement au mois 2, trafic au mois 4, Top 5 au mois 6. L'engagement réel est de quatre-vingt-dix jours avec un point de contrôle, pas six mois à l'aveugle." } },
+          { "@type": "Question", "name": "En quoi est-ce différent d'une agence SEO qui nous a déçus ?", "acceptedAnswer": { "@type": "Answer", "text": "Requêtes cibles convenues par écrit, accès complet à la Search Console dès le premier jour, et poursuite du travail à titre gracieux jusqu'à atteinte du Top 5 — le tout au contrat." } },
+          { "@type": "Question", "name": "Peut-on gérer le SEO en interne ?", "acceptedAnswer": { "@type": "Answer", "text": "Un consultant senior, un rédacteur et les outils représentent 8 500 à 10 500 € par mois pour une personne. Nous mettons une équipe de six profils à disposition pour 3 500 € par mois, avec une garantie écrite." } },
+          { "@type": "Question", "name": "L'IA va-t-elle tuer le SEO ?", "acceptedAnswer": { "@type": "Answer", "text": "Non — elle modifie qui en bénéficie. ChatGPT, Perplexity, Claude, Gemini et les Aperçus IA de Google puisent leurs réponses dans les sites qui se positionnent sur Google. Nous optimisons pour les cinq moteurs IA dans chaque formule." } },
+          { "@type": "Question", "name": "Garantissez-vous le trafic ou le chiffre d'affaires ?", "acceptedAnswer": { "@type": "Answer", "text": "Non. Nous garantissons les positions sur Google, le seul élément réellement sous notre contrôle. Le trafic dépend de la demande de recherche, le chiffre d'affaires de votre offre et de votre taux de conversion." } },
+          { "@type": "Question", "name": "Pourquoi une mission SEO initiale de six mois ?", "acceptedAnswer": { "@type": "Answer", "text": "C'est le temps nécessaire à Google pour évaluer les nouveaux contenus et liens. Au-delà de quatre-vingt-dix jours, en cas de non-atteinte des jalons, vous basculez en mensuel sans pénalité." } },
+          { "@type": "Question", "name": "Que se passe-t-il si une mise à jour Google touche nos positions ?", "acceptedAnswer": { "@type": "Answer", "text": "L'Assurance de récupération de positions est incluse : plan de récupération déclenché dans le même accompagnement, sans coût additionnel. Une clause de fair-play couvre les bouleversements fondamentaux de la recherche." } },
+          { "@type": "Question", "name": "Combien coûte le SEO en 2026 ?", "acceptedAnswer": { "@type": "Answer", "text": "De 2 000 à 12 000 € HT par mois selon le format de mission. Avec un à deux clients gagnés par mois via la recherche, l'accompagnement est généralement rentabilisé sous soixante jours." } }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <!-- Lightbox : aperçu agrandi des captures SERP -->
+  <div id="serp-modal" class="serp-modal" role="dialog" aria-modal="true" aria-label="Aperçu de la capture Google" aria-hidden="true">
+    <button type="button" class="serp-modal-close" aria-label="Fermer l'aperçu">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+    <figure class="serp-modal-fig">
+      <img id="serp-modal-img" src="" alt="">
+      <figcaption id="serp-modal-cap" class="serp-modal-cap"></figcaption>
+    </figure>
+  </div>
+
+  <script>
+    // Header shrink on scroll
+    (function () {
+      var header = document.getElementById('site-header');
+      var onScroll = function () { header.classList.toggle('is-scrolled', window.scrollY > 8); };
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+    })();
+
+
+    // FAQ accordion (vanilla JS)
+    (function () {
+      document.querySelectorAll('.faq-toggle').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var item = btn.closest('.faq-item');
+          var wasOpen = item.classList.contains('open');
+          document.querySelectorAll('.faq-item.open').forEach(function (i) { i.classList.remove('open'); });
+          if (!wasOpen) item.classList.add('open');
+        });
+      });
+    })();
+
+    // Timeline méthode : remplit les numéros en cercle au fil du défilement
+    (function () {
+      var badges = document.querySelectorAll('#methode .step-num');
+      if (!badges.length) return;
+      var ticking = false;
+      function update() {
+        ticking = false;
+        var trigger = window.innerHeight * 0.62;   // ligne de déclenchement (62 % de la hauteur)
+        badges.forEach(function (b) {
+          var r = b.getBoundingClientRect();
+          b.classList.toggle('is-active', r.top <= trigger);
+        });
+      }
+      function onScroll() {
+        if (!ticking) { ticking = true; window.requestAnimationFrame(update); }
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('resize', onScroll, { passive: true });
+      update();
+    })();
+
+    // Lightbox : ouvre les captures SERP dans un aperçu agrandi
+    (function () {
+      var modal = document.getElementById('serp-modal');
+      if (!modal) return;
+      var mImg = document.getElementById('serp-modal-img');
+      var mCap = document.getElementById('serp-modal-cap');
+      var closeBtn = modal.querySelector('.serp-modal-close');
+      var lastFocus = null;
+
+      function openModal(src, alt, cap) {
+        lastFocus = document.activeElement;
+        mImg.setAttribute('src', src || '');
+        mImg.setAttribute('alt', alt || cap || '');
+        mCap.textContent = cap || '';
+        modal.classList.add('is-open');
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+        if (closeBtn) closeBtn.focus();
+      }
+      function closeModal() {
+        modal.classList.remove('is-open');
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+        mImg.setAttribute('src', '');
+        if (lastFocus && lastFocus.focus) lastFocus.focus();
+      }
+
+      document.querySelectorAll('#resultats .serp-shot').forEach(function (fig) {
+        var img = fig.querySelector('img');
+        var capEl = fig.querySelector('figcaption');
+        var cap = '';
+        if (capEl) {
+          var spans = capEl.querySelectorAll('span');
+          if (spans.length) {
+            cap = Array.prototype.map.call(spans, function (s) { return s.textContent.trim(); }).join('  ·  ');
+          } else {
+            cap = capEl.textContent.replace(/\s+/g, ' ').trim();
+          }
+        }
+        function go() { openModal(img ? img.getAttribute('src') : '', img ? img.getAttribute('alt') : '', cap); }
+        fig.addEventListener('click', go);
+        fig.addEventListener('keydown', function (e) {
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(); }
+        });
+      });
+
+      modal.addEventListener('click', function (e) { if (e.target === modal) closeModal(); });
+      if (closeBtn) closeBtn.addEventListener('click', closeModal);
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && modal.classList.contains('is-open')) closeModal();
+      });
+    })();
+  </script>
+</body>
+</html>
