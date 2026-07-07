@@ -177,9 +177,8 @@
     .folder-media img { box-shadow: 0 14px 30px -14px rgba(4,17,53,.35); }
     .folder-card:hover { z-index: 30; }
     .folder-card:hover .folder-media { transform: translateY(-64px); }
-    /* contour dégradé signature (purp -> redder -> orng) : dos + corps du dossier (l'onglet est un SVG) */
-    .folder-back  { background: linear-gradient(#E9EAF2, #E9EAF2) padding-box, linear-gradient(155deg, #3943FF 0%, #E4004D 60%, #FA9329 100%) border-box; }
-    .folder-front { background: linear-gradient(#fff, #fff) padding-box, linear-gradient(155deg, #3943FF 0%, #E4004D 60%, #FA9329 100%) border-box; }
+    /* dossier violet (réf.) : dos purp uni + onglet, panneau avant purp éclairci, ombre portée */
+    .folder-front { background: linear-gradient(180deg, rgba(255,255,255,.25), rgba(255,255,255,.05) 60%), #3943FF; box-shadow: 0 18px 40px -20px rgba(4,17,53,.4); }
     /* détails (chiffres + note) repliés au repos, révélés au survol */
     .folder-more { max-height: 0; opacity: 0; overflow: hidden; transition: max-height .5s cubic-bezier(.2,.7,.3,1), opacity .35s ease .08s; }
     .folder-card:hover .folder-more { max-height: 320px; opacity: 1; }
@@ -549,162 +548,162 @@
       <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
 
         <!-- 1 · Iman Dental -->
-        <article class="folder-card group relative flex flex-col rounded-3xl bg-white shadow-card transition-transform duration-300 hover:-translate-y-1.5">
-          <div class="folder-back absolute inset-x-0 top-0 h-28 rounded-t-3xl border border-transparent" aria-hidden="true"></div>
-          <div class="folder-media absolute left-3 right-3 top-3 z-[5] h-44">
-            <img src="assets/hero-project-01.jpg" loading="lazy" decoding="async" alt="Iman Dental Clinic — agence SEO Maroc, étude de cas" class="h-full w-full rounded-[10px] object-cover">
+        <article class="folder-card group relative flex flex-col rounded-3xl transition-transform duration-300 hover:-translate-y-1.5">
+          <svg class="absolute inset-x-0 top-0 block w-full" height="24" viewBox="0 0 400 24" preserveAspectRatio="none" aria-hidden="true"><path d="M0,26 L0,10 Q0,2 8,2 L92,2 Q100,2 104,8 Q108,13 118,13 L392,13 Q400,13 400,21 L400,26 Z" fill="#3943FF"/></svg>
+          <div class="absolute inset-x-0 top-[21px] bottom-0 rounded-b-[24px] bg-purp" aria-hidden="true"></div>
+          <div class="folder-media absolute left-3 right-3 top-5 z-[5] h-44 rounded-xl bg-white p-1.5">
+            <img src="assets/hero-project-01.jpg" loading="lazy" decoding="async" alt="Iman Dental Clinic — agence SEO Maroc, étude de cas" class="h-full w-full rounded-lg object-cover">
           </div>
           <div class="h-24 shrink-0" aria-hidden="true"></div>
           <div class="relative z-10 flex flex-1 flex-col">
-            <svg class="block w-full" height="28" viewBox="0 0 400 28" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="rmdfold" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3943FF"/><stop offset=".6" stop-color="#E4004D"/><stop offset="1" stop-color="#FA9329"/></linearGradient></defs><path d="M0.5,30 L0.5,12 Q0.5,4 8.5,4 L86,4 Q94,4 98,9.5 Q102,15 112,15 L391,15 Q399.5,15 399.5,23 L399.5,30 Z" fill="#fff" stroke="url(#rmdfold)" stroke-width="1" vector-effect="non-scaling-stroke"/></svg>
-            <div class="folder-front -mt-px flex flex-1 flex-col rounded-b-3xl border border-t-0 border-transparent px-6 pb-6 pt-2">
+            <div class="folder-front flex flex-1 flex-col rounded-[22px] px-6 pb-6 pt-6 text-white">
             <div class="flex flex-wrap items-baseline gap-x-2.5 gap-y-1">
-              <span class="text-3xl font-semibold tracking-tighter2 text-ink">N°1</span>
-              <span class="text-xs text-slight">sur « dentiste tangier »</span>
+              <span class="text-3xl font-semibold tracking-tighter2 text-white">N°1</span>
+              <span class="text-xs text-white/70">sur « dentiste tangier »</span>
             </div>
-            <p class="mt-3 text-sm font-medium text-purp">Iman Dental Clinic</p>
+            <p class="mt-3 text-sm font-medium text-white">Iman Dental Clinic</p>
             <h3 class="mt-1 text-lg font-semibold leading-snug">Cabinet dentaire n°1 sur Google à Tanger</h3>
             <div class="folder-more">
-            <div class="mt-4 flex divide-x divide-bord border-y border-bord py-3 text-center">
-              <div class="flex-1 px-2"><div class="text-lg font-semibold">0 €</div><div class="text-xs text-slight">coût / patient acquis</div></div>
-              <div class="flex-1 px-2"><div class="text-lg font-semibold">M+8</div><div class="text-xs text-slight">arrêt de Google Ads</div></div>
+            <div class="mt-4 flex divide-x divide-white/25 border-y border-white/25 py-3 text-center">
+              <div class="flex-1 px-2"><div class="text-lg font-semibold">0 €</div><div class="text-xs text-white/70">coût / patient acquis</div></div>
+              <div class="flex-1 px-2"><div class="text-lg font-semibold">M+8</div><div class="text-xs text-white/70">arrêt de Google Ads</div></div>
             </div>
-            <p class="mt-4 text-sm text-slight">Cabinet complet un mois à l'avance grâce au seul trafic organique.</p>
+            <p class="mt-4 text-sm text-white/70">Cabinet complet un mois à l'avance grâce au seul trafic organique.</p>
             </div>
             </div>
           </div>
         </article>
 
         <!-- 2 · Mariner -->
-        <article class="folder-card group relative flex flex-col rounded-3xl bg-white shadow-card transition-transform duration-300 hover:-translate-y-1.5">
-          <div class="folder-back absolute inset-x-0 top-0 h-28 rounded-t-3xl border border-transparent" aria-hidden="true"></div>
-          <div class="folder-media absolute left-3 right-3 top-3 z-[5] h-44">
-            <img src="assets/hero-project-02.jpg" loading="lazy" decoding="async" alt="Mariner Underwear — référencement e-commerce France, étude de cas" class="h-full w-full rounded-[10px] object-cover">
+        <article class="folder-card group relative flex flex-col rounded-3xl transition-transform duration-300 hover:-translate-y-1.5">
+          <svg class="absolute inset-x-0 top-0 block w-full" height="24" viewBox="0 0 400 24" preserveAspectRatio="none" aria-hidden="true"><path d="M0,26 L0,10 Q0,2 8,2 L92,2 Q100,2 104,8 Q108,13 118,13 L392,13 Q400,13 400,21 L400,26 Z" fill="#3943FF"/></svg>
+          <div class="absolute inset-x-0 top-[21px] bottom-0 rounded-b-[24px] bg-purp" aria-hidden="true"></div>
+          <div class="folder-media absolute left-3 right-3 top-5 z-[5] h-44 rounded-xl bg-white p-1.5">
+            <img src="assets/hero-project-02.jpg" loading="lazy" decoding="async" alt="Mariner Underwear — référencement e-commerce France, étude de cas" class="h-full w-full rounded-lg object-cover">
           </div>
           <div class="h-24 shrink-0" aria-hidden="true"></div>
           <div class="relative z-10 flex flex-1 flex-col">
-            <svg class="block w-full" height="28" viewBox="0 0 400 28" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="rmdfold" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3943FF"/><stop offset=".6" stop-color="#E4004D"/><stop offset="1" stop-color="#FA9329"/></linearGradient></defs><path d="M0.5,30 L0.5,12 Q0.5,4 8.5,4 L86,4 Q94,4 98,9.5 Q102,15 112,15 L391,15 Q399.5,15 399.5,23 L399.5,30 Z" fill="#fff" stroke="url(#rmdfold)" stroke-width="1" vector-effect="non-scaling-stroke"/></svg>
-            <div class="folder-front -mt-px flex flex-1 flex-col rounded-b-3xl border border-t-0 border-transparent px-6 pb-6 pt-2">
+            <div class="folder-front flex flex-1 flex-col rounded-[22px] px-6 pb-6 pt-6 text-white">
             <div class="flex flex-wrap items-baseline gap-x-2.5 gap-y-1">
-              <span class="text-3xl font-semibold tracking-tighter2 text-ink">Top 3</span>
-              <span class="text-xs text-slight">requêtes à forte intention d'achat</span>
+              <span class="text-3xl font-semibold tracking-tighter2 text-white">Top 3</span>
+              <span class="text-xs text-white/70">requêtes à forte intention d'achat</span>
             </div>
-            <p class="mt-3 text-sm font-medium text-purp">Mariner Underwear</p>
+            <p class="mt-3 text-sm font-medium text-white">Mariner Underwear</p>
             <h3 class="mt-1 text-lg font-semibold leading-snug">E-commerce en top 3 sur les requêtes d'achat en France</h3>
             <div class="folder-more">
-            <div class="mt-4 flex divide-x divide-bord border-y border-bord py-3 text-center">
-              <div class="flex-1 px-2"><div class="text-lg font-semibold">40 %+</div><div class="text-xs text-slight">des ventes via l'organique</div></div>
-              <div class="flex-1 px-2"><div class="text-lg font-semibold">M+9</div><div class="text-xs text-slight">réduction du budget Meta</div></div>
+            <div class="mt-4 flex divide-x divide-white/25 border-y border-white/25 py-3 text-center">
+              <div class="flex-1 px-2"><div class="text-lg font-semibold">40 %+</div><div class="text-xs text-white/70">des ventes via l'organique</div></div>
+              <div class="flex-1 px-2"><div class="text-lg font-semibold">M+9</div><div class="text-xs text-white/70">réduction du budget Meta</div></div>
             </div>
-            <p class="mt-4 text-sm text-slight">« Nous réduisons nos investissements sur Meta, nous n'en avons plus besoin. »</p>
+            <p class="mt-4 text-sm text-white/70">« Nous réduisons nos investissements sur Meta, nous n'en avons plus besoin. »</p>
             </div>
             </div>
           </div>
         </article>
 
         <!-- 3 · Maes -->
-        <article class="folder-card group relative flex flex-col rounded-3xl bg-white shadow-card transition-transform duration-300 hover:-translate-y-1.5">
-          <div class="folder-back absolute inset-x-0 top-0 h-28 rounded-t-3xl border border-transparent" aria-hidden="true"></div>
-          <div class="folder-media absolute left-3 right-3 top-3 z-[5] h-44">
-            <img src="assets/hero-project-03.jpg" loading="lazy" decoding="async" alt="Maes Débouchage — référencement local Belgique, étude de cas" class="h-full w-full rounded-[10px] object-cover">
+        <article class="folder-card group relative flex flex-col rounded-3xl transition-transform duration-300 hover:-translate-y-1.5">
+          <svg class="absolute inset-x-0 top-0 block w-full" height="24" viewBox="0 0 400 24" preserveAspectRatio="none" aria-hidden="true"><path d="M0,26 L0,10 Q0,2 8,2 L92,2 Q100,2 104,8 Q108,13 118,13 L392,13 Q400,13 400,21 L400,26 Z" fill="#3943FF"/></svg>
+          <div class="absolute inset-x-0 top-[21px] bottom-0 rounded-b-[24px] bg-purp" aria-hidden="true"></div>
+          <div class="folder-media absolute left-3 right-3 top-5 z-[5] h-44 rounded-xl bg-white p-1.5">
+            <img src="assets/hero-project-03.jpg" loading="lazy" decoding="async" alt="Maes Débouchage — référencement local Belgique, étude de cas" class="h-full w-full rounded-lg object-cover">
           </div>
           <div class="h-24 shrink-0" aria-hidden="true"></div>
           <div class="relative z-10 flex flex-1 flex-col">
-            <svg class="block w-full" height="28" viewBox="0 0 400 28" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="rmdfold" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3943FF"/><stop offset=".6" stop-color="#E4004D"/><stop offset="1" stop-color="#FA9329"/></linearGradient></defs><path d="M0.5,30 L0.5,12 Q0.5,4 8.5,4 L86,4 Q94,4 98,9.5 Q102,15 112,15 L391,15 Q399.5,15 399.5,23 L399.5,30 Z" fill="#fff" stroke="url(#rmdfold)" stroke-width="1" vector-effect="non-scaling-stroke"/></svg>
-            <div class="folder-front -mt-px flex flex-1 flex-col rounded-b-3xl border border-t-0 border-transparent px-6 pb-6 pt-2">
+            <div class="folder-front flex flex-1 flex-col rounded-[22px] px-6 pb-6 pt-6 text-white">
             <div class="flex flex-wrap items-baseline gap-x-2.5 gap-y-1">
-              <span class="text-3xl font-semibold tracking-tighter2 text-ink">12 → 100+</span>
-              <span class="text-xs text-slight">appels d'urgence par mois</span>
+              <span class="text-3xl font-semibold tracking-tighter2 text-white">12 → 100+</span>
+              <span class="text-xs text-white/70">appels d'urgence par mois</span>
             </div>
-            <p class="mt-3 text-sm font-medium text-purp">Maes Débouchage</p>
+            <p class="mt-3 text-sm font-medium text-white">Maes Débouchage</p>
             <h3 class="mt-1 text-lg font-semibold leading-snug">SEO local : de 12 à 100+ appels d'urgence par mois</h3>
             <div class="folder-more">
-            <div class="mt-4 flex divide-x divide-bord border-y border-bord py-3 text-center">
-              <div class="flex-1 px-2"><div class="text-lg font-semibold">95 %</div><div class="text-xs text-slight">couverture locale</div></div>
-              <div class="flex-1 px-2"><div class="text-lg font-semibold">4 mois</div><div class="text-xs text-slight">pour y parvenir</div></div>
+            <div class="mt-4 flex divide-x divide-white/25 border-y border-white/25 py-3 text-center">
+              <div class="flex-1 px-2"><div class="text-lg font-semibold">95 %</div><div class="text-xs text-white/70">couverture locale</div></div>
+              <div class="flex-1 px-2"><div class="text-lg font-semibold">4 mois</div><div class="text-xs text-white/70">pour y parvenir</div></div>
             </div>
-            <p class="mt-4 text-sm text-slight">Même méthode de SEO local, secteur différent, pays différent. La méthodologie est transposable.</p>
+            <p class="mt-4 text-sm text-white/70">Même méthode de SEO local, secteur différent, pays différent. La méthodologie est transposable.</p>
             </div>
             </div>
           </div>
         </article>
 
         <!-- 4 · Lily Billy -->
-        <article class="folder-card group relative flex flex-col rounded-3xl bg-white shadow-card transition-transform duration-300 hover:-translate-y-1.5">
-          <div class="folder-back absolute inset-x-0 top-0 h-28 rounded-t-3xl border border-transparent" aria-hidden="true"></div>
-          <div class="folder-media absolute left-3 right-3 top-3 z-[5] h-44">
-            <img src="assets/hero-project-04.jpg" loading="lazy" decoding="async" alt="Lily Billy Marrakech — SEO local Maroc, étude de cas" class="h-full w-full rounded-[10px] object-cover">
+        <article class="folder-card group relative flex flex-col rounded-3xl transition-transform duration-300 hover:-translate-y-1.5">
+          <svg class="absolute inset-x-0 top-0 block w-full" height="24" viewBox="0 0 400 24" preserveAspectRatio="none" aria-hidden="true"><path d="M0,26 L0,10 Q0,2 8,2 L92,2 Q100,2 104,8 Q108,13 118,13 L392,13 Q400,13 400,21 L400,26 Z" fill="#3943FF"/></svg>
+          <div class="absolute inset-x-0 top-[21px] bottom-0 rounded-b-[24px] bg-purp" aria-hidden="true"></div>
+          <div class="folder-media absolute left-3 right-3 top-5 z-[5] h-44 rounded-xl bg-white p-1.5">
+            <img src="assets/hero-project-04.jpg" loading="lazy" decoding="async" alt="Lily Billy Marrakech — SEO local Maroc, étude de cas" class="h-full w-full rounded-lg object-cover">
           </div>
           <div class="h-24 shrink-0" aria-hidden="true"></div>
           <div class="relative z-10 flex flex-1 flex-col">
-            <svg class="block w-full" height="28" viewBox="0 0 400 28" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="rmdfold" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3943FF"/><stop offset=".6" stop-color="#E4004D"/><stop offset="1" stop-color="#FA9329"/></linearGradient></defs><path d="M0.5,30 L0.5,12 Q0.5,4 8.5,4 L86,4 Q94,4 98,9.5 Q102,15 112,15 L391,15 Q399.5,15 399.5,23 L399.5,30 Z" fill="#fff" stroke="url(#rmdfold)" stroke-width="1" vector-effect="non-scaling-stroke"/></svg>
-            <div class="folder-front -mt-px flex flex-1 flex-col rounded-b-3xl border border-t-0 border-transparent px-6 pb-6 pt-2">
+            <div class="folder-front flex flex-1 flex-col rounded-[22px] px-6 pb-6 pt-6 text-white">
             <div class="flex flex-wrap items-baseline gap-x-2.5 gap-y-1">
-              <span class="text-3xl font-semibold tracking-tighter2 text-ink">+732 %</span>
-              <span class="text-xs text-slight">de vues de la fiche Google</span>
+              <span class="text-3xl font-semibold tracking-tighter2 text-white">+732 %</span>
+              <span class="text-xs text-white/70">de vues de la fiche Google</span>
             </div>
-            <p class="mt-3 text-sm font-medium text-purp">Lily Billy</p>
+            <p class="mt-3 text-sm font-medium text-white">Lily Billy</p>
             <h3 class="mt-1 text-lg font-semibold leading-snug">+732 % de vues de fiche Google en trois mois</h3>
             <div class="folder-more">
-            <div class="mt-4 flex divide-x divide-bord border-y border-bord py-3 text-center">
-              <div class="flex-1 px-2"><div class="text-lg font-semibold">N°1</div><div class="text-xs text-slight">pack local Guéliz</div></div>
-              <div class="flex-1 px-2"><div class="text-lg font-semibold">3 mois</div><div class="text-xs text-slight">de mission</div></div>
+            <div class="mt-4 flex divide-x divide-white/25 border-y border-white/25 py-3 text-center">
+              <div class="flex-1 px-2"><div class="text-lg font-semibold">N°1</div><div class="text-xs text-white/70">pack local Guéliz</div></div>
+              <div class="flex-1 px-2"><div class="text-lg font-semibold">3 mois</div><div class="text-xs text-white/70">de mission</div></div>
             </div>
-            <p class="mt-4 text-sm text-slight">La méthodologie de SEO local que nous appliquerions à votre activité est la même, calibrée sur votre catégorie et votre marché.</p>
+            <p class="mt-4 text-sm text-white/70">La méthodologie de SEO local que nous appliquerions à votre activité est la même, calibrée sur votre catégorie et votre marché.</p>
             </div>
             </div>
           </div>
         </article>
 
         <!-- 5 · Écran Moderne -->
-        <article class="folder-card group relative flex flex-col rounded-3xl bg-white shadow-card transition-transform duration-300 hover:-translate-y-1.5">
-          <div class="folder-back absolute inset-x-0 top-0 h-28 rounded-t-3xl border border-transparent" aria-hidden="true"></div>
-          <div class="folder-media absolute left-3 right-3 top-3 z-[5] h-44">
-            <img src="assets/hero-project-05.jpg" loading="lazy" decoding="async" alt="Écran Moderne — visibilité moteurs IA et SEO France, étude de cas" class="h-full w-full rounded-[10px] object-cover">
+        <article class="folder-card group relative flex flex-col rounded-3xl transition-transform duration-300 hover:-translate-y-1.5">
+          <svg class="absolute inset-x-0 top-0 block w-full" height="24" viewBox="0 0 400 24" preserveAspectRatio="none" aria-hidden="true"><path d="M0,26 L0,10 Q0,2 8,2 L92,2 Q100,2 104,8 Q108,13 118,13 L392,13 Q400,13 400,21 L400,26 Z" fill="#3943FF"/></svg>
+          <div class="absolute inset-x-0 top-[21px] bottom-0 rounded-b-[24px] bg-purp" aria-hidden="true"></div>
+          <div class="folder-media absolute left-3 right-3 top-5 z-[5] h-44 rounded-xl bg-white p-1.5">
+            <img src="assets/hero-project-05.jpg" loading="lazy" decoding="async" alt="Écran Moderne — visibilité moteurs IA et SEO France, étude de cas" class="h-full w-full rounded-lg object-cover">
           </div>
           <div class="h-24 shrink-0" aria-hidden="true"></div>
           <div class="relative z-10 flex flex-1 flex-col">
-            <svg class="block w-full" height="28" viewBox="0 0 400 28" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="rmdfold" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3943FF"/><stop offset=".6" stop-color="#E4004D"/><stop offset="1" stop-color="#FA9329"/></linearGradient></defs><path d="M0.5,30 L0.5,12 Q0.5,4 8.5,4 L86,4 Q94,4 98,9.5 Q102,15 112,15 L391,15 Q399.5,15 399.5,23 L399.5,30 Z" fill="#fff" stroke="url(#rmdfold)" stroke-width="1" vector-effect="non-scaling-stroke"/></svg>
-            <div class="folder-front -mt-px flex flex-1 flex-col rounded-b-3xl border border-t-0 border-transparent px-6 pb-6 pt-2">
+            <div class="folder-front flex flex-1 flex-col rounded-[22px] px-6 pb-6 pt-6 text-white">
             <div class="flex flex-wrap items-baseline gap-x-2.5 gap-y-1">
-              <span class="text-3xl font-semibold tracking-tighter2 text-ink">N°1</span>
-              <span class="text-xs text-slight">sur « meilleur IPTV France »</span>
+              <span class="text-3xl font-semibold tracking-tighter2 text-white">N°1</span>
+              <span class="text-xs text-white/70">sur « meilleur IPTV France »</span>
             </div>
-            <p class="mt-3 text-sm font-medium text-purp">Écran Moderne</p>
+            <p class="mt-3 text-sm font-medium text-white">Écran Moderne</p>
             <h3 class="mt-1 text-lg font-semibold leading-snug">Extrait optimisé conservé après la mise à jour Google</h3>
             <div class="folder-more">
-            <div class="mt-4 flex divide-x divide-bord border-y border-bord py-3 text-center">
-              <div class="flex-1 px-2"><div class="text-lg font-semibold">✓</div><div class="text-xs text-slight">extrait optimisé conservé</div></div>
-              <div class="flex-1 px-2"><div class="text-lg font-semibold">5 moteurs</div><div class="text-xs text-slight">visibilité IA suivie</div></div>
+            <div class="mt-4 flex divide-x divide-white/25 border-y border-white/25 py-3 text-center">
+              <div class="flex-1 px-2"><div class="text-lg font-semibold">✓</div><div class="text-xs text-white/70">extrait optimisé conservé</div></div>
+              <div class="flex-1 px-2"><div class="text-lg font-semibold">5 moteurs</div><div class="text-xs text-white/70">visibilité IA suivie</div></div>
             </div>
-            <p class="mt-4 text-sm text-slight">Preuve vérifiable de notre méthodologie de visibilité IA, y compris sur les niches les plus compétitives.</p>
+            <p class="mt-4 text-sm text-white/70">Preuve vérifiable de notre méthodologie de visibilité IA, y compris sur les niches les plus compétitives.</p>
             </div>
             </div>
           </div>
         </article>
 
         <!-- 6 · Promoteur BE -->
-        <article class="folder-card group relative flex flex-col rounded-3xl bg-white shadow-card transition-transform duration-300 hover:-translate-y-1.5">
-          <div class="folder-back absolute inset-x-0 top-0 h-28 rounded-t-3xl border border-transparent" aria-hidden="true"></div>
-          <div class="folder-media absolute left-3 right-3 top-3 z-[5] h-44">
-            <img src="assets/hero-project-06.png" loading="lazy" decoding="async" alt="Promoteur immobilier Belgique — référencement naturel, étude de cas" class="h-full w-full rounded-[10px] object-cover">
+        <article class="folder-card group relative flex flex-col rounded-3xl transition-transform duration-300 hover:-translate-y-1.5">
+          <svg class="absolute inset-x-0 top-0 block w-full" height="24" viewBox="0 0 400 24" preserveAspectRatio="none" aria-hidden="true"><path d="M0,26 L0,10 Q0,2 8,2 L92,2 Q100,2 104,8 Q108,13 118,13 L392,13 Q400,13 400,21 L400,26 Z" fill="#3943FF"/></svg>
+          <div class="absolute inset-x-0 top-[21px] bottom-0 rounded-b-[24px] bg-purp" aria-hidden="true"></div>
+          <div class="folder-media absolute left-3 right-3 top-5 z-[5] h-44 rounded-xl bg-white p-1.5">
+            <img src="assets/hero-project-06.png" loading="lazy" decoding="async" alt="Promoteur immobilier Belgique — référencement naturel, étude de cas" class="h-full w-full rounded-lg object-cover">
           </div>
           <div class="h-24 shrink-0" aria-hidden="true"></div>
           <div class="relative z-10 flex flex-1 flex-col">
-            <svg class="block w-full" height="28" viewBox="0 0 400 28" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="rmdfold" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3943FF"/><stop offset=".6" stop-color="#E4004D"/><stop offset="1" stop-color="#FA9329"/></linearGradient></defs><path d="M0.5,30 L0.5,12 Q0.5,4 8.5,4 L86,4 Q94,4 98,9.5 Q102,15 112,15 L391,15 Q399.5,15 399.5,23 L399.5,30 Z" fill="#fff" stroke="url(#rmdfold)" stroke-width="1" vector-effect="non-scaling-stroke"/></svg>
-            <div class="folder-front -mt-px flex flex-1 flex-col rounded-b-3xl border border-t-0 border-transparent px-6 pb-6 pt-2">
+            <div class="folder-front flex flex-1 flex-col rounded-[22px] px-6 pb-6 pt-6 text-white">
             <div class="flex flex-wrap items-baseline gap-x-2.5 gap-y-1">
-              <span class="text-3xl font-semibold tracking-tighter2 text-ink">180 → 30 €</span>
-              <span class="text-xs text-slight">coût par contact qualifié</span>
+              <span class="text-3xl font-semibold tracking-tighter2 text-white">180 → 30 €</span>
+              <span class="text-xs text-white/70">coût par contact qualifié</span>
             </div>
-            <p class="mt-3 text-sm font-medium text-purp">Promoteur immobilier</p>
+            <p class="mt-3 text-sm font-medium text-white">Promoteur immobilier</p>
             <h3 class="mt-1 text-lg font-semibold leading-snug">Coût par contact qualifié divisé par six en six mois</h3>
             <div class="folder-more">
-            <div class="mt-4 flex divide-x divide-bord border-y border-bord py-3 text-center">
-              <div class="flex-1 px-2"><div class="text-lg font-semibold">Top 3</div><div class="text-xs text-slight">programme + quartier</div></div>
-              <div class="flex-1 px-2"><div class="text-lg font-semibold">6 mois</div><div class="text-xs text-slight">de mission</div></div>
+            <div class="mt-4 flex divide-x divide-white/25 border-y border-white/25 py-3 text-center">
+              <div class="flex-1 px-2"><div class="text-lg font-semibold">Top 3</div><div class="text-xs text-white/70">programme + quartier</div></div>
+              <div class="flex-1 px-2"><div class="text-lg font-semibold">6 mois</div><div class="text-xs text-white/70">de mission</div></div>
             </div>
-            <p class="mt-4 text-sm text-slight">Les trois premières positions Google sur des dizaines de requêtes connexes.</p>
+            <p class="mt-4 text-sm text-white/70">Les trois premières positions Google sur des dizaines de requêtes connexes.</p>
             </div>
             </div>
           </div>
